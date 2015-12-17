@@ -49,5 +49,9 @@ class YogaClassesController < ApplicationController
 
   def destroy
     # if current user is admin or studio owner
+    yoga_class = YogaClass.find_by(id: params[:id])
+    yoga_class.destroy
+    flash[:success] = "Class was successfully deleted!"
+    redirect_to "/yoga_classes/"
   end
 end
