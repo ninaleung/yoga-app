@@ -1,3 +1,3 @@
 class Role < ActiveRecord::Base
-  has many :users
+  has_many :users
 end

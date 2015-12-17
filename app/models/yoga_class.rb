@@ -1,4 +1,4 @@
 class YogaClass < ActiveRecord::Base
-  belongs to :studio
-  belongs to :user
+  belongs_to :studio
+  belongs_to :user
 end

@@ -1,4 +1,4 @@
 class Studio < ActiveRecord::Base
-  has many :yoga_classes
-  belongs to :user
+  has_many :yoga_classes
+  belongs_to :user
 end
