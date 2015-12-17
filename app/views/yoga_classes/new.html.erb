@@ -1,2 +1,38 @@
-<h1>YogaClasses#new</h1>
-<p>Find me in app/views/yoga_classes/new.html.erb</p>
+<h1>Add a yoga class</h1>
+<%= form_tag "/yoga_classes/", method: :post do %>
+  <div>
+    <%= label_tag :name %>
+    <%= text_field_tag :name %>
+  </div>
+  <div>
+    <%= label_tag :studio_id %>
+    <%= text_field_tag :studio_id %>
+  </div>
+  <div>
+    <%= label_tag :date %>
+    <%= text_field_tag :date %>
+  </div>
+  <div>
+    <%= label_tag :time %>
+    <%= text_field_tag :time %>
+  </div>
+  <div>
+    <%= label_tag :duration %>
+    <%= text_field_tag :duration %>
+  </div>
+  <div>
+    <%= label_tag :price %>
+    <%= text_field_tag :price %>
+  </div>
+  <div>
+    <%= label_tag :level %>
+    <%= text_field_tag :level %>
+  </div>
+  <div>
+    <%= label_tag :teacher_id %>
+    <%= text_field_tag :user_id %>
+  </div>
+  <div>
+    <%= submit_tag 'Add a yoga class' %>
+  </div>
+<% end %>
