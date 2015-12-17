@@ -13,6 +13,17 @@ class YogaClassesController < ApplicationController
 
   def create
     # if current user is admin or studio owner
+    yoga_class = YogaClass.create(
+      name: params[:name],
+      studio_id: params[:studio_id],
+      date: params[:date],
+      time: params[:time],
+      duration: params[:duration],
+      price: params[:price],
+      level: params[:level],
+      user_id: params[:user_id]
+      )
+    redirect_to "/yoga_classes/#{yoga_class.id}"
   end
 
   def edit
