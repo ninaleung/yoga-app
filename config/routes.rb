@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  get '/' => 'home#index'
+  get '/' => 'yoga_classes#index'
+  get '/yoga_classes' => 'yoga_classes#index'
+  get '/yoga_classes/new' => 'yoga_classes#new'
+  post'/yoga_classes/' => 'yoga_classes#create'
+  get '/yoga_classes/:id' => 'yoga_classes#show'
+  get '/yoga_classes/:id/edit' => 'yoga_classes#edit'
+  patch '/yoga_classes/:id' => 'yoga_classes#update'
+  delete '/yoga_classes/:id' => 'yoga_classes#destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
