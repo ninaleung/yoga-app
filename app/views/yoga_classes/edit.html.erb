@@ -1,2 +1,38 @@
-<h1>YogaClasses#edit</h1>
-<p>Find me in app/views/yoga_classes/edit.html.erb</p>
+<h1>Edit yoga class</h1>
+<%= form_tag "/yoga_classes/#{@yoga_class.id}", method: :patch do %>
+  <div>
+    <%= label_tag :name %>
+    <%= text_field_tag :name, @yoga_class.name %>
+  </div>
+  <div>
+    <%= label_tag :studio_id %>
+    <%= text_field_tag :studio_id, @yoga_class.studio_id  %>
+  </div>
+  <div>
+    <%= label_tag :date %>
+    <%= text_field_tag :date, @yoga_class.date %>
+  </div>
+  <div>
+    <%= label_tag :time %>
+    <%= text_field_tag :time, @yoga_class.time %>
+  </div>
+  <div>
+    <%= label_tag :duration %>
+    <%= text_field_tag :duration, @yoga_class.duration %>
+  </div>
+  <div>
+    <%= label_tag :price, "Price $" %>
+    <%= text_field_tag :price, @yoga_class.price %>
+  </div>
+  <div>
+    <%= label_tag :level %>
+    <%= text_field_tag :level, @yoga_class.level %>
+  </div>
+  <div>
+    <%= label_tag :teacher_id %>
+    <%= text_field_tag :user_id, @yoga_class.user_id %>
+  </div>
+  <div>
+    <%= submit_tag 'Edit this yoga class' %>
+  </div>
+<% end %>

@@ -28,6 +28,7 @@ class YogaClassesController < ApplicationController
 
   def edit
     # if current user is admin or studio owner or teacher
+    @yoga_class = YogaClass.find_by(id: params[:id])
   end
 
   def update
