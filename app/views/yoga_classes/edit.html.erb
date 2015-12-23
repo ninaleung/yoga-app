@@ -6,15 +6,15 @@
   </div>
   <div>
     <%= label_tag :studio_id %>
-    <%= text_field_tag :studio_id, @yoga_class.studio_id  %>
+    <%= select_tag 'studio_id', options_from_collection_for_select(@studios, 'id', 'name', @yoga_class.studio.id) %>
   </div>
   <div>
     <%= label_tag :date %>
-    <%= text_field_tag :date, @yoga_class.date %>
+    <%= date_field_tag :date, @yoga_class.date %>
   </div>
   <div>
     <%= label_tag :time %>
-    <%= text_field_tag :time, @yoga_class.time %>
+    <%= time_field_tag :time, @yoga_class.time %>
   </div>
   <div>
     <%= label_tag :duration %>

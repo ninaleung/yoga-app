@@ -8,7 +8,14 @@ class YogaClassesController < ApplicationController
   end
 
   def new
-    # if current user is admin or studio owner
+    @studios = Studio.all
+    if user_signed_in? && 
+      (current_user.role_id == 1 || current_user.role_id == 2)
+      :new
+    else
+      flash[:alert] = "Sorry, you must be an admin or studio owner!"
+      redirect_to "/yoga_classes"
+    end
   end
 
   def create
@@ -29,6 +36,14 @@ class YogaClassesController < ApplicationController
   def edit
     # if current user is admin or studio owner or teacher
     @yoga_class = YogaClass.find_by(id: params[:id])
+    @studios = Studio.all
+    if user_signed_in? && 
+      (current_user.role_id == 1 || current_user.role_id == 2 || current_user.role_id == 3)
+      :edit
+    else
+      flash[:alert] = "Sorry, you must be an admin, studio owner, or teacher!"
+      redirect_to "/yoga_classes/#{params[:id]}"
+    end
   end
 
   def update
@@ -50,8 +65,14 @@ class YogaClassesController < ApplicationController
   def destroy
     # if current user is admin or studio owner
     yoga_class = YogaClass.find_by(id: params[:id])
-    yoga_class.destroy
-    flash[:success] = "Class was successfully deleted!"
-    redirect_to "/yoga_classes/"
+    if user_signed_in? && 
+      (current_user.role_id == 1 || current_user.role_id == 2)
+      yoga_class.destroy
+      flash[:success] = "Class was successfully deleted!"
+      redirect_to "/yoga_classes/"
+    else
+      flash[:alert] = "Sorry, you must be an admin or studio owner!"
+      redirect_to "/yoga_classes/#{yoga_class.id}"
+    end
   end
 end
