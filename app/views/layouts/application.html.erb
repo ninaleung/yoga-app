@@ -20,8 +20,15 @@
     <li><%= link_to "Sign Up", "/users/sign_up" %></li>
   <% end %>
 </ul>
+<p>
+</p>
 
-<a href="/yoga_classes/new">Add a new class</a>
+<% if user_signed_in? %>
+  <% if current_user.role_id == 1 || current_user.role_id == 2 %>
+    <a href="/yoga_classes/new">Add a new class</a>
+  <% end %>
+<% end %>
+
 <%= yield %>
 
 </body>
