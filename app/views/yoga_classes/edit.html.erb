@@ -14,7 +14,7 @@
   </div>
   <div>
     <%= label_tag :time %>
-    <%= time_field_tag :time, @yoga_class.time %>
+    <%= time_field_tag :time, @yoga_class.time.to_s(:time) %>
   </div>
   <div>
     <%= label_tag :duration %>
