@@ -38,6 +38,7 @@ class YogaClassesController < ApplicationController
     # if current user is admin or studio owner or teacher
     @yoga_class = YogaClass.find_by(id: params[:id])
     @studios = Studio.all
+    @studio = current_user.studio
     if user_signed_in? && 
       (current_user.role_id == 1 || current_user.role_id == 2 || current_user.role_id == 3)
       :edit

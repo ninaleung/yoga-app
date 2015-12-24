@@ -6,7 +6,11 @@
   </div>
   <div>
     <%= label_tag :studio_id %>
-    <%= select_tag 'studio_id', options_from_collection_for_select(@studios, 'id', 'name', @yoga_class.studio.id) %>
+    <% if current_user.role_id == 1 %>
+      <%= select_tag 'studio_id', options_from_collection_for_select(@studios, 'id', 'name') %>
+    <% else %>
+      <%= select_tag 'studio_id', options_from_collection_for_select(@studio, 'id', 'name') %>
+    <% end %>
   </div>
   <div>
     <%= label_tag :date %>
