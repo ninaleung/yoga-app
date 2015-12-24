@@ -1,2 +1,9 @@
-<h1>Studios#show</h1>
-<p>Find me in app/views/studios/show.html.erb</p>
+<h2><%= link_to "Edit this studio", "/studios/#{@studio.id}/edit" %></h2>
+<h2><%= link_to "Delete this studio", "/studios/#{@studio.id}/", method: :delete %></h2>
+<h3><%= link_to "Back to studios", "/studios" %></h3>
+<h1><%= @studio.name %></h1>
+<h3>Address: <%= @studio.address %></h3>
+<h3>Phone: <%= @studio.phone %></h3>
+<h3>E-mail: <%= @studio.email %></h3>
+<h3>Website: <%= @studio.website %></h3>
+<h3>Owner: <%= @studio.user.email %></h3>
