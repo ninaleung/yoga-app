@@ -1,0 +1,8 @@
+<h1>Yoga Studios</h1>
+
+<% @studios.each do |studio| %>
+  <h2>Studio Name: <%= link_to "#{studio.name}", "/studios/#{studio.id}"%></h2>
+  <h3>Address: <%= studio.address %></h3>
+  <hr>
+<% end %>
+  

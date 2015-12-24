@@ -9,6 +9,14 @@ Rails.application.routes.draw do
   patch '/yoga_classes/:id' => 'yoga_classes#update'
   delete '/yoga_classes/:id' => 'yoga_classes#destroy'
 
+  get '/studios' => 'studios#index'
+  get '/studios/new' => 'studios#new'
+  post'/studios/' => 'studios#create'
+  get '/studios/:id' => 'studios#show'
+  get '/studios/:id/edit' => 'studios#edit'
+  patch '/studios/:id' => 'studios#update'
+  delete '/studios/:id' => 'studios#destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
