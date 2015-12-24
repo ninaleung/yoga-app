@@ -21,6 +21,7 @@
   <% end %>
 </ul>
 <p>
+<a href="/yoga_classes">Yoga Classes</a>
 </p>
 
 <% if user_signed_in? %>
@@ -32,7 +33,8 @@
 <hr>
 
 <% if user_signed_in? && current_user.role_id == 1 %>
-  <a href="/studios">Studios</a>
+  <p><a href="/studios">Studios</a></p>
+  <p><a href="/studios/new">Add a new studio</a></p>
 <% end %>
 
 <%= yield %>

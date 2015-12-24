@@ -10,9 +10,19 @@ before_action :authenticate_admin!
   end
 
   def new
+    @owners = User.where(role_id: 2)
   end
 
   def create
+    studio = Studio.create(
+      name: params[:name],
+      address: params[:address],
+      phone: params[:phone],
+      email: params[:email],
+      website: params[:website],
+      user_id: params[:user_id],
+      )
+    redirect_to "/studios/#{studio.id}"
   end
 
   def edit
