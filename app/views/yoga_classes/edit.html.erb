@@ -4,14 +4,12 @@
     <%= label_tag :name %>
     <%= text_field_tag :name, @yoga_class.name %>
   </div>
-  <div>
-    <%= label_tag :studio_id %>
-    <% if current_user.role_id == 1 %>
-      <%= select_tag 'studio_id', options_from_collection_for_select(@studios, 'id', 'name') %>
-    <% else %>
-      <%= select_tag 'studio_id', options_from_collection_for_select(@studio, 'id', 'name') %>
-    <% end %>
-  </div>
+  <% if user_signed_in? && current_user.role_id == 1 %>
+    <div>
+      <%= label_tag :studio_id %>
+      <%= select_tag 'studio_id', options_from_collection_for_select(@studios, 'id', 'name', @yoga_class.studio.id) %>
+    </div>
+  <% end %>
   <div>
     <%= label_tag :date %>
     <%= date_field_tag :date, @yoga_class.date %>

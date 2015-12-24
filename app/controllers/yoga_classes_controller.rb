@@ -1,6 +1,14 @@
 class YogaClassesController < ApplicationController
   def index
-    @yoga_classes = YogaClass.all
+    if user_signed_in? && current_user.role_id == 1
+      @yoga_classes = YogaClass.all
+    elsif user_signed_in? && current_user.role_id == 2
+      @yoga_classes = current_user.studio.first.yoga_classes
+    elsif user_signed_in? && current_user.role_id == 3
+      @yoga_classes = current_user.yoga_classes.all
+    else
+      @yoga_classes = YogaClass.all
+    end
   end
 
   def show
@@ -53,7 +61,7 @@ class YogaClassesController < ApplicationController
     yoga_class = YogaClass.find_by(id: params[:id])
     yoga_class.update(
       name: params[:name],
-      studio_id: params[:studio_id],
+      # studio_id: params[:studio_id],
       date: params[:date],
       time: params[:time],
       duration: params[:duration],

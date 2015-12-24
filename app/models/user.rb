@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :studio
-  has_many :classes
+  has_many :yoga_classes
   belongs_to :role
 end
