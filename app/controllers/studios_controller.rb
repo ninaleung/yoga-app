@@ -26,9 +26,21 @@ before_action :authenticate_admin!
   end
 
   def edit
+    @studio = Studio.find_by(id: params[:id])
+    @owners = User.where(role_id: 2)
   end
 
   def update
+    studio = Studio.find_by(id: params[:id])
+    studio.update(
+      name: params[:name],
+      address: params[:address],
+      phone: params[:phone],
+      email: params[:email],
+      website: params[:website],
+      user_id: params[:user_id],
+      )
+    redirect_to "/studios/#{studio.id}"
   end
 
   def destroy

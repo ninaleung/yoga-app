@@ -1,2 +1,31 @@
-<h1>Studios#edit</h1>
-<p>Find me in app/views/studios/edit.html.erb</p>
+<h1>Edit studio</h1>
+<%= form_tag "/studios/#{@studio.id}", method: :patch do %>
+  <div>
+    <%= label_tag :name %>
+    <%= text_field_tag :name, @studio.name %>
+  </div>
+  <div>
+    <%= label_tag :address %>
+    <%= text_field_tag :address, @studio.address %>
+  </div>
+  <div>
+    <%= label_tag :phone %>
+    <%= text_field_tag :phone, @studio.address %>
+  </div>
+  <div>
+    <%= label_tag :email %>
+    <%= text_field_tag :email, @studio.email %>
+  </div>
+  <div>
+    <%= label_tag :website %>
+    <%= text_field_tag :website, @studio.website %>
+  </div>
+  <div>
+    <%= label_tag :Studio_Owner %>
+    <%= select_tag 'user_id', options_from_collection_for_select(@owners, 'id', 'email', @studio.user.id) %>
+  </div>
+  <div>
+    <%= submit_tag 'Save changes to yoga studio' %>
+    <button type="button"><%= link_to "Cancel", "/studios" %></button>
+  </div>
+<% end %>
