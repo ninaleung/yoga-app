@@ -44,6 +44,9 @@ before_action :authenticate_admin!
   end
 
   def destroy
+    studio = Studio.find_by(id: params[:id])
+    studio.destroy
+    redirect_to "/studios/"
   end
 
 private
