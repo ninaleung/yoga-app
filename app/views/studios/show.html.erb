@@ -7,3 +7,5 @@
 <h3>E-mail: <%= @studio.email %></h3>
 <h3>Website: <%= @studio.website %></h3>
 <h3>Owner: <%= @studio.user.email %></h3>
+<hr>
+<h2><%= link_to "Studio Classes", "/yoga_classes?studio=#{@studio.id}" %></h2>

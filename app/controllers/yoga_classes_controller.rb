@@ -1,6 +1,8 @@
 class YogaClassesController < ApplicationController
   def index
-    if user_signed_in? && current_user.role_id == 1
+    if params[:studio]
+      @yoga_classes = YogaClass.where(studio_id: params[:studio])
+    elsif user_signed_in? && current_user.role_id == 1
       @yoga_classes = YogaClass.all
     elsif user_signed_in? && current_user.role_id == 2
       @yoga_classes = current_user.studio.first.yoga_classes
