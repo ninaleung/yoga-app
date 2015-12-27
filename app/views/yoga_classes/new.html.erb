@@ -34,7 +34,7 @@
   </div>
   <div>
     <%= label_tag :teacher_id %>
-    <%= text_field_tag :user_id %>
+      <%= select_tag 'user_id', options_from_collection_for_select(@teachers, 'id', 'email') %>
   </div>
   <div>
     <%= submit_tag 'Add a yoga class' %>
