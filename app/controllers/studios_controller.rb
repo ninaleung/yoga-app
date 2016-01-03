@@ -2,7 +2,11 @@ class StudiosController < ApplicationController
 before_action :authenticate_admin!
 
   def index
-    @studios = Studio.all
+    if params[:search].present?
+      @studios = Studio.near(params[:search], 4)
+    else
+      @studios = Studio.all
+    end
   end
 
   def show

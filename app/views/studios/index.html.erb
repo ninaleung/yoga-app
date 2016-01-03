@@ -1,5 +1,12 @@
 <h1>Yoga Studios</h1>
 
+<%= form_tag '/studios', :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search Near", :name => nil %>
+  </p>
+<% end %>
+
 <% @studios.each do |studio| %>
   <h2>Studio Name: <%= link_to "#{studio.name}", "/studios/#{studio.id}"%></h2>
   <h3>Address: <%= studio.address %></h3>
