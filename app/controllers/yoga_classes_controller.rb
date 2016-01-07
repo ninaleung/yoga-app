@@ -1,13 +1,18 @@
 class YogaClassesController < ApplicationController
   def index
-    if params[:studio]
-      @yoga_classes = YogaClass.where(studio_id: params[:studio])
-    elsif user_signed_in? && current_user.role_id == 1
-      @yoga_classes = YogaClass.all
-    elsif user_signed_in? && current_user.role_id == 2
-      @yoga_classes = current_user.studio.first.yoga_classes
-    elsif user_signed_in? && current_user.role_id == 3
-      @yoga_classes = current_user.yoga_classes.all
+    # if params[:studio]
+    #   @yoga_classes = YogaClass.where(studio_id: params[:studio])
+    # elsif user_signed_in? && current_user.role_id == 1
+    #   @yoga_classes = YogaClass.all
+    # elsif user_signed_in? && current_user.role_id == 2
+    #   @yoga_classes = current_user.studio.first.yoga_classes
+    # elsif user_signed_in? && current_user.role_id == 3
+    #   @yoga_classes = current_user.yoga_classes.all
+    # else
+    #   @yoga_classes = YogaClass.all
+    # end
+    if params[:search].present?
+      @yoga_classes = YogaClass.joins(:studio).near(params[:search], 4)
     else
       @yoga_classes = YogaClass.all
     end
