@@ -12,7 +12,9 @@ class YogaClassesController < ApplicationController
     #   @yoga_classes = YogaClass.all
     # end
     if params[:search].present?
-      @yoga_classes = YogaClass.joins(:studio).near(params[:search], 4)
+      @yoga_classes = YogaClass.joins(:studio).near(params[:search], 4).where("time  >= ?", Time.now)
+    elsif params[:studio]
+      @yoga_classes = YogaClass.where(studio_id: params[:studio])
     else
       @yoga_classes = YogaClass.all
     end
