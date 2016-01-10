@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160110153155) do
+ActiveRecord::Schema.define(version: 20160110160920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,8 +57,6 @@ ActiveRecord::Schema.define(version: 20160110153155) do
   create_table "yoga_classes", force: :cascade do |t|
     t.string   "name"
     t.integer  "studio_id"
-    t.date     "date"
-    t.time     "time"
     t.integer  "duration"
     t.decimal  "price",      precision: 8, scale: 2
     t.string   "level"
