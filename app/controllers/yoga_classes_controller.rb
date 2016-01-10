@@ -40,7 +40,7 @@ class YogaClassesController < ApplicationController
   def new
     @studios = Studio.all
     @studio = current_user.studio
-    @all_teachers = User.all.where(role_id: 3)
+    @all_teachers = User.where(role_id: 3)
     # @studio_teachers = current_user.studio.users
     if user_signed_in? && 
       (current_user.role_id == 1 || current_user.role_id == 2)
