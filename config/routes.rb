@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  get '/' => 'pages#index'
+  get '/' => 'yoga_classes#home'
   get '/yoga_classes' => 'yoga_classes#index'
   get '/yoga_classes/new' => 'yoga_classes#new'
   post'/yoga_classes/' => 'yoga_classes#create'
