@@ -13,3 +13,8 @@
   <hr>
 <% end %>
   
+<% @chicago_studios do |studio| %>
+  <h2>Studio Name: <%= studio.name %></h2>
+  <h3>Address: <%= studio.address studio.city, studio.state studio.zip_code %></h3>
+  <hr>
+<% end %>

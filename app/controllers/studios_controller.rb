@@ -7,6 +7,8 @@ before_action :authenticate_admin!
     else
       @studios = Studio.all
     end
+
+    @chicago_studios = ChicagoYogaStudios::Business.all
   end
 
   def show
