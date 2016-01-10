@@ -1,4 +1,9 @@
 class YogaClassesController < ApplicationController
+  def home
+    if params[:search].present?
+      redirect_to "/yoga_classes/?search=#{params[:search]}"
+    end
+  end
   def index
     # if params[:studio]
     #   @yoga_classes = YogaClass.where(studio_id: params[:studio])
@@ -11,10 +16,18 @@ class YogaClassesController < ApplicationController
     # else
     #   @yoga_classes = YogaClass.all
     # end
-    if params[:search].present?
+    if params[:search].present? && params[:date].present?
+      @yoga_classes = YogaClass.joins(:studio).near(params[:search], 4).where("start  >= ?", params[:date])
+    elsif params[:search].present?
       @yoga_classes = YogaClass.joins(:studio).near(params[:search], 4).where("start  >= ?", Time.now)
+    elsif params[:date].present?
+      @yoga_classes = YogaClass.where("start  >= ?", params[:date])
     elsif params[:studio]
       @yoga_classes = YogaClass.where(studio_id: params[:studio]).where("start  >= ?", Time.now)
+    elsif user_signed_in? && current_user.role_id == 2
+      @yoga_classes = current_user.studio.first.yoga_classes.where("start  >= ?", Time.now)
+    elsif user_signed_in? && current_user.role_id == 3
+      @yoga_classes = current_user.yoga_classes.all.where("start  >= ?", Time.now)
     else
       @yoga_classes = YogaClass.all.where("start  >= ?", Time.now)
     end
@@ -27,6 +40,8 @@ class YogaClassesController < ApplicationController
   def new
     @studios = Studio.all
     @studio = current_user.studio
+    @all_teachers = User.all.where(role_id: 3)
+    # @studio_teachers = current_user.studio.users
     if user_signed_in? && 
       (current_user.role_id == 1 || current_user.role_id == 2)
       :new
@@ -41,8 +56,7 @@ class YogaClassesController < ApplicationController
     yoga_class = YogaClass.create(
       name: params[:name],
       studio_id: params[:studio_id],
-      date: params[:date],
-      time: params[:time],
+      start: DateTime.parse(params[:date] + " " + params[:time]),
       duration: params[:duration],
       price: params[:price],
       level: params[:level],
@@ -56,6 +70,7 @@ class YogaClassesController < ApplicationController
     @yoga_class = YogaClass.find_by(id: params[:id])
     @studios = Studio.all
     @studio = current_user.studio
+    @all_teachers = User.all.where(role_id: 3)
     if user_signed_in? && 
       (current_user.role_id == 1 || current_user.role_id == 2 || current_user.role_id == 3)
       :edit
@@ -71,8 +86,7 @@ class YogaClassesController < ApplicationController
     yoga_class.update(
       name: params[:name],
       # studio_id: params[:studio_id],
-      date: params[:date],
-      time: params[:time],
+      start: DateTime.parse(params[:date] + " " + params[:time]),
       duration: params[:duration],
       price: params[:price],
       level: params[:level],

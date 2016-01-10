@@ -13,12 +13,13 @@
     <% end %>
   </div>
   <div>
-    <%= label_tag :date %>
-    <%= date_field_tag :date %>
+    <%= label_tag :start_date %>
+    <%= date_field_tag :date, Date.today %>
   </div>
   <div>
-    <%= label_tag :time %>
+    <%= label_tag :start_time %>
     <%= time_field_tag :time %>
+  </div>
   </div>
   <div>
     <%= label_tag :duration %>
@@ -34,7 +35,7 @@
   </div>
   <div>
     <%= label_tag :teacher_id %>
-    <%= text_field_tag :user_id %>
+    <%= select_tag 'user_id', options_from_collection_for_select(@all_teachers, 'id', 'email') %>
   </div>
   <div>
     <%= submit_tag 'Add a yoga class' %>

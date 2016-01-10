@@ -16,8 +16,8 @@
 <h1><%= @yoga_class.name %></h1>
 <h3>Studio Name: <%= @yoga_class.studio.name %></h3>
 <h3>Address: <%= @yoga_class.studio.address %></h3>
-<h3>Date: <%= @yoga_class.date.strftime("%A, %b %d, %Y") %></h3>
-<h3>Start Time: <%= @yoga_class.time.strftime("%I:%M %p") %></h3>
+<h3>Date: <%= @yoga_class.start.strftime("%A, %b %d, %Y") %></h3>
+<h3>Start Time: <%= @yoga_class.start.strftime("%I:%M %p") %></h3>
 <h3>Duration: <%= @yoga_class.duration %> minutes</h3>
 <h3>Cost: <%= number_to_currency(@yoga_class.price) %></h3>
 <h3>Level: <%= @yoga_class.level %></h3>

@@ -11,12 +11,12 @@
     </div>
   <% end %>
   <div>
-    <%= label_tag :date %>
-    <%= date_field_tag :date, @yoga_class.date %>
+    <%= label_tag :start_date %>
+    <%= date_field_tag :date, @yoga_class.start.to_date %>
   </div>
   <div>
-    <%= label_tag :time %>
-    <%= time_field_tag :time, @yoga_class.time.to_s(:time) %>
+    <%= label_tag :start_time %>
+    <%= time_field_tag :time, @yoga_class.start.to_s(:time) %>
   </div>
   <div>
     <%= label_tag :duration %>
@@ -32,7 +32,7 @@
   </div>
   <div>
     <%= label_tag :teacher_id %>
-    <%= text_field_tag :user_id, @yoga_class.user_id %>
+    <%= select_tag 'user_id', options_from_collection_for_select(@all_teachers, 'id', 'email', @yoga_class.user_id) %>
   </div>
   <div>
     <%= submit_tag 'Edit this yoga class' %>
