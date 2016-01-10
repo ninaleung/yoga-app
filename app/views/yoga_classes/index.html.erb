@@ -148,8 +148,8 @@
                         <td><%= link_to "#{yoga_class.name}", "/yoga_classes/#{yoga_class.id}"%></td>
                         <td><%= yoga_class.studio.name %></td>
                         <td><%= yoga_class.studio.address %></td>
-                        <td><%= yoga_class.date.strftime("%A, %b %d, %Y") %></td>
-                        <td><%= yoga_class.time.strftime("%I:%M %p") %></td>
+                        <td><%= yoga_class.start.strftime("%A, %b %d, %Y") %></td>
+                        <td><%= yoga_class.start.strftime("%I:%M %p") %></td>
                         <td><%= yoga_class.duration %> minutes</td>
                         <td><%= number_to_currency(yoga_class.price) %></td>
                         <td><%= yoga_class.level %></td>
