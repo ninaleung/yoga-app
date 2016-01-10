@@ -15,6 +15,31 @@
   </div>
 <% end %>
 
+<ul>
+  <% if current_user %>
+    <li><%= link_to "Sign Out", "/users/sign_out", method: :delete %></li>
+  <% else %>
+    <li><%= link_to "Sign In", "/users/sign_in" %></li>
+    <li><%= link_to "Sign Up", "/users/sign_up" %></li>
+  <% end %>
+</ul>
+<p>
+<a href="/yoga_classes">Yoga Classes</a>
+</p>
+
+<% if user_signed_in? %>
+  <% if current_user.role_id == 1 || current_user.role_id == 2 %>
+    <a href="/yoga_classes/new">Add a new class</a>
+  <% end %>
+<% end %>
+
+<hr>
+
+<% if user_signed_in? && current_user.role_id == 1 %>
+  <p><a href="/studios">Studios</a></p>
+  <p><a href="/studios/new">Add a new studio</a></p>
+<% end %>
+
 <%= yield %>
 
 
