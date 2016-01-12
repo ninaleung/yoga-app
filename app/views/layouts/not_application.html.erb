@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YogaApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="smoothscroll enable-animation">
+
+<% flash.each do |name, message| %>
+  <div class="alert alert-<%= name %> alert-dismissible fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</span><span class="sr-only">Close</span></button>
+    <%= message.html_safe %>  
+  </div>
+<% end %>
+<div id="wrapper">
+
+      <!-- Top Bar -->
+      <div id="topBar">
+        <div class="container">
+
+          <!-- right -->
+          <ul class="top-links list-inline pull-right">
+          <% if user_signed_in? %>
+            <li class="text-welcome">Welcome to Yoga Loca, <strong><%= current_user.email %></strong></li>
+          <% end %>
+
+<li><% if user_signed_in? %>
+              <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-user hidden-xs"></i> MY ACCOUNT</a>
+              <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="#"><i class="fa fa-history"></i> SAVED CLASSES</a></li>
+                <li class="divider"></li>
+                <li><a tabindex="-1" href="#"><i class="fa fa-bookmark"></i> SAVED STUDIOS</a></li>
+                <li><a tabindex="-1" href="#"><i class="fa fa-edit"></i> MY REVIEWS</a></li>
+                <li><a tabindex="-1" href="#"><i class="fa fa-cog"></i> MY SETTINGS</a></li>
+                <li class="divider"></li>
+                <li><a tabindex="-1" href="#"><i class="glyphicon glyphicon-off"></i> LOGOUT</a></li>
+              </ul>
+              <% end %>
+            </li>
+          
+            <li><% if user_signed_in? %>
+              <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-user hidden-xs"></i> MY ACCOUNT</a>
+              <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="#"><i class="fa fa-history"></i> SAVED CLASSES</a></li>
+                <li class="divider"></li>
+                <li><a tabindex="-1" href="#"><i class="fa fa-bookmark"></i> SAVED STUDIOS</a></li>
+                <li><a tabindex="-1" href="#"><i class="fa fa-edit"></i> MY REVIEWS</a></li>
+                <li><a tabindex="-1" href="#"><i class="fa fa-cog"></i> MY SETTINGS</a></li>
+                <li class="divider"></li>
+                <li><a tabindex="-1" href="#"><i class="glyphicon glyphicon-off"></i> LOGOUT</a></li>
+              </ul>
+              <% end %>
+            </li>
+            <li><% if current_user %>
+              <li><%= link_to "Sign Out", "/users/sign_out", method: :delete %></li>
+              <% else %>
+              <li><%= link_to "Sign In", "/users/sign_in" %></li>
+              <li><%= link_to "Sign Up", "/users/sign_up" %></li>
+              <% end %></li>
+          </ul>
+
+          <!-- left -->
+          <ul class="top-links list-inline">
+            <li><a href="/yoga_classes">All Yoga Classes</a></li>
+          </ul>
+
+        </div>
+      </div>
+      <!-- /Top Bar -->
+
+<% if user_signed_in? %>
+  <% if current_user.role_id == 1 || current_user.role_id == 2 %>
+    <a href="/yoga_classes/new">Add a new class</a>
+  <% end %>
+<% end %>
+
+<% if user_signed_in? && current_user.role_id == 1 %>
+  <p><a href="/studios">Studios</a></p>
+  <p><a href="/studios/new">Add a new studio</a></p>
+<% end %>
+
+<%= yield %>
+
+</div>
+</body>
+</html>
