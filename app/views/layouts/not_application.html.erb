@@ -22,11 +22,11 @@
 
           <!-- right -->
           <ul class="top-links list-inline pull-right">
-          <% if user_signed_in? %>
+            <% if user_signed_in? %>
             <li class="text-welcome">Welcome to Yoga Loca, <strong><%= current_user.email %></strong></li>
-          <% end %>
+            <% end %>
 
-<li><% if user_signed_in? %>
+            <li><% if user_signed_in? %>
               <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-user hidden-xs"></i> MY ACCOUNT</a>
               <ul class="dropdown-menu">
                 <li><a tabindex="-1" href="#"><i class="fa fa-history"></i> SAVED CLASSES</a></li>
@@ -39,7 +39,7 @@
               </ul>
               <% end %>
             </li>
-          
+            
             <li><% if user_signed_in? %>
               <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-user hidden-xs"></i> MY ACCOUNT</a>
               <ul class="dropdown-menu">
@@ -59,16 +59,16 @@
               <li><%= link_to "Sign In", "/users/sign_in" %></li>
               <li><%= link_to "Sign Up", "/users/sign_up" %></li>
               <% end %></li>
-          </ul>
+            </ul>
 
-          <!-- left -->
-          <ul class="top-links list-inline">
-            <li><a href="/yoga_classes">All Yoga Classes</a></li>
-          </ul>
+            <!-- left -->
+            <ul class="top-links list-inline">
+              <li><a href="/yoga_classes">All Yoga Classes</a></li>
+            </ul>
 
+          </div>
         </div>
-      </div>
-      <!-- /Top Bar -->
+        <!-- /Top Bar -->
 
 <% if user_signed_in? %>
   <% if current_user.role_id == 1 || current_user.role_id == 2 %>
