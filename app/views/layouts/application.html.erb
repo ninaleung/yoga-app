@@ -25,6 +25,21 @@
           <% if user_signed_in? %>
             <li class="text-welcome">Welcome to Yoga Loca, <strong><%= current_user.email %></strong></li>
           <% end %>
+
+<li><% if user_signed_in? %>
+              <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-user hidden-xs"></i> MY ACCOUNT</a>
+              <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="#"><i class="fa fa-history"></i> SAVED CLASSES</a></li>
+                <li class="divider"></li>
+                <li><a tabindex="-1" href="#"><i class="fa fa-bookmark"></i> SAVED STUDIOS</a></li>
+                <li><a tabindex="-1" href="#"><i class="fa fa-edit"></i> MY REVIEWS</a></li>
+                <li><a tabindex="-1" href="#"><i class="fa fa-cog"></i> MY SETTINGS</a></li>
+                <li class="divider"></li>
+                <li><a tabindex="-1" href="#"><i class="glyphicon glyphicon-off"></i> LOGOUT</a></li>
+              </ul>
+              <% end %>
+            </li>
+          
             <li><% if user_signed_in? %>
               <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-user hidden-xs"></i> MY ACCOUNT</a>
               <ul class="dropdown-menu">
