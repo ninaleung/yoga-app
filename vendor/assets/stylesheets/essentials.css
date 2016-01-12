@@ -5534,7 +5534,7 @@ section.dark .box-static .box-title {
 .box-dark {
 	color:#fff;
 	padding:15px;
-	background-color:#333;
+	background-color:#999;
 }
 	.box-dark h1,
 	.box-dark h2,
@@ -7474,7 +7474,8 @@ section.dark i.ico-color.ico-hover:hover {
 
 
 
-/**	38. Pickers: Datepicker & Rangepicker & Colorpicker
+/**	38. Pickers: 
+ & Rangepicker & Colorpicker
 *************************************************** **/
 /*!
  * Datepicker for Bootstrap
