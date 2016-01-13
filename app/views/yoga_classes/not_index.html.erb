@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!--[if IE 8]>      <html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>      <html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->  <html> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <title>Yoga-App!!!!</title>
+
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+    <!-- WEB FONTS : use %7C instead of | (pipe) -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
+  </head>
+
+  <!--
+    AVAILABLE BODY CLASSES:
+    
+    smoothscroll      = create a browser smooth scroll
+    enable-animation    = enable WOW animations
+
+    bg-grey         = grey background
+    grain-grey        = grey grain background
+    grain-blue        = blue grain background
+    grain-green       = green grain background
+    grain-blue        = blue grain background
+    grain-orange      = orange grain background
+    grain-yellow      = yellow grain background
+    
+    boxed           = boxed layout
+    pattern1 ... patern11 = pattern background
+    menu-vertical-hide    = hidden, open on click
+    
+    BACKGROUND IMAGE [together with .boxed class]
+    data-background="assets/images/boxed_background/1.jpg"
+  -->
+  <body class="smoothscroll enable-animation">
+
+
+    <!-- wrapper -->
+    <div id="wrapper">
+
+      <!-- 
+        AVAILABLE HEADER CLASSES
+
+        Default nav height: 96px
+        .header-md    = 70px nav height
+        .header-sm    = 60px nav height
+
+        .noborder     = remove bottom border (only with transparent use)
+        .transparent  = transparent header
+        .translucent  = translucent header
+        .sticky     = sticky header
+        .static     = static header
+        .dark     = dark header
+        .bottom     = header on bottom
+        
+        shadow-before-1 = shadow 1 header top
+        shadow-after-1  = shadow 1 header bottom
+        shadow-before-2 = shadow 2 header top
+        shadow-after-2  = shadow 2 header bottom
+        shadow-before-3 = shadow 3 header top
+        shadow-after-3  = shadow 3 header bottom
+
+        .clearfix   = required for mobile menu, do not remove!
+
+        Example Usage:  class="clearfix sticky header-sm transparent noborder"
+      -->
+      <div id="header" class="sticky clearfix">
+
+
+
+      <!-- -->
+      <section class="padding-xs alternate">
+        <div class="container">
+
+          <!-- SEARCH -->
+
+          <form method="get" action="#" class="clearfix well well-sm search-big nomargin">
+            <div class="input-group">
+              
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default input-lg dropdown-toggle noborder-right" data-toggle="dropdown">
+                  Everything <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li class="active">
+                    <a href="#"><i class="fa fa-check"></i> Everything</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="j#">Articles</a>
+                  </li>
+                  <li>
+                    <a href="j#">Blog</a>
+                  </li>
+                  <li>
+                    <a href="j#">Products</a>
+                  </li>
+                  <li>
+                    <a href="#">Gallery</a>
+                  </li>
+                </ul>
+              </div>
+              <input action="/yoga_classes" name="search" id="search" method="get" class="form-control input-lg" type="text" placeholder="Enter an address, zip, city, or landmark!"
+              <div class="input-group-btn">
+                <input type="date" class="form-control datepicker" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" name="date" placeholder="Today">
+
+                <!-- date picker -->
+                <input type="text" class="form-control datepicker" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false">
+
+                <!-- range picker -->
+                <input type="text" class="form-control rangepicker" value="2015-01-01 - 2016-12-31" data-format="yyyy-mm-dd" data-from="2015-01-01" data-to="2016-12-31">
+
+                <button type="submit" class="btn btn-default input-lg noborder-left">
+                  <i class="fa fa-search fa-lg nopadding"></i>
+                </button>
+              </div>
+            </div>
+
+          </form>
+          <!-- /SEARCH -->
+
+        </div>
+      </section>
+      <!-- / -->
+
+
+      <!-- -->
+      <section>
+        <div class="container">
+        <div class="clearfix search-result"><!-- item -->
+                <h1>Yoga Classes</h1>
+
+                <!-- USER LIST -->
+                <table class="table table-striped table-bordered table-hover margin-top30 table-vertical-middle">
+                  <thead>
+                    <tr>
+                      <th>Class Name</th>
+                      <th>Studio Name</th>
+                      <th>Address</th>
+                      <th>Date</th>
+                      <th>Start Time</th>
+                      <th>Duration</th>
+                      <th>Cost</th>
+                      <th>Level</th>
+                      <th>Teacher</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                
+                      <% @yoga_classes.each do |yoga_class| %>
+                      <tr>
+                        <td><%= link_to "#{yoga_class.name}", "/yoga_classes/#{yoga_class.id}"%></td>
+                        <td><%= yoga_class.studio.name %></td>
+                        <td><%= yoga_class.studio.address %></td>
+                        <td><%= yoga_class.start.strftime("%A, %b %d, %Y") %></td>
+                        <td><%= yoga_class.start.strftime("%I:%M %p") %></td>
+                        <td><%= yoga_class.duration %> minutes</td>
+                        <td><%= number_to_currency(yoga_class.price) %></td>
+                        <td><%= yoga_class.level %></td>
+                        <td><%= yoga_class.user.email %></td>
+                      </tr>
+                      <% end %>
+                  </tbody>
+                </table>
+                <!-- /USER LIST -->
+
+              </div>
+
+
+              <!-- PAGINATION -->
+              <div class="text-center margin-top-20">
+                <ul class="pagination">
+                  <li class="disabled"><a href="#">Previous</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                  <li><a href="#">Next</a></li>
+                </ul>
+              </div>
+              <!-- /PAGINATION -->
+
+        </div>
+      </section>
+      <!-- / -->
+
+    </div>
+    <!-- /wrapper -->
+
+
+    <!-- SCROLL TO TOP -->
+    <a href="#" id="toTop">oeunotehun</a>
+
+  </body>
+</html>
+
+
+  
