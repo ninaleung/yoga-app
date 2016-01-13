@@ -1,5 +1,5 @@
 class StudiosController < ApplicationController
-before_action :authenticate_admin!
+# before_action :authenticate_admin!
 
   def index
     if params[:search].present?
@@ -55,11 +55,11 @@ before_action :authenticate_admin!
     redirect_to "/studios/"
   end
 
-private
-  def authenticate_admin!
-    unless user_signed_in? && current_user.role_id == 1
-      flash[:alert] = "Sorry, you must be an admin to access studios!"
-      redirect_to "/"
-    end
-  end
+# private
+#   def authenticate_admin!
+#     unless user_signed_in? && current_user.role_id == 1
+#       flash[:alert] = "Sorry, you must be an admin to access studios!"
+#       redirect_to "/"
+#     end
+#   end
 end
