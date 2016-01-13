@@ -27,10 +27,17 @@
     <!-- PAGE LEVEL SCRIPTS -->
     <link href="/assets/css/header-1.css" rel="stylesheet" type="text/css" />
     <link href="/assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
+    
+    <style type="text/css">
+      html, body { height: 100px; margin: 0; padding: 0; }
+      #map { height: 500px; }
+    </style>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
+
+    
   </head>
 
   <!--
@@ -262,6 +269,9 @@
 
     <!-- SCRIPTS -->
     <script type="text/javascript" src="/assets/js/scripts.js"></script>
+
+
+
    </div>
    </body>
 </html>
