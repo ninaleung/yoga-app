@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   patch '/studios/:id' => 'studios#update'
   delete '/studios/:id' => 'studios#destroy'
 
+  namespace :api do
+    get '/studios' => 'studios#index'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
