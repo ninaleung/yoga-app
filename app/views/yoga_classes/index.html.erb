@@ -80,29 +80,44 @@
               <form action="page-search-result-1.html" method="get">
                 <input type="text" value="" class="form-control" placeholder="Keywords" />
 
-                <label class="size-12 margin-top-10">Language</label>
-                <select class="form-control">
-                  <option value="">English</option>
-                  <option value="">German</option>
-                  <option value="">Italian</option>
-                </select>
+                <input type="text" class="form-control datepicker" data-format="mm-dd-yyyy" data-lang="en" data-RTL="false" placeholder="  Find classes on/after..." name="date">
+                <!-- value="<%= Time.now.strftime("%A, %b %d, %Y") %>" -->
 
-                <label class="size-12 margin-top-10">Category</label>
+                <label class="size-12 margin-top-10">Style</label>
                 <select class="form-control">
                   <option value="">All</option>
-                  <option value="">Ebook</option>
-                  <option value="">Games</option>
-                  <option value="">Books</option>
-                  <option value="">Toys</option>
-                  <option value="">Flowers</option>
+                  <option value="">Ashtanga</option>
+                  <option value="">Bikram</option>
+                  <option value="">Hatha</option>
+                  <option value="">Vinyasa</option>
+                  <option value="">Yin</option>
                 </select>
 
-                <label class="size-12 margin-top-10">Availability</label>
+                <label class="size-12 margin-top-10">Level</label>
                 <select class="form-control">
                   <option value="">All</option>
-                  <option value="">In Stock</option>
-                  <option value="">Not in stock</option>
+                  <option value="">Beginner</option>
+                  <option value="">Intermediate</option>
+                  <option value="">Advanced</option>
+                  <option value="">Open</option>
                 </select>
+
+                <label class="size-12 margin-top-10">Price</label>
+                <select class="form-control">
+                  <option value="">All</option>
+                  <option value="">Free</option>
+                  <option value="">Reduced Price</option>
+                </select>
+
+                <div class="margin-bottom-40">
+                  <div class="margin-bottom-10">
+                    <label for="amount">Maximum price:</label>
+                    <input type="hidden" name="amount" id="amount" class="form-control"> <!-- hidden input -->
+                  </div>           
+                  <div class="slider-wrapper warning-slider">
+                    <div id="slider2"></div>
+                  </div>
+                </div>
 
               </form>
 
