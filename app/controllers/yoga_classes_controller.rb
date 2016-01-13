@@ -38,17 +38,17 @@ class YogaClassesController < ApplicationController
   end
 
   def new
-    @studios = Studio.all
-    @studio = current_user.studio
-    @all_teachers = User.where(role_id: 3)
     # @studio_teachers = current_user.studio.users
     if user_signed_in? && 
       (current_user.role_id == 1 || current_user.role_id == 2)
-      :new
+      @studios = Studio.all
+      @studio = current_user.studio
+      @all_teachers = User.where(role_id: 3)
     else
       flash[:alert] = "Sorry, you must be an admin or studio owner!"
       redirect_to "/yoga_classes"
     end
+    
   end
 
   def create

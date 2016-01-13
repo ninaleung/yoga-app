@@ -42,3 +42,105 @@
     <button type="button"><%= link_to "Cancel", "/yoga_classes" %></button>
   </div>
 <% end %>
+
+
+
+<div>
+  <div id="map" style="width: 500px; height: 400px;"></div>
+
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+  var locations = [
+    [
+        "Moksha Yoga Center - Lakeview",
+        41.942646,
+        -87.6531469999999,
+        1,
+        "Georgia Mason",
+        "",
+        "Norfolk Botanical Gardens, 6700 Azalea Garden Rd.",
+        "coming soon"
+    ],
+    [
+        "Grandpa's House",
+        41.8409724,
+        -87.6441382999999,
+        2,
+        "Terry Cox-Joseph",
+        "Rowena's",
+        "758 W. 22nd Street in front of Rowena's",
+        "found"
+    ],
+    [
+        "SOSCVI",
+        41.8784244,
+        -87.6344896999999,
+        3,
+        "Steven F. Morris",
+        "Judy Boone Realty",
+        "Norfolk City Library - Pretlow Branch, 9640 Granby St.",
+        "found"
+    ],
+    [
+        "Pecatonica",
+        42.3100,
+        -89.3586,
+        4,
+        "Steven F. Morris",
+        "Judy Boone Realty",
+        "Norfolk City Library - Pretlow Branch, 9640 Granby St.",
+        "found"
+    ]
+]
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 11,
+      center: new google.maps.LatLng(41.8369, -87.6847),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0], locations[i][6]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+
+    //create empty LatLngBounds object
+    var bounds = new google.maps.LatLngBounds();
+    var infowindow = new google.maps.InfoWindow();    
+
+    for (i = 0; i < locations.length; i++) {  
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+    //extend the bounds to include each marker's position
+    bounds.extend(marker.position);
+
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+      return function() {
+        infowindow.setContent(locations[i][0]);
+        infowindow.open(map, marker);
+      }
+    })(marker, i));
+  }
+
+//now fit the map to the newly inclusive bounds
+    map.fitBounds(bounds);
+
+
+</script>
+</div>
