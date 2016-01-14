@@ -8,4 +8,6 @@ json.user_id yoga_class.user_id
 json.start yoga_class.start
 json.studio_name yoga_class.studio.name
 json.studio_id yoga_class.studio.id
+json.parsed_date yoga_class.parsed_date
 json.parsed_time yoga_class.parsed_time
+

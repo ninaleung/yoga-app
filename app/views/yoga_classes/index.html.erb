@@ -1,5 +1,4 @@
 <div ng-app="app">
-  {{ 1 + 1 }}
    <div ng-controller="yogaClassesCtrl" ng-init="setup()">
     
 
@@ -51,7 +50,7 @@
             <div class="col-md-4 col-sm-4">
 
               <!-- SEARCH RESULTS -->
-              <div ng-repeat="yoga_class in yogaClasses">
+              <div ng-repeat="yoga_class in yogaClasses | filter: {name: nameFilter}">
                 <div class="clearfix search-result">
                 <h4 class="margin-bottom-0"><%= link_to "{{yoga_class.name}}", "/yoga_classes/{{yoga_class.id}}"%></h4>
                 <small class="text-muted"><%= link_to "{{yoga_class.studio_name}}", "/studios/{{yoga_class.studio_id}}" %></small>
