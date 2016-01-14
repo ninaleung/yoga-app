@@ -24,8 +24,10 @@
       <section class="page-header static">
         <div class="container">
           <br><br>
-          <h1>UPCOMING YOGA CLASSES NEAR:</h1>
+          
+          <h1>UPCOMING YOGA CLASSES<% if params[:search] %> NEAR:</h1>
           <h2><%= params[:search] %></h2>
+          <% end %>
           <!-- breadcrumbs -->
           <ol class="breadcrumb">
             <li></li>
