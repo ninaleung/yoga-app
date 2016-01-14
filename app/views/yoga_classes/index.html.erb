@@ -1,6 +1,9 @@
-<div ng-app="app">
-   <div ng-controller="yogaClassesCtrl" ng-init="setup()">
-    
+
+   <div ng-app="app" ng-controller="yogaClassesCtrl" ng-init="setup()">
+    <%= render partial: "partials/header", locals: {
+    current_user: @current_user,
+    is_angular: true
+     } %>  
 
     <!-- wrapper -->
     <div id="wrapper">
@@ -142,7 +145,7 @@
 
         </div>
       </section>
-      </div></div>
+      </div>
       <!-- / -->
 <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">

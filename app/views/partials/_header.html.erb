@@ -1,0 +1,155 @@
+      <div id="header" class="sticky dark header-md translucent noborder clearfix">
+
+        <!-- TOP NAV -->
+        <header id="topNav">
+          <div class="container">
+
+            <!-- Mobile Menu Button -->
+            <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+              <i class="fa fa-bars"></i>
+            </button>
+
+            <!-- BUTTONS -->
+            <ul class="pull-right nav nav-pills nav-second-main">
+
+              <!-- SEARCH -->
+              <li class="search">
+                <a href="javascript:;">
+                  <i class="fa fa-search"></i>
+                </a>
+                <div class="search-box">
+                  <form role="search">
+                    <div class="input-group">
+                      <% if is_angular %>
+                      <input ng-model="searchTerm" action="/yoga_classes" name="search" id="search" method="get" class="form-control input-lg" type="text" placeholder="Enter an address, zip, city, or landmark!">
+                      <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit" ng-click="search(searchTerm)">Search</button>
+                      </span>
+                      <% elsif %>
+                        <input action="/yoga_classes" name="search" id="search" method="get" class="form-control input-lg" type="text" placeholder="Enter an address, zip, city, or landmark!">
+                        <span class="input-group-btn">
+                          <button class="btn btn-primary" type="submit">Search</button>
+                        </span>
+                      <% end %>
+                    </div>
+                  </form>
+                </div> 
+              </li>
+              <!-- /SEARCH -->
+
+              
+            </ul>
+            <!-- /BUTTONS -->
+
+            <!-- Logo -->
+            <a class="logo pull-left" href="/">
+              <img src="/assets/images/logos/logo2.png" alt="" />
+            </a>
+
+            <!-- 
+              Top Nav 
+              
+              AVAILABLE CLASSES:
+              submenu-dark = dark sub menu
+            -->
+            <div class="navbar-collapse pull-right nav-main-collapse collapse submenu-dark">
+              <nav class="nav-main">
+
+
+
+                <!--
+                  NOTE
+                  
+                  For a regular link, remove "dropdown" class from LI tag and "dropdown-toggle" class from the href.
+                  Direct Link Example: 
+
+                  <li>
+                    <a href="#">HOME</a>
+                  </li>
+                -->
+                <ul id="topMain" class="nav nav-pills nav-main">
+
+                  <li><% if user_signed_in? && current_user.role_id == 1 %>
+                    <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-book"></i> CLASSES</a>
+                    <ul class="dropdown-menu">
+                      <li><a tabindex="-1" href="/yoga_classes/new"><i class="fa fa-plus"></i> ADD A NEW CLASS</a></li>
+                      <li><a tabindex="-1" href="/yoga_classes"><i class="fa fa-calendar"></i> CLASSES</a></li>
+                      <li class="divider"></li>
+                      <li><a tabindex="-1" href="#"><i class="fa fa-edit"></i> STUDIO REVIEWS</a></li>
+                      <li class="divider"></li>
+                    </ul>
+                    <% end %>
+                  </li>
+
+                  <li><% if user_signed_in? && current_user.role_id == 1 %>
+                    <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-building-o"></i> STUDIOS</a>
+                    <ul class="dropdown-menu">
+                      <li><a tabindex="-1" href="/studios/new"><i class="fa fa-plus"></i> ADD A NEW STUDIO</a></li>
+                      <li><a tabindex="-1" href="/studios"><i class="fa fa-sticky-note"></i> STUDIOS LIST</a></li>
+                      <li class="divider"></li>
+                      <li><a tabindex="-1" href="#"><i class="fa fa-edit"></i> STUDIO REVIEWS</a></li>
+                      <li class="divider"></li>
+                    </ul>
+                    <% end %>
+                  </li>
+
+                  <li><% if user_signed_in? && current_user.role_id == 2 %>
+                    <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-building-o"></i> MY STUDIO</a>
+                    <ul class="dropdown-menu">
+                      <li><a tabindex="-1" href="/yoga_classes/new"><i class="fa fa-plus"></i> ADD A NEW CLASS</a></li>
+                      <li><a tabindex="-1" href="/yoga_classes"><i class="fa fa-calendar"></i> CLASS SCHEDULE</a></li>
+                      <li class="divider"></li>
+                      <li><a tabindex="-1" href="#"><i class="fa fa-edit"></i> STUDIO REVIEWS</a></li>
+                      <li><a tabindex="-1" href="#"><i class="fa fa-cog"></i> EDIT STUDIO</a></li>
+                      <li class="divider"></li>
+                    </ul>
+                    <% end %>
+                  </li>
+
+                  <li><% if user_signed_in? && current_user.role_id == 3 %>
+                    <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-book"></i> MY CLASSES</a>
+                    <ul class="dropdown-menu">
+                      <li><a tabindex="-1" href="#"><i class="fa fa-calendar"></i> UPCOMING CLASSES</a></li>
+                      <li class="divider"></li>
+                      <li><a tabindex="-1" href="#"><i class="fa fa-edit"></i> MY REVIEWS</a></li>
+                      <li><a tabindex="-1" href="#"><i class="fa fa-cog"></i> MY SETTINGS</a></li>
+                      <li class="divider"></li>
+                    </ul>
+                    <% end %>
+                  </li>
+
+                  <li><% if user_signed_in? && current_user.role_id == 4 %>
+                    <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-user hidden-xs"></i> MY ACCOUNT</a>
+                    <ul class="dropdown-menu">
+                      <li><a tabindex="-1" href="#"><i class="fa fa-history"></i> SAVED CLASSES</a></li>
+                      <li class="divider"></li>
+                      <li><a tabindex="-1" href="#"><i class="fa fa-bookmark"></i> SAVED STUDIOS</a></li>
+                      <li><a tabindex="-1" href="#"><i class="fa fa-edit"></i> MY REVIEWS</a></li>
+                      <li><a tabindex="-1" href="#"><i class="fa fa-cog"></i> MY SETTINGS</a></li>
+                      <li class="divider"></li>
+                    </ul>
+                    <% end %>
+                  </li>
+
+                  <li><% if current_user %>
+                  <li><%= link_to "Sign Out", "/users/sign_out", method: :delete %></li>
+                  <% else %>
+                  <li><%= link_to "Sign In", "/users/sign_in" %></li>
+                  <li><%= link_to "Sign Up", "/users/sign_up" %></li>
+                  <% end %></li>
+
+
+
+                
+
+
+                </ul>
+
+              </nav>
+            </div>
+
+          </div>
+        </header>
+        <!-- /Top Nav -->
+
+      </div>

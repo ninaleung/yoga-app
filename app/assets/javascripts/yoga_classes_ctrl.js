@@ -8,6 +8,12 @@
           $scope.yogaClasses = response.data;
         });
       };
+
+    $scope.search = function(searchTerm) {
+      $http.get('/api/yoga_classes.json?search=' + searchTerm).then(function(response) {
+          $scope.yogaClasses = response.data;
+        });
+    };
       
       $scope.message = "Hello";
 

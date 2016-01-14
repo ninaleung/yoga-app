@@ -1,3 +1,7 @@
+<%= render partial: "partials/header", locals: {
+    current_user: @current_user,
+    is_angular: false
+     } %>
 <!-- REVOLUTION SLIDER -->
       <section id="slider" class="slider fullwidthbanner-container roundedcorners">
         <!--
@@ -86,7 +90,7 @@
                 data-endeasing="Power4.easeIn" style="z-index: 10;">
                 <form class="navbar-form navbar-center" role="search">
                   <div class="form-group">
-                    <input action="/yoga_classes" name="search" id="search" method="get" class="form-control input-lg" type="text" placeholder="Enter an address, zip, city, or landmark!"
+                    <input ng-model="searchTerm" action="/yoga_classes" name="search" id="search" method="get" class="form-control input-lg" type="text" placeholder="Enter an address, zip, city, or landmark!"
                     <div class="input-group-btn">
                       <button type="submit" class="btn btn-default input-lg noborder-left">
                         <i class="fa fa-search fa-lg nopadding"></i>
