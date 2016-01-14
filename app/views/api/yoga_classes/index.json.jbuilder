@@ -1,0 +1,1 @@
+json.array! @yoga_classes, partial: 'yoga_class', as: :yoga_class
