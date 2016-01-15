@@ -1,5 +1,5 @@
     <%= render partial: "partials/header", locals: {
-    current_user: @current_user,
+    current_user: current_user,
     is_angular: true
      } %>  
    <div ng-app="app" ng-controller="yogaClassesCtrl" ng-init="setup()">
