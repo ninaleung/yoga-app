@@ -54,7 +54,7 @@
             <div class="col-md-4 col-sm-4">
 
               <!-- SEARCH RESULTS -->
-              <div ng-repeat="yoga_class in yogaClasses | filter: {studio_name: studioFilter} | filter: {start: dateFilter} | filter: {name: nameFilter}">
+              <div ng-repeat="yoga_class in yogaClasses | filter: {studio_name: studioFilter} | filter: {start: dateFilter} | filter: {name: nameFilter} | filter: lessThan('price', maxPrice)">
                 <div class="clearfix search-result">
                 <h4 class="margin-bottom-0"><%= link_to "{{yoga_class.name}}", "/yoga_classes/{{yoga_class.id}}"%></h4>
                 <small class="text-muted"><%= link_to "{{yoga_class.studio_name}}", "/studios/{{yoga_class.studio_id}}" %></small>
