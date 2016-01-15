@@ -54,13 +54,14 @@
             <div class="col-md-4 col-sm-4">
 
               <!-- SEARCH RESULTS -->
-              <div ng-repeat="yoga_class in yogaClasses | filter: {name: nameFilter}">
+              <div ng-repeat="yoga_class in yogaClasses | filter: {studio_name: studioFilter} | filter: {start: dateFilter} | filter: {name: nameFilter}">
                 <div class="clearfix search-result">
                 <h4 class="margin-bottom-0"><%= link_to "{{yoga_class.name}}", "/yoga_classes/{{yoga_class.id}}"%></h4>
                 <small class="text-muted"><%= link_to "{{yoga_class.studio_name}}", "/studios/{{yoga_class.studio_id}}" %></small>
                 <img src="/assets/images/logos/yoga-logo.jpg" alt="" height="60" />
                 <p>{{ yoga_class.parsed_date }}</p>
                 <p>{{ yoga_class.parsed_time }}</p>
+                <p>{{ yoga_class.price}}</p>
                 </div>
               </div>
 
@@ -94,9 +95,11 @@
               <h4>FILTERS</h4>
 
               <form action="page-search-result-1.html" method="get">
-                <input type="text" value="" class="form-control" placeholder="Keywords" ng-model="nameFilter" />
+                <input type="text" value="" class="form-control" placeholder="Search for class names" ng-model="nameFilter" />
 
-                <input type="text" class="form-control datepicker" data-format="mm-dd-yyyy" data-lang="en" data-RTL="false" placeholder="  Find classes on/after..." name="date">
+                <input type="text" value="" class="form-control" placeholder="Search for studio names" ng-model="studioFilter" />
+
+                <input type="text" class="form-control datepicker" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="  Find classes by date" name="date" ng-model="dateFilter">
                 <!-- value="<%= Time.now.strftime("%A, %b %d, %Y") %>" -->
 
                 <label class="size-12 margin-top-10">Style</label>
@@ -119,25 +122,30 @@
                 </select>
 
                 <label class="size-12 margin-top-10">Price</label>
-                <select class="form-control">
-                  <option value="">All</option>
-                  <option value="">Free</option>
-                  <option value="">Reduced Price</option>
+                <select class="form-control" ng-model="maxPrice">
+                  <option value="100">All</option>
+                  <option value="0">0</option>
+                  <option value="3">3</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="30">30</option>
                 </select>
 
                 <div class="margin-bottom-40">
                   <div class="margin-bottom-10">
                     <label for="amount">Maximum price:</label>
-                    <input type="hidden" name="amount" id="amount" class="form-control"> <!-- hidden input -->
+                    <input type="hidden" name="amount" id="amount" class="form-control" ng-model="numLimit"> <!-- hidden input -->
                   </div>           
-                  <div class="slider-wrapper warning-slider">
-                    <div id="slider2"></div>
+                  <div class="slider-wrapper success-slider">
+                    <div id="slider2" value="{{ maxPrice }}"></div>
                   </div>
                 </div>
 
               </form>
-
-
+{{ maxPrice }}
+{{ numLimit }}
               <hr />
 
 

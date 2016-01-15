@@ -12,6 +12,7 @@
           $http.get('/api/yoga_classes.json').then(function(response) {
 
             $scope.yogaClasses = response.data;
+            $scope.maxPrice = 100;
           });
         }
       };
@@ -22,6 +23,12 @@
         });
       };
       
+      $scope.lessThan = function(prop, val) {
+        return function(item) {
+          return item[prop] <= val;
+        };
+      };
+
       $scope.message = "Hello";
 
       window.$scope = $scope;
