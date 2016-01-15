@@ -20,17 +20,11 @@
                 <div class="search-box">
                   <form role="search">
                     <div class="input-group">
-                      <% if is_angular %>
-                      <input ng-model="searchTerm" action="/yoga_classes" name="search" id="search" method="get" class="form-control input-lg" type="text" placeholder="Enter an address, zip, city, or landmark!">
-                      <span class="input-group-btn">
-                        <button class="btn btn-primary" type="submit" ng-click="search(searchTerm)">Search</button>
-                      </span>
-                      <% elsif %>
+
                         <input action="/yoga_classes" name="search" id="search" method="get" class="form-control input-lg" type="text" placeholder="Enter an address, zip, city, or landmark!">
                         <span class="input-group-btn">
                           <button class="btn btn-primary" type="submit">Search</button>
                         </span>
-                      <% end %>
                     </div>
                   </form>
                 </div> 

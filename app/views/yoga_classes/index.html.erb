@@ -1,9 +1,9 @@
-
-   <div ng-app="app" ng-controller="yogaClassesCtrl" ng-init="setup()">
     <%= render partial: "partials/header", locals: {
     current_user: @current_user,
     is_angular: true
      } %>  
+   <div ng-app="app" ng-controller="yogaClassesCtrl" ng-init="setup()">
+
 
     <!-- wrapper -->
     <div id="wrapper">
@@ -32,7 +32,6 @@
           <h1>UPCOMING YOGA CLASSES
           <% if params[:search] %> NEAR:</h1>
           <h2><%= params[:search] %></h2>
-          <h2 ng-if="search">{{ searchTerm }}</h2>
           <% end %>
           <!-- breadcrumbs -->
           <ol class="breadcrumb">
