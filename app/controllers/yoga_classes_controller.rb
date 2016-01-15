@@ -31,6 +31,8 @@ class YogaClassesController < ApplicationController
     else
       @yoga_classes = YogaClass.all.where("start  >= ?", Time.now)
     end
+
+    @clicked_class = YogaClass.where("id = ?", params[:id])
   end
 
   def show
