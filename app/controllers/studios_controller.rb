@@ -4,6 +4,8 @@ class StudiosController < ApplicationController
   def index
     if params[:search].present?
       @studios = Studio.near(params[:search], 4)
+    elsif params[:filter].present?
+      @studios = Studio.where("lower(name) LIKE ?", "%#{params[:filter].downcase}%")
     else
       @studios = Studio.all
     end

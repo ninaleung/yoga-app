@@ -1,8 +1,12 @@
-     <div id="wrapper">
+<%= render partial: "partials/header", locals: {
+    current_user: current_user,
+    is_angular: false
+     } %>
+    <div id="wrapper">
       <section class="page-header">
         <div class="container">
 
-          <h1>YOGA STUDIOS</h1>
+          <br><br><h1>YOGA STUDIOS</h1>
 
           <!-- breadcrumbs -->
           <ol class="breadcrumb">
@@ -34,7 +38,7 @@
                 <div class="col-md-10"><!-- company detail -->
                   <h4 class="margin-bottom-10"><%= link_to "#{studio.name}", "/studios/#{studio.id}"%></h4>
                   <ul class="list-inline">
-                    <li><i class="fa fa-globe text-success"></i> <span class="text-success"><%= link_to "#{studio.website}", "#{studio.website}"%></span></li>
+                    <li><i class="fa fa-globe text-success"></i> <span class="text-success"><%= link_to studio.website, "http://#{studio.website}"%></span></li>
                     <li><i class="fa fa-briefcase"></i> <span class="text-warning"><%= studio.address %></span></li>
                     <li><i class="fa fa-phone"></i> <span class="text-warning"><%= studio.phone %></span></li>
                   </ul>
@@ -58,6 +62,17 @@
                 </label>
 
                 <button class="btn btn-primary btn-sm pull-right">Search by location</button>
+
+              </form>
+
+              <form action="/studios" method="get" class="sky-form clearfix">
+
+                <label class="input">
+                  <i class="ico-prepend fa fa-search"></i>
+                  <input type="text" placeholder="Studio name" name="filter">
+                </label>
+
+                <button class="btn btn-primary btn-sm pull-right">Filter by studio name</button>
 
               </form>
 
