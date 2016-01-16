@@ -7,7 +7,7 @@ class StudiosController < ApplicationController
     elsif params[:filter].present?
       @studios = Studio.where("lower(name) LIKE ?", "%#{params[:filter].downcase}%")
     else
-      @studios = Studio.all
+      @studios = Studio.all.order(:name)
     end
 
     # @chicago_studios = ChicagoYogaStudios::Business.all
