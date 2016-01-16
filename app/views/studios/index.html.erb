@@ -33,7 +33,11 @@
               <% @studios.each do |studio| %>
               <div class="row"><!-- item -->
                 <div class="col-md-2"><!-- company logo -->
-                  <img src="assets/images/demo/brands/1.jpg" class="img-responsive" alt="company logo">
+                  <% if studio.logo_url %>
+                    <img src="<%= studio.logo_url %>" class="img-responsive" alt="Company Logo">
+                  <% else %>
+                    <img src="assets/images/demo/brands/1.jpg" class="img-responsive" alt="company logo">
+                  <% end %>
                 </div>
                 <div class="col-md-10"><!-- company detail -->
                   <h4 class="margin-bottom-10"><%= link_to "#{studio.name}", "/studios/#{studio.id}"%></h4>
@@ -42,7 +46,11 @@
                     <li><i class="fa fa-car"></i> <span class="text-warning"><%= link_to studio.address, "http://maps.google.com/?saddr=Current+Location&daddr=#{studio.address}", target: '_blank', title: 'See map and get directions' %></span></li>
                     <li><i class="fa fa-phone"></i> <span class="text-warning"><%= studio.phone %></span></li>
                   </ul>
-                  <p>Lorem ipsum eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati</p>
+                  <% if studio.description %>
+                    <p><%= studio.description %></p>
+                  <% else %>
+                    <p>Visit website for more information.</p>
+                  <% end %>
                 </div>
               </div><!-- /item -->
 
