@@ -1,14 +1,103 @@
-<h1>Yoga Studios</h1>
+     <div id="wrapper">
+      <section class="page-header">
+        <div class="container">
 
-<%= form_tag '/studios', :method => :get do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search Near", :name => nil %>
-  </p>
-<% end %>
+          <h1>YOGA STUDIOS</h1>
 
-<% @studios.each do |studio| %>
-  <h2>Studio Name: <%= link_to "#{studio.name}", "/studios/#{studio.id}"%></h2>
-  <h3>Address: <%= studio.address %></h3>
-  <hr>
-<% end %>
+          <!-- breadcrumbs -->
+          <ol class="breadcrumb">
+            <li><a href="#"></a></li>
+            <li class="active"></li>
+          </ol><!-- /breadcrumbs -->
+
+        </div>
+      </section>
+      <!-- /PAGE HEADER -->
+
+
+
+
+      <!-- -->
+      <section>
+        <div class="container">
+          
+          <div class="row">
+
+            <!-- LEFT COLUMNS -->
+            <div class="col-md-9 col-sm-9">
+
+              <% @studios.each do |studio| %>
+              <div class="row"><!-- item -->
+                <div class="col-md-2"><!-- company logo -->
+                  <img src="assets/images/demo/brands/1.jpg" class="img-responsive" alt="company logo">
+                </div>
+                <div class="col-md-10"><!-- company detail -->
+                  <h4 class="margin-bottom-10"><%= link_to "#{studio.name}", "/studios/#{studio.id}"%></h4>
+                  <ul class="list-inline">
+                    <li><i class="fa fa-globe text-success"></i> <span class="text-success"><%= link_to "#{studio.website}", "#{studio.website}"%></span></li>
+                    <li><i class="fa fa-briefcase"></i> <span class="text-warning"><%= studio.address %></span></li>
+                    <li><i class="fa fa-phone"></i> <span class="text-warning"><%= studio.phone %></span></li>
+                  </ul>
+                  <p>Lorem ipsum eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati</p>
+                </div>
+              </div><!-- /item -->
+
+              <hr />
+            <% end %>
+            </div>
+            <!-- /LEFT COLUMNS -->
+
+            <!-- RIGHT COLUMNS -->
+            <div class="col-md-3 col-sm-3">
+
+              <%= form_tag '/studios', :method => :get do %>
+                <p>
+                  <%= text_field_tag :search, params[:search] %>
+                  <%= submit_tag "Search Near", :name => nil %>
+                </p>
+              <% end %>
+
+
+              <h4><strong>Let's</strong> Colaborate</h4>
+              <p><em>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet.</em></p>
+
+              <hr />
+
+              <ul class="list-unstyled"><!-- block 1 -->
+                <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                <li><a href="#">Consectetur adipiscing elit</a></li>
+                <li><a href="#">Quisque rutrum pellentesque</a></li>
+              </ul><!-- /block 1 -->
+
+              <hr />
+
+              <h4><strong>Contact</strong> Us</h4>
+              <form action="#" method="post" class="sky-form clearfix">
+
+                <label class="input">
+                  <i class="ico-prepend fa fa-user"></i>
+                  <input type="text" placeholder="Name">
+                </label>
+
+                <label class="input">
+                  <i class="ico-prepend fa fa-envelope"></i>
+                  <input type="text" placeholder="Email">
+                </label>
+
+                <label class="textarea">
+                  <i class="ico-prepend fa fa-comment"></i>
+                  <textarea rows="3" placeholder="Type your message..."></textarea>
+                </label>
+
+                <button class="btn btn-primary btn-sm pull-right">Submit your message</button>
+
+              </form>
+
+            </div>
+            <!-- /RIGHT COLUMNS -->
+
+          </div>
+          
+        </div>
+      </section>
+    </div>
