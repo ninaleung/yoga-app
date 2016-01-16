@@ -50,15 +50,20 @@
             <!-- RIGHT COLUMNS -->
             <div class="col-md-3 col-sm-3">
 
-              <%= form_tag '/studios', :method => :get do %>
-                <p>
-                  <%= text_field_tag :search, params[:search] %>
-                  <%= submit_tag "Search Near", :name => nil %>
-                </p>
+              <form action="/studios" method="get" class="sky-form clearfix">
+
+                <label class="input">
+                  <i class="ico-prepend fa fa-search"></i>
+                  <input type="text" placeholder="Location" name="search">
+                </label>
+
+                <button class="btn btn-primary btn-sm pull-right">Search by location</button>
+
+              </form>
+
+              <% if user_signed_in? && current_user.role_id == 1 %>
+                <h4><a href="/studios/new">Add a studio</a></h4>
               <% end %>
-
-
-              <h4><strong>Let's</strong> Colaborate</h4>
               <p><em>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet.</em></p>
 
               <hr />
