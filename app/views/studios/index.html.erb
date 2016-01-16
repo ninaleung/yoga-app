@@ -38,8 +38,8 @@
                 <div class="col-md-10"><!-- company detail -->
                   <h4 class="margin-bottom-10"><%= link_to "#{studio.name}", "/studios/#{studio.id}"%></h4>
                   <ul class="list-inline">
-                    <li><i class="fa fa-globe text-success"></i> <span class="text-success"><%= link_to studio.website, "http://#{studio.website}"%></span></li>
-                    <li><i class="fa fa-briefcase"></i> <span class="text-warning"><%= studio.address %></span></li>
+                    <li><i class="fa fa-globe text-success"></i> <span class="text-success"><%= link_to studio.website, "http://#{studio.website}", target: '_blank', title: 'Visit website'%></span></li>
+                    <li><i class="fa fa-car"></i> <span class="text-warning"><%= link_to studio.address, "http://maps.google.com/?saddr=Current+Location&daddr=#{studio.address}", target: '_blank', title: 'See map and get directions' %></span></li>
                     <li><i class="fa fa-phone"></i> <span class="text-warning"><%= studio.phone %></span></li>
                   </ul>
                   <p>Lorem ipsum eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati</p>
@@ -79,7 +79,7 @@
               <% if user_signed_in? && current_user.role_id == 1 %>
                 <h4><a href="/studios/new">Add a studio</a></h4>
               <% end %>
-              <p><em>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet.</em></p>
+              <p><em></em></p>
 
               <hr />
 
