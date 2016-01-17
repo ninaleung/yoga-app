@@ -42,7 +42,6 @@
       $scope.lessThan = function(prop, val) {
         return function(item) {
           console.log(item, prop, item[prop]);
-          
           return Number(item[prop]) < Number(val);
         };
       };
