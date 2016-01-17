@@ -20,6 +20,7 @@
       };
 
       $scope.search = function(searchTerm) {
+        console.log(searchTerm);
         $http.get('/api/yoga_classes.json?search=' + searchTerm).then(function(response) {
           $scope.yogaClasses = response.data;
         });
