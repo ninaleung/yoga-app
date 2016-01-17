@@ -140,9 +140,11 @@
                   <li><i class="fa fa-globe text-success"></i> <span class="text-success"><%= link_to @studio.website, "http://#{@studio.website}", target: '_blank', title: 'Visit website'%></span></li>
                   <li><i class="fa fa-car"></i> <span class="text-warning"><%= link_to @studio.address, "http://maps.google.com/?saddr=Current+Location&daddr=#{@studio.address}", target: '_blank', title: 'See map and get directions' %></span></li>
                   <li><i class="fa fa-phone"></i> <span class="text-warning"><%= @studio.phone %></span></li>
-                  <% if @studio.class_schedule_link %>
-                    <li><i class="fa fa-calendar text-success"></i> <span class="text-success"><%= link_to "Class Schedule", "http://#{@studio.class_schedule_link}", target: '_blank', title: 'View studio schedule'%></span></li>
-                  <% end %>
+                  <li><i class="fa fa-envelope"></i> <span class="text-warning"><%= @studio.email %></span></li>
+                
+                  <% if user_signed_in? && current_user.role_id == 1 %>
+                    <li><i class="fa fa-user"></i> <span class="text-warning"><%= @studio.user.email %></span></li>
+                  <% end %>  
                 </ul>
               </div>
 
@@ -202,16 +204,26 @@
 
               <h4 class="size-18">
                 <i class="fa fa-paper-plane-o"></i> 
-                FREE SHIPPING
+                <%= link_to "Yoga Loca Class Listings", "/yoga_classes?studio=#{@studio.id}" %>
               </h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla.</p>
 
+              <% if @studio.class_schedule_link %>
               <h4 class="size-18">
-                <i class="fa fa-clock-o"></i>
-                30 DAYS MONEY BACK
+                <i class="fa fa-calendar text-success"></i> 
+                <%= link_to "Class Schedule", "http://#{@studio.class_schedule_link}", target: '_blank', title: 'View studio schedule'%>
+              <% end %>
               </h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla.</p>
 
+              <% if user_signed_in? && current_user.role_id == 1 %>
+                <h4 class="size-18">
+                  <i class="fa fa-wrench"></i>
+                  ADMIN
+                </h4>
+                <ul class="list-unstyled">
+                  <li><%= link_to "Edit this studio", "/studios/#{@studio.id}/edit" %></li>
+                  <li><%= link_to "Delete this studio", "/studios/#{@studio.id}/", method: :delete %></li>
+                </ul>
+              <% end %>
               <h4 class="size-18">
                 <i class="fa fa-users"></i> 
                 CUSTOMER SUPPORT
