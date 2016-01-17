@@ -8,6 +8,8 @@
       $scope.setup = function() {
         if ($location.search().search) {
           $scope.search($location.search().search);
+        } else if ($location.search().studio) {
+          $scope.studio($location.search().studio);
         } else {
           $http.get('/api/yoga_classes.json').then(function(response) {
 
@@ -19,6 +21,12 @@
 
       $scope.search = function(searchTerm) {
         $http.get('/api/yoga_classes.json?search=' + searchTerm).then(function(response) {
+          $scope.yogaClasses = response.data;
+        });
+      };
+      
+      $scope.studio = function(searchTerm) {
+        $http.get('/api/yoga_classes.json?studio=' + searchTerm).then(function(response) {
           $scope.yogaClasses = response.data;
         });
       };
