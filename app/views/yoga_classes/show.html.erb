@@ -19,7 +19,7 @@
 
                 <div class="row padding-50">
 
-                  <div class="col-md-7 col-sm-7">
+                  <div class="col-md-5 col-sm-5">
 
                     <!-- Subtitle -->
                     <div class="heading-title heading-border">
@@ -41,7 +41,7 @@
                           </tr>
                           <tr>
                             <td class="bold">Location: </td>
-                            <td><%= link_to @yoga_class.studio.address, "http://maps.google.com/?saddr=Current+Location&daddr=#{@yoga_class.studio.address}", target: "_blank" %></td>
+                            <td><%= @yoga_class.studio.address %></td>
                           </tr>
                           <tr>
                             <td class="bold">Teacher: </td>
@@ -73,60 +73,17 @@
 
                   </div>
 
-                  <div class="col-md-4 col-sm-4">
-
-                    <div class="panel panel-default">
-                      <div class="panel-body">
-
-                        <p class="font-lato size-18">Integer posuere erat a ante venenatis dapibus posuere velit aliquet nulla sed consectetur.</p>
-
-                        <ul class="portfolio-detail-list list-unstyled nomargin">
-                          <li><span><i class="fa fa-user"></i>Author:</span> Smarty Inc.</li>
-                          <li><span><i class="fa fa-calendar"></i>Released:</span> 29th June 2015</li>
-                          <li><span><i class="fa fa-lightbulb-o"></i>Technologies:</span> HTML / CSS / JAVASCRIPT</li>
-                          <li><span><i class="fa fa-link"></i>Website:</span> <a href="#">www.stepofweb.com</a></li>
-                        </ul>
-
-                      </div>
-
-                      <div class="panel-footer">
-
-                        <!-- Social Icons -->
-                        <a href="#" class="social-icon social-icon-sm social-icon-transparent social-facebook" data-toggle="tooltip" data-placement="top" title="Facebook">
-
-                          <i class="icon-facebook"></i>
-                          <i class="icon-facebook"></i>
-                        </a>
-
-                        <a href="#" class="social-icon social-icon-sm social-icon-transparent social-twitter" data-toggle="tooltip" data-placement="top" title="Twitter">
-                          <i class="icon-twitter"></i>
-                          <i class="icon-twitter"></i>
-                        </a>
-
-                        <a href="#" class="social-icon social-icon-sm social-icon-transparent social-gplus" data-toggle="tooltip" data-placement="top" title="Google plus">
-                          <i class="icon-gplus"></i>
-                          <i class="icon-gplus"></i>
-                        </a>
-
-                        <a href="#" class="social-icon social-icon-sm social-icon-transparent social-linkedin" data-toggle="tooltip" data-placement="top" title="Linkedin">
-                          <i class="icon-linkedin"></i>
-                          <i class="icon-linkedin"></i>
-                        </a>
-
-                        <a href="#" class="social-icon social-icon-sm social-icon-transparent social-pinterest" data-toggle="tooltip" data-placement="top" title="Pinterest">
-                          <i class="icon-pinterest"></i>
-                          <i class="icon-pinterest"></i>
-                        </a>
-                        <!-- /Social Icons -->
-
-                      </div>
-
-                    </div>
-
+                  <div class="col-md-6 col-sm-6">
+                    <iframe
+                      width="500"
+                      height="450"
+                      frameborder="0" style="border:10"
+                      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC_Sovq3pNCJjzkjZylQffgL7n5fqi4yXw&q=<%= @yoga_class.studio.address %>" allowfullscreen>
+                    </iframe>
                   </div>
 
+                  </div>
                 </div>
-</div>
 
 
               </section>
