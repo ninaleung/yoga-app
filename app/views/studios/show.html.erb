@@ -106,7 +106,9 @@
               <!-- buttons -->
               <div class="pull-right">
                 <!-- replace data-item-id width the real item ID - used by js/view/demo.shop.js -->
-                <a class="btn btn-default add-wishlist" href="#" data-item-id="1" data-toggle="tooltip" title="Add To Favorite Studios"><i class="fa fa-heart nopadding"></i></a>
+                <% if user_signed_in? %>
+                  <a class="btn btn-default add-wishlist" href="#" data-item-id="1" data-toggle="tooltip" title="Add To Favorite Studios"><i class="fa fa-heart nopadding"></i></a>
+                <% end %>
               </div>
               <!-- /buttons -->
 
@@ -421,15 +423,3 @@
     <!-- /wrapper -->
 
 </div>
-
-<h2><%= link_to "Edit this studio", "/studios/#{@studio.id}/edit" %></h2>
-<h2><%= link_to "Delete this studio", "/studios/#{@studio.id}/", method: :delete %></h2>
-<h3><%= link_to "Back to studios", "/studios" %></h3>
-<h1><%= @studio.name %></h1>
-<h3>Address: <%= @studio.address %></h3>
-<h3>Phone: <%= @studio.phone %></h3>
-<h3>E-mail: <%= @studio.email %></h3>
-<h3>Website: <%= @studio.website %></h3>
-<h3>Owner: <%= @studio.user.email %></h3>
-<hr>
-<h2><%= link_to "Studio Classes", "/yoga_classes?studio=#{@studio.id}" %></h2>
