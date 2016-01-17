@@ -70,22 +70,22 @@
                       .top-right
                       .top-left
                   -->
-                  <a class="lightbox bottom-right" href="/assets/images/demo/shop/products/1000x1500/p5.jpg" data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
+                  <a class="lightbox bottom-right" href="https://www.giltcity.com/images/share/uploads/0000/0004/0462/404622503/orig.jpg" data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
 
                   <!-- 
                     image 
                     
                     Extra: add .image-bw class to force black and white!
                   -->
-                  <img class="img-responsive" src="/assets/images/demo/shop/products/1000x1500/p5.jpg" width="1200" height="1500" alt="This is the product title" />
+                  <img class="img-responsive" src="https://www.giltcity.com/images/share/uploads/0000/0004/0462/404622503/orig.jpg" width="1200" height="1500" alt="This is the product title" />
                 </figure>
 
               </div>
 
               <!-- Thumbnails (required height:100px) -->
               <div data-for="zoom-primary" class="zoom-more owl-carousel owl-padding-3 featured" data-plugin-options='{"singleItem": false, "autoPlay": false, "navigation": true, "pagination": false}'>
-                <a class="thumbnail active" href="/assets/images/demo/shop/products/1000x1500/p5.jpg">
-                  <img src="/assets/images/demo/shop/products/100x100/p5.jpg" height="100" alt="" />
+                <a class="thumbnail active" href="https://www.giltcity.com/images/share/uploads/0000/0004/0462/404622503/orig.jpg">
+                  <img src="https://www.giltcity.com/images/share/uploads/0000/0004/0462/404622503/orig.jpg" height="100" alt="" />
                 </a>
                 <a class="thumbnail" href="/assets/images/demo/shop/products/1000x1500/p6.jpg">
                   <img src="/assets/images/demo/shop/products/100x100/p6.jpg" height="100" alt="" />
@@ -207,10 +207,10 @@
               <% if @studio.class_schedule_link %>
               <h4 class="size-18">
                 <i class="fa fa-calendar text-success"></i> 
-                <%= link_to "Class Schedule", "http://#{@studio.class_schedule_link}", target: '_blank', title: 'View studio schedule'%>
+                <%= link_to "Studio's Class Schedule", "http://#{@studio.class_schedule_link}", target: '_blank', title: 'View studio schedule'%>
               <% end %>
               </h4>
-
+              <hr>
               <% if user_signed_in? && current_user.role_id == 1 %>
                 <h4 class="size-18">
                   <i class="fa fa-wrench"></i>
@@ -224,17 +224,7 @@
                   <% end %> 
                 </ul>
               <% end %>
-              <h4 class="size-18">
-                <i class="fa fa-users"></i> 
-                CUSTOMER SUPPORT
-              </h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla.</p>
-
               <hr>
-
-              <p class="size-11">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque.
-              </p>
             </div>
             <!-- /INFO -->
 
