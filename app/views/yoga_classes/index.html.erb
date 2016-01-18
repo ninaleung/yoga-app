@@ -53,47 +53,18 @@
         <div class="container">
           <div class="row">
 
-            <!-- LEFT COLUMNS -->
-            <div class="col-md-4 col-sm-4">
-
-              <!-- SEARCH RESULTS -->
-              <div ng-repeat="yoga_class in yogaClasses | filter: {studio_name: studioFilter, start: dateFilter, name: nameFilter} | orderBy: 'start'" ng-if="toNumber(yoga_class.price) <= maxPrice || (maxPrice == nil)">
-                <div class="clearfix search-result">
-                <h4 class="margin-bottom-0"><%= link_to "{{yoga_class.name}}", "/yoga_classes/{{yoga_class.id}}"%></h4>
-                <small class="text-muted"><%= link_to "{{yoga_class.studio_name}}", "/studios/{{yoga_class.studio_id}}" %></small>
-                <img src="/assets/images/logos/yoga-logo.jpg" alt="" height="60" />
-                <p>{{ yoga_class.parsed_date }}</p>
-                <p>{{ yoga_class.parsed_time }}</p>
-                <p>{{ yoga_class.price}}</p>
-                </div>
-              </div>
+          <!-- MAP COLUMNS -->
+          <div class="col-md-5 col-sm-5" style="position: fixed">             
+            <div id="map"></div>
+          </div>
+          <!-- /MAP COLUMNS -->
 
 
-              <!-- /SEARCH RESULTS -->
 
-              <!-- PAGINATION -->
-              <div class="text-center margin-top-60">
-                <ul class="pagination">
-                  <li class="disabled"><a href="#">Previous</a></li>
-                  <li class="active"><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">Next</a></li>
-                </ul>
-              </div>
-              <!-- /PAGINATION -->
-            </div>
-            <!-- /LEFT COLUMNS -->
-
-            <!-- MAP COLUMNS -->
-            <div class="col-md-5 col-sm-5 top-center">             
-              <div id="map"></div>
-            </div>
-            <!-- /MAP COLUMNS -->
 
 
             <!-- RIGHT COLUMNS -->
-            <div class="col-md-3 col-sm-3">
+            <div class="col-md-3 col-sm-3 pull-right">
               <h4>FILTERS</h4>
 
               <form action="page-search-result-1.html" method="get">
@@ -152,6 +123,37 @@
             </div>
             <!-- /RIGHT COLUMNS -->
 
+            <!-- LEFT COLUMNS -->
+            <div class="col-md-4 col-sm-4 pull-right">
+
+              <!-- SEARCH RESULTS -->
+              <div ng-repeat="yoga_class in yogaClasses | filter: {studio_name: studioFilter, start: dateFilter, name: nameFilter} | orderBy: 'start'" ng-if="toNumber(yoga_class.price) <= maxPrice || (maxPrice == nil)">
+                <div class="clearfix search-result">
+                <h4 class="margin-bottom-0"><%= link_to "{{yoga_class.name}}", "/yoga_classes/{{yoga_class.id}}"%></h4>
+                <small class="text-muted"><%= link_to "{{yoga_class.studio_name}}", "/studios/{{yoga_class.studio_id}}" %></small>
+                <img src="/assets/images/logos/yoga-logo.jpg" alt="" height="60" />
+                <p>{{ yoga_class.parsed_date }}</p>
+                <p>{{ yoga_class.parsed_time }}</p>
+                <p>{{ yoga_class.price}}</p>
+                </div>
+              </div>
+
+
+              <!-- /SEARCH RESULTS -->
+
+              <!-- PAGINATION -->
+              <div class="text-center margin-top-60">
+                <ul class="pagination">
+                  <li class="disabled"><a href="#">Previous</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">Next</a></li>
+                </ul>
+              </div>
+              <!-- /PAGINATION -->
+            </div>
+            <!-- /LEFT COLUMNS -->
         </div>
       </section>
       </div>
