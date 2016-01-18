@@ -31,6 +31,10 @@ class YogaClassesController < ApplicationController
     else
       @yoga_classes = YogaClass.all.where("start  >= ?", Time.now)
     end
+    @hash = Gmaps4rails.build_markers(@yoga_classes) do |yoga_class, marker|
+      marker.lat yoga_class.studio.latitude
+      marker.lng yoga_class.studio.longitude
+    end
   end
 
   def show

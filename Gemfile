@@ -25,6 +25,7 @@ gem 'devise'
 gem 'thematic'
 gem 'geocoder'
 gem 'chicago_yoga_studios'
+gem 'gmaps4rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

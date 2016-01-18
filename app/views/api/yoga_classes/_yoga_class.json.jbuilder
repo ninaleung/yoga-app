@@ -10,4 +10,6 @@ json.studio_name yoga_class.studio.name
 json.studio_id yoga_class.studio.id
 json.parsed_date yoga_class.parsed_date
 json.parsed_time yoga_class.parsed_time
+json.latitude yoga_class.studio.latitude
+json.longitude yoga_class.studio.longitude
 
