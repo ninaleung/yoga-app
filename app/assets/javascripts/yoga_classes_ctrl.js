@@ -21,7 +21,6 @@
           $http.get('/api/yoga_classes.json').then(function(response) {
 
             $scope.yogaClasses = response.data;
-            $scope.maxPrice = 1000;
           });
         }
       };
@@ -44,6 +43,10 @@
           console.log(item, prop, item[prop]);
           return Number(item[prop]) < Number(val);
         };
+      };
+
+      $scope.toNumber = function(string) {
+        return Number(string);
       };
 
       function getParameterByName(name) {
