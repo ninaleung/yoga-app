@@ -35,6 +35,7 @@ class YogaClassesController < ApplicationController
 
   def show
     @yoga_class = YogaClass.find_by(id: params[:id])
+    # @start_central_time = @yoga_class.start - 6.hours
   end
 
   def new
