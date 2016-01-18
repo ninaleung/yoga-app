@@ -13,7 +13,7 @@ class Api::YogaClassesController < ApplicationController
     elsif user_signed_in? && current_user.role_id == 3
       @yoga_classes = current_user.yoga_classes.all.where("start  >= ?", Time.now)
     else
-      @yoga_classes = YogaClass.all.where("start  >= ?", Time.now)
+      @yoga_classes = YogaClass.all.where("start  >= ?", (Time.now - 6.hours))
     end
   end
 end

@@ -147,7 +147,7 @@
               <!-- countdown -->
               <div class="text-center">
                 <h5><i class="fa fa-clock-o"></i> <%= link_to "Next class starts in:", "/yoga_classes/#{@next_class.id}" %></h5>
-                <div class="countdown" data-from="<%= @next_class.start %>" data-labels="years,months,weeks,days,hour,min,sec"><!-- Example Date From: December 31, 2018 15:03:26 --></div>
+                <div class="countdown" data-from="<%= @next_class.start + 6.hours %>" data-labels="years,months,weeks,days,hour,min,sec"><!-- Example Date From: December 31, 2018 15:03:26 --></div>
               </div>
               <!-- /countdown -->
 
