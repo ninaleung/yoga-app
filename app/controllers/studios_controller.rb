@@ -17,6 +17,7 @@ class StudiosController < ApplicationController
     @studio = Studio.find(params[:id])
     @studio_classes = @studio.yoga_classes.where("start  >= ?", Time.now - 6.hours)
     @next_class = @studio_classes.first
+    @reviews = @studio.reviews
   end
 
   def new

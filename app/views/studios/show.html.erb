@@ -236,7 +236,7 @@
           <ul id="myTab" class="nav nav-tabs nav-top-border margin-top-80" role="tablist">
             <li role="presentation" class="active"><a href="#description" role="tab" data-toggle="tab">Description</a></li>
             <li role="presentation"><a href="#specs" role="tab" data-toggle="tab">Amenities</a></li>
-            <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">Reviews (2)</a></li>
+            <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">Reviews (<%= @reviews.length %>)</a></li>
           </ul>
 
 
@@ -292,6 +292,7 @@
             <!-- REVIEWS -->
             <div role="tabpanel" class="tab-pane fade" id="reviews">
               <!-- REVIEW ITEM -->
+              <% @reviews.each do |review| %>
               <div class="block margin-bottom-60">
 
                 <span class="user-avatar"><!-- user-avatar -->
@@ -300,24 +301,33 @@
 
                 <div class="media-body">
                   <h4 class="media-heading size-14">
-                    John Doe &ndash; 
-                    <span class="text-muted">June 29, 2014 - 11:23</span> &ndash;
-                    <span class="size-14 text-muted"><!-- stars -->
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star-o"></i>
-                    </span>
+                    <%= review.user.email %> &ndash; 
+                    <span class="text-muted"><%= review.created_at.strftime("%A, %b %d, %Y") %></span> &ndash;
+                      <span>
+                        <% if review.rating == 0 %>
+                          <div class="rating rating-0 size-15 margin-top-10 width-150"></div>
+                        <% elsif review.rating == 1 %>  
+                          <div class="rating rating-1 size-15 margin-top-10 width-150"></div>
+                        <% elsif review.rating == 2 %>  
+                          <div class="rating rating-2 size-15 margin-top-10 width-150"></div>
+                        <% elsif review.rating == 3 %>  
+                          <div class="rating rating-3 size-15 margin-top-10 width-150"></div>
+                        <% elsif review.rating == 4 %>  
+                          <div class="rating rating-4 size-15 margin-top-10 width-150"></div>
+                        <% elsif review.rating == 5 %>  
+                          <div class="rating rating-5 size-15 margin-top-10 width-150"></div>
+                        <% end %>
+                      </span>
                   </h4>
                   
                   <p>
-                    Proin eget tortor risus. Cras ultricies ligula sed magna dictum porta. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque.
+                    <%= review.review %>
                   </p>
 
                 </div>
 
               </div>
+              <% end %>
               <!-- /REVIEW ITEM -->
 
               <!-- REVIEW ITEM -->
