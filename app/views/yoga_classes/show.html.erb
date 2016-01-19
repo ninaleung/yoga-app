@@ -26,8 +26,8 @@
                       <h2><%= @yoga_class.name %></h2>
 
                       <ul class="list-inline categories nomargin">
-                        <li><%= @yoga_class.start.strftime("%A, %b %d, %Y") %></li>
-                        <li><%= @yoga_class.start.strftime("%I:%M %p") %></li>
+                        <li><%= @central_time.strftime("%A, %b %d, %Y") %></li>
+                        <li><%= @central_time.strftime("%I:%M %p") %></li>
                       </ul>
 
                     </div>
@@ -64,25 +64,25 @@
 
                       <div class="text-center">
                         <h5><i class="fa fa-clock-o"></i> Class starts in:</h5>
-                        <div class="countdown dark" data-from="<%= (@yoga_class.start) %>" data-labels="years,months,weeks,days,hour,min,sec"><!-- Example Date From: December 31, 2018 15:03:26 --></div>
+                        <div class="countdown dark" data-from="<%= (@yoga_class.start + 6.hours) %>" data-labels="years,months,weeks,days,hour,min,sec"><!-- Example Date From: December 31, 2018 15:03:26 --></div>
                       </div>
                     </div>
 
                     <br>
                     
-                    <p>
-                      <%= form_tag '/saved_classes', method: :post do %>
+                    <ul class="list-inline list-unstyled text-center">
+                      <li><%= form_tag '/saved_classes', method: :post do %>
                         <div>
                           <%= hidden_field_tag :yoga_class_id, @yoga_class.id %>
                           <%= submit_tag "SAVE CLASS TO CALENDAR" %>
                         </div>
-                      <% end %>
+                      <% end %></li>
 
-                      <a class="label label-default letter-spacing-1" href="portfolio-single-parallax.html">SAVE CLASS TO CALENDER</a> 
-                      <a class="label label-default letter-spacing-1" href="portfolio-single-parallax-2.html">SIGN UP FOR CLASS</a> 
-                    </p>
+                      <li><% if @yoga_class.studio.sign_up_link %>
+                        <%= button_to "SIGN UP FOR CLASS", "http://#{@yoga_class.studio.sign_up_link}", method: :get, form: {target: '_blank'}  %>
+                      <% end %></li>
+                    </ul>
                     <h3><i class="glyphicon glyphicon-backward"></i> <%= link_to "Back", url_for(:back) %></h3>
-
                   </div>
 
                   <div class="col-md-6 col-sm-6">

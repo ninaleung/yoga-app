@@ -19,6 +19,9 @@
     <%= time_field_tag :time, @yoga_class.start.to_s(:time) %>
   </div>
   <div>
+    <%= time_zone_select( "user", 'time_zone', ActiveSupport::TimeZone.us_zones, default: "Central Time (US & Canada)") %>
+  </div>
+  <div>
     <%= label_tag :duration %>
     <%= text_field_tag :duration, @yoga_class.duration %>
   </div>
