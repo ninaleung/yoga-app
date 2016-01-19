@@ -31,7 +31,11 @@
   </div>
   <div>
     <%= label_tag :level %>
-    <%= select_tag :level, "<option>Open</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option>".html_safe %>
+    <%= select_tag :level, options_for_select([ "Open", "Beginner", "Intermediate"]) %>
+  </div>
+  <div>
+    <%= label_tag :style %>
+    <%= select_tag :style, options_for_select([ "Ashtanga", "Bikram", "Hatha", "Restorative", "Vinyasa", "Other"]) %>
   </div>
   <div>
     <%= label_tag :teacher_id %>

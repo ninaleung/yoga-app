@@ -34,6 +34,10 @@
     <%= select_tag :level, options_for_select([ "Open", "Beginner", "Intermediate", "Advanced" ], @yoga_class.level) %>
   </div>
   <div>
+    <%= label_tag :style %>
+    <%= select_tag :style, options_for_select([ "Ashtanga", "Bikram", "Hatha", "Restorative", "Vinyasa", "Other"], @yoga_class.style) %>
+  </div>
+  <div>
     <%= label_tag :teacher_id %>
     <%= select_tag 'user_id', options_from_collection_for_select(@all_teachers, 'id', 'email', @yoga_class.user_id) %>
   </div>
