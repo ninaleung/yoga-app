@@ -86,17 +86,17 @@
                 </select>
 
                 <label class="size-12 margin-top-10">Level</label>
-                <select class="form-control">
+                <select class="form-control" ng-model="classLevel">
                   <option value="">All</option>
-                  <option value="">Beginner</option>
-                  <option value="">Intermediate</option>
-                  <option value="">Advanced</option>
-                  <option value="">Open</option>
+                  <option value="Beginner">Beginner</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="Advanced">Advanced</option>
+                  <option value="Open">Open</option>
                 </select>
 
                 <label class="size-12 margin-top-10">Max Price</label>
                 <select class="form-control" ng-model="maxPrice">
-                  <option value="100000000">All</option>
+                  <option selected="selected" value="All" autocomplete="off">All</option>
                   <option value="0.001">Free</option>
                   <option value="5">$5</option>
                   <option value="10">$10</option>
@@ -127,7 +127,7 @@
             <div class="col-md-4 col-sm-4 pull-right">
 
               <!-- SEARCH RESULTS -->
-              <div ng-repeat="yoga_class in yogaClasses | filter: {studio_name: studioFilter, start: dateFilter, name: nameFilter} | orderBy: 'start'" ng-if="toNumber(yoga_class.price) <= maxPrice || (maxPrice == nil)">
+              <div ng-repeat="yoga_class in yogaClasses | filter: {studio_name: studioFilter, start: dateFilter, name: nameFilter, level: classLevel} | orderBy: 'start'" ng-if="(toNumber(yoga_class.price) <= maxPrice) || (maxPrice == 'All')">
                 <div class="clearfix search-result">
                 <h4 class="margin-bottom-0"><%= link_to "{{yoga_class.name}}", "/yoga_classes/{{yoga_class.id}}"%></h4>
                 <small class="text-muted"><%= link_to "{{yoga_class.studio_name}}", "/studios/{{yoga_class.studio_id}}" %></small>
