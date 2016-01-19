@@ -1,0 +1,24 @@
+<h1><%= current_user.email %>'s Saved Classes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @saved_classes.each do |saved_class| %>
+        <tr>
+          <td>
+            <% if saved_class.yoga_class.start > Time.now%>
+              <h2><%= link_to saved_class.yoga_class.name, "/yoga_classes/#{saved_class.yoga_class.id}" %></h2>
+            <% end %>
+          </td>
+          <td>
+            <h3><%= link_to "Remove class", "/saved_classes/#{saved_class.id}", method: :delete %></h3>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

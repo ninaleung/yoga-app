@@ -71,6 +71,13 @@
                     <br>
                     
                     <p>
+                      <%= form_tag '/saved_classes', method: :post do %>
+                        <div>
+                          <%= hidden_field_tag :yoga_class_id, @yoga_class.id %>
+                          <%= submit_tag "SAVE CLASS TO CALENDAR" %>
+                        </div>
+                      <% end %>
+
                       <a class="label label-default letter-spacing-1" href="portfolio-single-parallax.html">SAVE CLASS TO CALENDER</a> 
                       <a class="label label-default letter-spacing-1" href="portfolio-single-parallax-2.html">SIGN UP FOR CLASS</a> 
                     </p>
