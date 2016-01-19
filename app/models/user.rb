@@ -5,5 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :studio
   has_many :yoga_classes
+  has_many :saved_classes
+  has_many :saved, through: :saved_classes, source: :yoga_class, foreign_key: "yoga_class_id"
   belongs_to :role
 end

@@ -1,6 +1,9 @@
 class YogaClass < ActiveRecord::Base
   belongs_to :studio
   belongs_to :user
+  has_many :saved_classes
+  has_many :saved_by, through: :saved_classes, source: :user, foreign_key: "user_id"
+
 
   reverse_geocoded_by "studios.latitude", "studios.longitude"
 
