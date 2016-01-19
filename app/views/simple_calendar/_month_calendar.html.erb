@@ -1,0 +1,41 @@
+<div class="simple-calendar">
+  <div class="pull-right">
+  <%= link_to content_tag(
+        :i,
+        nil, 
+        class: 'fa fa-arrow-circle-left'
+      ), start_date: date_range.first - 1.day  %>
+  <%= I18n.t("date.month_names")[start_date.month] %> <%= start_date.year %>
+  <%= link_to '<i class="fa fa-arrow-circle-right"></i>'.html_safe, start_date: date_range.last + 1.day  %>
+
+  </div>
+    
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <% date_range.slice(0, 7).each do |day| %>
+          <th><%= I18n.t("date.day_names")[day.wday] %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% date_range.each_slice(7) do |week| %>
+        <tr>
+          <% week.each do |day| %>
+            <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+              <% if defined?(Haml) && block_is_haml?(block) %>
+                <% capture_haml do %>
+                  <% block.call day, sorted_events.fetch(day, []) %>
+                <% end %>
+              <% else %>
+                <% block.call day, sorted_events.fetch(day, []) %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

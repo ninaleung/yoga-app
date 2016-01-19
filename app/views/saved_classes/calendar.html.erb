@@ -1,3 +1,59 @@
-<%= month_calendar do |date| %>
-  <%= date %>
-<% end %>
+
+
+<%= render partial: "partials/header", locals: {
+  current_user: current_user,
+  is_angular: false
+} %>
+
+<div id="wrapper">
+
+  <!-- SLIDER -->
+  <section id="slider" class="fullheight" style="background-image:url('/assets/images/backgrounds/up.jpg')">
+    <div class="overlay dark-3"><!-- dark overlay [0 to 9 opacity] --></div>
+
+    <div class="display-table">
+      <div class="display-table-cell vertical-align-middle">
+        <div class="container">
+  
+        <div id="panel-calendar" class="panel panel-default">
+
+              <div class="panel-heading">
+
+                <span class="title elipsis ">
+                  <strong>MY YOGA LOCA CLASSES</strong> <!-- panel title -->
+                </span>
+
+              </div>
+
+              <!-- panel content -->
+              <div class="panel-body">
+
+                <%= month_calendar events: @saved_classes do |date, saved_classes| %>
+                  <%= date.day %>
+
+                  <% saved_classes.each do |saved_class| %>
+                    <div>
+                    <button class="btn">
+                      <%= link_to saved_class.yoga_class.name, "/yoga_classes/#{saved_class.yoga_class.id}" %>
+                    </button>
+                    </div>
+                  <% end %>
+                <% end %>
+
+
+              </div>
+              <!-- /panel content -->
+
+            </div>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+    <script type="text/javascript">var plugin_path = '/assets_admin/plugins/';</script>
+    <script type="text/javascript" src="/assets_admin/plugins/jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/assets_admin/js/app.js"></script>
+
