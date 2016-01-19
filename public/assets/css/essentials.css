@@ -11205,7 +11205,7 @@ div.side-nav .side-nav-head button {
 	display:block;
 	min-height:17px;
 	width:100%;
-	color:#999;
+	color: red;
 	display:inline-block;
 	font-family: FontAwesome;
 }
