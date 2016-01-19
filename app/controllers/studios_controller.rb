@@ -18,6 +18,13 @@ class StudiosController < ApplicationController
     @studio_classes = @studio.yoga_classes.where("start  >= ?", Time.now - 6.hours)
     @next_class = @studio_classes.first
     @reviews = @studio.reviews
+    
+    @sum_rating = 0
+    @reviews.each do |review|
+      @sum_rating += review.rating
+    end
+    @average_rating = (@sum_rating.to_f / (@reviews.length)).round(1)
+
   end
 
   def new

@@ -185,7 +185,9 @@
 
 
               <!-- rating -->
-              <div class="rating rating-0 size-20 margin-top-10 width-200"><!-- rating-0 ... rating-5 --></div>
+              <% if @reviews.any? %>
+                <h3>Average rating: <%= @average_rating %>/5</h3>
+              <% end %>
               <!-- /rating -->
 
             </div>
@@ -330,37 +332,9 @@
               <% end %>
               <!-- /REVIEW ITEM -->
 
-              <!-- REVIEW ITEM -->
-              <div class="block margin-bottom-60">
-
-                <span class="user-avatar"><!-- user-avatar -->
-                  <img class="pull-left media-object" src="/assets/images/avatar2.jpg" width="64" height="64" alt="">
-                </span>
-
-                <div class="media-body">
-                  <h4 class="media-heading size-14">
-                    John Doe &ndash; 
-                    <span class="text-muted">June 29, 2014 - 11:23</span> &ndash;
-                    <span class="size-14 text-muted"><!-- stars -->
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star-o"></i>
-                      <i class="fa fa-star-o"></i>
-                    </span>
-                  </h4>
-                  
-                  <p>
-                    Proin eget tortor risus. Cras ultricies ligula sed magna dictum porta. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque.
-                  </p>
-
-                </div>
-
-              </div>
-              <!-- /REVIEW ITEM -->
-
 
               <!-- REVIEW FORM -->
+            <% if user_signed_in? %>
               <h4 class="page-header margin-bottom-40">ADD A REVIEW</h4>
               <form method="post" action="#" id="form">
                 
@@ -417,6 +391,7 @@
                 <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Send Review</button>
                 
               </form>
+            <% end %>
               <!-- /REVIEW FORM -->
 
             </div>
