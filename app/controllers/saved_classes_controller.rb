@@ -13,14 +13,19 @@ class SavedClassesController < ApplicationController
   end
 
   def create
-    user_id = current_user.id
-    yoga_class_id = params[:yoga_class_id]
-    SavedClass.create(
-      user_id: user_id,
-      yoga_class_id: yoga_class_id,
-      status: "saved"
-    )
-    redirect_to "/saved_classes"
+    if SavedClass.where(user_id: current_user.id, status: "saved")
+      flash[:warning] = "You've already saved this class!"
+      redirect_to "/yoga_classes/#{params[:yoga_class_id]}"
+    else
+      user_id = current_user.id
+      yoga_class_id = params[:yoga_class_id]
+      SavedClass.create(
+        user_id: user_id,
+        yoga_class_id: yoga_class_id,
+        status: "saved"
+      )
+      redirect_to "/saved_classes/calendar"
+    end
   end
 
   def destroy
@@ -31,6 +36,6 @@ class SavedClassesController < ApplicationController
   end
 
   def calendar
-    
+    @saved_classes = current_user.saved_classes.where(status: "saved")
   end
 end
