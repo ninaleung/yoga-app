@@ -31,7 +31,7 @@
   </div>
   <div>
     <%= label_tag :level %>
-    <%= text_field_tag :level %>
+    <%= select_tag :level, "<option>Open</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option>".html_safe %>
   </div>
   <div>
     <%= label_tag :teacher_id %>
