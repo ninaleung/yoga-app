@@ -1,0 +1,2 @@
+module SavedClassesHelper
+end
