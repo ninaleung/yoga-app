@@ -1,10 +1,6 @@
 <div class="simple-calendar">
   <div class="pull-right">
-  <%= link_to content_tag(
-        :i,
-        nil, 
-        class: 'fa fa-arrow-circle-left'
-      ), start_date: date_range.first - 1.day  %>
+  <%= link_to '<i class="fa fa-arrow-circle-left"></i>'.html_safe, start_date: date_range.first - 1.day  %>
   <%= I18n.t("date.month_names")[start_date.month] %> <%= start_date.year %>
   <%= link_to '<i class="fa fa-arrow-circle-right"></i>'.html_safe, start_date: date_range.last + 1.day  %>
 

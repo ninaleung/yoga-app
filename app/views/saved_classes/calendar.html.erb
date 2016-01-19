@@ -19,7 +19,7 @@
 
               <div class="panel-heading">
 
-                <span class="title elipsis ">
+                <span class="title elipsis">
                   <strong>MY YOGA LOCA CLASSES</strong> <!-- panel title -->
                 </span>
 
@@ -32,10 +32,9 @@
                   <%= date.day %>
 
                   <% saved_classes.each do |saved_class| %>
-                    <div>
-                    <button class="btn">
-                      <%= link_to saved_class.yoga_class.name, "/yoga_classes/#{saved_class.yoga_class.id}" %>
-                    </button>
+                    <div class="rcorners1" class="responsive">
+                      <%= link_to saved_class.yoga_class.name, "/yoga_classes/#{saved_class.yoga_class.id}", title: "#{saved_class.yoga_class.start.strftime("%I:%M %p")}" %>
+                      <%= link_to '<i class="fa fa-remove"></i>'.html_safe, "/saved_classes/#{saved_class.id}", method: :delete %>
                     </div>
                   <% end %>
                 <% end %>
