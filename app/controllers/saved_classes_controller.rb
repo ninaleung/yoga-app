@@ -13,12 +13,12 @@ class SavedClassesController < ApplicationController
   end
 
   def create
-    if SavedClass.where(user_id: current_user.id, status: "saved")
+      user_id = current_user.id
+      yoga_class_id = params[:yoga_class_id]
+    if SavedClass.where(user_id: user_id, yoga_class_id: yoga_class_id, status: "saved").any?
       flash[:warning] = "You've already saved this class!"
       redirect_to "/yoga_classes/#{params[:yoga_class_id]}"
     else
-      user_id = current_user.id
-      yoga_class_id = params[:yoga_class_id]
       SavedClass.create(
         user_id: user_id,
         yoga_class_id: yoga_class_id,
@@ -32,7 +32,7 @@ class SavedClassesController < ApplicationController
     saved_class = SavedClass.find_by(id: params[:id])
     saved_class.update(status: "removed")
     flash[:success] = "Removed class!"
-    redirect_to "/saved_classes"
+    redirect_to "/saved_classes/calendar"
   end
 
   def calendar
