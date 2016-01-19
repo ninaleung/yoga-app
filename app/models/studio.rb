@@ -1,6 +1,7 @@
 class Studio < ActiveRecord::Base
   has_many :yoga_classes
   has_many :studio_images
+  has_many :reviews
   belongs_to :user
 
   geocoded_by :address
