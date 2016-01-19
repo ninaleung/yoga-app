@@ -306,19 +306,7 @@
                     <%= review.user.email %> &ndash; 
                     <span class="text-muted"><%= review.created_at.strftime("%A, %b %d, %Y") %></span> &ndash;
                       <span>
-                        <% if review.rating == 0 %>
-                          <div class="rating rating-0 size-15 margin-top-10 width-150"></div>
-                        <% elsif review.rating == 1 %>  
-                          <div class="rating rating-1 size-15 margin-top-10 width-150"></div>
-                        <% elsif review.rating == 2 %>  
-                          <div class="rating rating-2 size-15 margin-top-10 width-150"></div>
-                        <% elsif review.rating == 3 %>  
-                          <div class="rating rating-3 size-15 margin-top-10 width-150"></div>
-                        <% elsif review.rating == 4 %>  
-                          <div class="rating rating-4 size-15 margin-top-10 width-150"></div>
-                        <% elsif review.rating == 5 %>  
-                          <div class="rating rating-5 size-15 margin-top-10 width-150"></div>
-                        <% end %>
+                        <div class="rating rating-<%= review.rating %> size-15 margin-top-10 width-150"></div>
                       </span>
                   </h4>
                   
@@ -327,7 +315,9 @@
                   </p>
 
                 </div>
-
+              <% if user_signed_in? && ((current_user.role_id == 1) || (current_user.id == review.user.id)) %>
+                <%= link_to "Delete this review", "/studios/#{@studio.id}/reviews/#{review.id}/", method: :delete %>
+              <% end %>
               </div>
               <% end %>
               <!-- /REVIEW ITEM -->
@@ -336,59 +326,31 @@
               <!-- REVIEW FORM -->
             <% if user_signed_in? %>
               <h4 class="page-header margin-bottom-40">ADD A REVIEW</h4>
-              <form method="post" action="#" id="form">
+              <form method="post" action="/studios/review" id="form">
                 
                 <div class="row margin-bottom-10">
                   
                   <div class="col-md-6 margin-bottom-10">
                     <!-- Name -->
-                    <input type="text" name="name" id="name" class="form-control" placeholder="Name *" maxlength="100" required="">
+                    <p><%= current_user.email %></p>
                   </div>
                   
                   <div class="col-md-6">
-                    <!-- Email -->
-                    <input type="email" name="email" id="email" class="form-control" placeholder="Email *" maxlength="100" required="">
+                    <!-- Rating -->
+                    <input type="number" name="rating" id="rating" class="form-control" placeholder="rating" min="0" max="5" required="">
                   </div>
-                  
+                    <input type="hidden" name="studio_id" id="studio_id" value="<%= @studio.id %>">
+                    <input type="hidden" name="user_id" id="user_id" value="<%= current_user.id %>">
                 </div>
                 
                 <!-- Comment -->
                 <div class="margin-bottom-30">
-                  <textarea name="text" id="text" class="form-control" rows="6" placeholder="Comment" maxlength="1000"></textarea>
+                  <textarea name="review" id="review" class="form-control" rows="6" placeholder="Write your review" maxlength="1000" required=""></textarea>
                 </div>
 
-                <!-- Stars -->
-                <div class="product-star-vote clearfix">
-
-                  <label class="radio pull-left">
-                    <input type="radio" name="product-review-vote" value="1" />
-                    <i></i> 1 Star
-                  </label>
-
-                  <label class="radio pull-left">
-                    <input type="radio" name="product-review-vote" value="2" />
-                    <i></i> 2 Stars
-                  </label>
-
-                  <label class="radio pull-left">
-                    <input type="radio" name="product-review-vote" value="3" />
-                    <i></i> 3 Stars
-                  </label>
-
-                  <label class="radio pull-left">
-                    <input type="radio" name="product-review-vote" value="4" />
-                    <i></i> 4 Stars
-                  </label>
-
-                  <label class="radio pull-left">
-                    <input type="radio" name="product-review-vote" value="5" />
-                    <i></i> 5 Stars
-                  </label>
-
-                </div>
 
                 <!-- Send Button -->
-                <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Send Review</button>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit Review</button>
                 
               </form>
             <% end %>

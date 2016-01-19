@@ -71,6 +71,22 @@ class StudiosController < ApplicationController
     redirect_to "/studios/"
   end
 
+  def new_review
+    Review.create(
+      user_id: params[:user_id],
+      studio_id: params[:studio_id],
+      rating: params[:rating],
+      review: params[:review]
+      )
+    redirect_to "/studios/#{params[:studio_id]}"
+  end
+
+  def destroy_review
+    review = Review.find_by(id: params[:review_id])
+    review.destroy
+    redirect_to "/studios/#{params[:id]}"
+  end
+
 # private
 #   def authenticate_admin!
 #     unless user_signed_in? && current_user.role_id == 1

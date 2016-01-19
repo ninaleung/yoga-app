@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   patch '/studios/:id' => 'studios#update'
   delete '/studios/:id' => 'studios#destroy'
 
+  post '/studios/review' => 'studios#new_review'
+  delete '/studios/:id/reviews/:review_id' => 'studios#destroy_review'
+
   namespace :api do
     get '/studios' => 'studios#index'
     get '/yoga_classes' => 'yoga_classes#index'
