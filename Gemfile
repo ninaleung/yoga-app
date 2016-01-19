@@ -27,6 +27,7 @@ gem 'geocoder'
 gem 'chicago_yoga_studios'
 gem 'gmaps4rails'
 gem "simple_calendar", "~> 2.0"
+gem 'unirest'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
