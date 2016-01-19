@@ -45,7 +45,6 @@ class YogaClassesController < ApplicationController
 
   def show
     @yoga_class = YogaClass.find_by(id: params[:id])
-    
   end
 
   def new

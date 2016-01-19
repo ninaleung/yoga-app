@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get "/saved_classes" => 'saved_classes#index'
   post "/saved_classes" => 'saved_classes#create'
   delete "/saved_classes/:id" => 'saved_classes#destroy'
+  get "/saved_classes/calendar" => 'saved_classes#calendar'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

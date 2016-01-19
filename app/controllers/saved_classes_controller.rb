@@ -18,6 +18,7 @@ class SavedClassesController < ApplicationController
     SavedClass.create(
       user_id: user_id,
       yoga_class_id: yoga_class_id,
+      status: "saved"
     )
     redirect_to "/saved_classes"
   end
@@ -27,5 +28,9 @@ class SavedClassesController < ApplicationController
     saved_class.update(status: "removed")
     flash[:success] = "Removed class!"
     redirect_to "/saved_classes"
+  end
+
+  def calendar
+    
   end
 end
