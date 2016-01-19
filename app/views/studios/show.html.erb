@@ -115,7 +115,7 @@
               <!-- price -->
               <div class="shop-item-price">
                 <% if @studio.logo_url %>
-                  <img src="<%= @studio.logo_url %>" alt="company logo">
+                  <img src="<%= @studio.logo_url %>" alt="company logo" class="studio-logo">
                 <% end %>
               </div>
               <!-- /price -->
@@ -145,10 +145,12 @@
 
 
               <!-- countdown -->
-              <div class="text-center">
-                <h5><i class="fa fa-clock-o"></i> <%= link_to "Next class starts in:", "/yoga_classes/#{@next_class.id}" %></h5>
-                <div class="countdown" data-from="<%= @next_class.start %>" data-labels="years,months,weeks,days,hour,min,sec"><!-- Example Date From: December 31, 2018 15:03:26 --></div>
-              </div>
+              <% if @studio.yoga_classes.any? %>
+                <div class="text-center">
+                  <h5><i class="fa fa-clock-o"></i> <%= link_to "Next class starts in:", "/yoga_classes/#{@next_class.id}" %></h5>
+                  <div class="countdown" data-from="<%= @next_class.start %>" data-labels="years,months,weeks,days,hour,min,sec"><!-- Example Date From: December 31, 2018 15:03:26 --></div>
+                </div>
+              <% end %>
               <!-- /countdown -->
 
 
