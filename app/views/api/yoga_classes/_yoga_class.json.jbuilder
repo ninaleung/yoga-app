@@ -13,3 +13,4 @@ json.parsed_time yoga_class.parsed_time
 json.latitude yoga_class.studio.latitude
 json.longitude yoga_class.studio.longitude
 json.logo yoga_class.studio.logo_url
+json.style yoga_class.style

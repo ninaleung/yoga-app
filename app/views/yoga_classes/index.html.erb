@@ -76,13 +76,14 @@
                 <!-- value="<%= Time.now.strftime("%A, %b %d, %Y") %>" -->
 
                 <label class="size-12 margin-top-10">Style</label>
-                <select class="form-control">
+                <select class="form-control" ng-model="classStyle">
                   <option value="">All</option>
-                  <option value="">Ashtanga</option>
-                  <option value="">Bikram</option>
-                  <option value="">Hatha</option>
-                  <option value="">Vinyasa</option>
-                  <option value="">Yin</option>
+                  <option value="Ashtanga">Ashtanga</option>
+                  <option value="Bikram">Bikram</option>
+                  <option value="Hatha">Hatha</option>
+                  <option value="Restorative">Restorative</option>
+                  <option value="Vinyasa">Vinyasa</option>
+                  <option value="Other">Other</option>
                 </select>
 
                 <label class="size-12 margin-top-10">Level</label>
@@ -127,7 +128,7 @@
             <div class="col-md-4 col-sm-4 pull-right">
 
               <!-- SEARCH RESULTS -->
-              <div ng-repeat="yoga_class in yogaClasses | filter: {studio_name: studioFilter, start: dateFilter, name: nameFilter, level: classLevel} | orderBy: 'start'" ng-if="(toNumber(yoga_class.price) <= maxPrice) || (maxPrice == 'All')">
+              <div ng-repeat="yoga_class in yogaClasses | filter: {studio_name: studioFilter, start: dateFilter, name: nameFilter, level: classLevel, style: classStyle} | orderBy: 'start'" ng-if="(toNumber(yoga_class.price) <= maxPrice) || (maxPrice == 'All')">
                 <div class="clearfix search-result">
                 <h4 class="margin-bottom-0"><%= link_to "{{yoga_class.name}}", "/yoga_classes/{{yoga_class.id}}"%></h4>
                 <small class="text-muted"><%= link_to "{{yoga_class.studio_name}}", "/studios/{{yoga_class.studio_id}}" %></small>
