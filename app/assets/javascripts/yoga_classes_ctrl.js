@@ -8,7 +8,7 @@
       $scope.setup = function() {
         console.log('search:', getParameterByName('search'));
         console.log('studio:', getParameterByName('studio'));
-
+        $scope.maxPrice = "All";
 
         if (getParameterByName('search')) {
           console.log('hit search');
@@ -21,7 +21,6 @@
           $http.get('/api/yoga_classes.json').then(function(response) {
 
             $scope.yogaClasses = response.data;
-            $scope.maxPrice = "All";
           });
         }
       };
