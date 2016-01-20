@@ -1,17 +1,52 @@
 <%= render partial: "partials/header", locals: {
-  current_user: current_user,
-  is_angular: false
-} %>
+    current_user: current_user,
+    is_angular: false
+     } %>
 
 <div id="wrapper">
+   <section id="slider" class="fullheight" style="background-image:url('/assets/images/backgrounds/clouds.jpg')">
 
-  <!-- SLIDER -->
-  <section class="fullheight" style="background-image:url('/assets/images/backgrounds/clouds.jpg')">
-    <div class="overlay light-9"><!-- dark overlay [0 to 9 opacity] --></div>
+      <!-- 
+        PAGE HEADER 
+        
+        CLASSES:
+          .page-header-xs = 20px margins
+          .page-header-md = 50px margins
+          .page-header-lg = 80px margins
+          .page-header-xlg= 130px margins
+          .dark     = dark page header
 
-    <div class="display-table">
-      <div class="display-table-cell vertical-align-middle">
-        <section>
+          .shadow-before-1  = shadow 1 header top
+          .shadow-after-1   = shadow 1 header bottom
+          .shadow-before-2  = shadow 2 header top
+          .shadow-after-2   = shadow 2 header bottom
+          .shadow-before-3  = shadow 3 header top
+          .shadow-after-3   = shadow 3 header bottom
+      -->
+      <section class="page-header parallax parallax-3" style="background-image:url('/assets/images/demo/1200x800/17-min.jpg')">
+        <div class="overlay dark-5"><!-- dark overlay [1 to 9 opacity] --></div>
+
+        <div class="container">
+          <br>
+          <h1><%= @studio.name %></h1>
+          <span class="font-lato size-18 weight-300"><%= @studio.website %></span>
+
+          <!-- breadcrumbs -->
+          <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Features</a></li>
+            <li class="active">Page Title</li>
+          </ol><!-- /breadcrumbs -->
+
+        </div>
+      </section>
+      <!-- /PAGE HEADER -->
+
+
+
+
+      <!-- -->
+      <section>
         <div class="container">
           
           <div class="row">
@@ -94,8 +129,8 @@
                 <span class="pull-right text-danger"><i class="glyphicon glyphicon-remove"></i> Out of Stock</span>
                 -->
 
-                <strong class="size-20"><%= @studio.name %></strong>
-                <ul class="list-unstyled padding-10 size-16">
+                <strong><%= @studio.name %></strong>
+                <ul class="list-unstyled padding-10">
                   <li><i class="fa fa-globe text-success"></i> <span class="text-success"><%= link_to @studio.website, "http://#{@studio.website}", target: '_blank', title: 'Visit website'%></span></li>
                   <li><i class="fa fa-car"></i> <span class="text-warning"><%= link_to @studio.address, "http://maps.google.com/?saddr=Current+Location&daddr=#{@studio.address}", target: '_blank', title: 'See map and get directions' %></span></li>
                   <li><i class="fa fa-phone"></i> <span class="text-warning"><%= @studio.phone %></span></li>
@@ -223,29 +258,29 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>Amenity</th>
-                      <th>Available?</th>
+                      <th>Column name</th>
+                      <th>Column name</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Yoga mats and props for use</td>
-                      <td><i class="fa fa-check text-success"></i> YES</td>
+                      <td>Size</td>
+                      <td>2XL</td>
                     </tr>
                     <tr>
-                      <td>Showers</td>
-                      <td><i class="glyphicon glyphicon-remove text-danger"></i> NO</td>
+                      <td>Color</td>
+                      <td>Red</td>
                     </tr>
                     <tr>
-                      <td>Lockers</td>
-                      <td><i class="fa fa-check text-success"></i> YES</td>
+                      <td>Weight</td>
+                      <td>132lbs</td>
                     </tr>
                     <tr>
-                      <td>Retail clothes and equiptment</td>
-                      <td><i class="glyphicon glyphicon-remove text-danger"></i> NO</td>
+                      <td>Height</td>
+                      <td>74cm</td>
                     </tr>
                     <tr>
-                      <td>Snacks for sale</td>
+                      <td>Bluetooth</td>
                       <td><i class="fa fa-check text-success"></i> YES</td>
                     </tr>
                     <tr>
@@ -329,28 +364,12 @@
           <hr class="margin-top-80 margin-bottom-80" />
 
 
-        
-            </div>
-
-          </div>
         </div>
-      </div>
+      </section>
+      <!-- / -->
 
     </section>
-    <!-- /SLIDER -->
-    <!-- FOOTER -->
-    <footer id="footer">
-      
+    </div>
+    <!-- /wrapper -->
 
-      <div class="copyright">
-        <div class="container">
-          <ul class="pull-right nomargin list-inline mobile-block">
-            <li>“Practice and all is coming.” ~ Sri K. Pattabhi Jois</li>
-            <li>&bull;</li>
-            <li>Namaste</li>
-          </ul>
-          &copy; Yoga Loca
-        </div>
-      </div>
-    </footer>
-    <!-- /FOOTER -->
+</div>

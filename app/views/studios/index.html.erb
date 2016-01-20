@@ -46,7 +46,7 @@
                     <li><i class="fa fa-car"></i> <span class="text-warning"><%= link_to studio.address, "http://maps.google.com/?saddr=Current+Location&daddr=#{studio.address}", target: '_blank', title: 'See map and get directions' %></span></li>
                     <li><i class="fa fa-phone"></i> <span class="text-warning"><%= studio.phone %></span></li>
                     <% if studio.class_schedule_link %>
-                      <li><i class="fa fa-calendar text-success"></i> <span class="text-success"><%= link_to "Class Schedule", "http://#{studio.class_schedule_link}", target: '_blank', title: 'View studio schedule'%></span></li>
+                      <li><i class="fa fa-calendar-o"></i> <span class="text-success"><%= link_to "Studio's Schedule", "http://#{studio.class_schedule_link}", target: '_blank', title: 'View studio schedule'%></span></li>
                     <% end %>
                   </ul>
                   <% if studio.description %>
