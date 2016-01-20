@@ -10,10 +10,12 @@ class YogaClass < ActiveRecord::Base
   after_validation :geocode
 
   def parsed_date
+    zone = ActiveSupport::TimeZone.new("Central Time (US & Canada)")
     self.start.strftime("%A, %b %d, %Y")
   end
 
   def parsed_time
+    zone = ActiveSupport::TimeZone.new("Central Time (US & Canada)")
     self.start.strftime("%I:%M %p")
   end
 end

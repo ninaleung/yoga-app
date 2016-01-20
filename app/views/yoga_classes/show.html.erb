@@ -26,8 +26,8 @@
                       <h2><%= @yoga_class.name %></h2>
 
                       <ul class="list-inline categories nomargin">
-                        <li><%= @central_time.strftime("%A, %b %d, %Y") %></li>
-                        <li><%= @central_time.strftime("%I:%M %p") %></li>
+                        <li><%= @yoga_class.start.strftime("%A, %b %d, %Y") %></li>
+                        <li><%= @yoga_class.start.strftime("%I:%M %p") %></li>
                       </ul>
 
                     </div>
