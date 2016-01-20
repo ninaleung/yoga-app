@@ -303,7 +303,7 @@
 
                 <div class="media-body">
                   <h4 class="media-heading size-14">
-                    <%= review.user.email %> &ndash; 
+                    <%= review.user.first_name %> <%= review.user.last_name[0, 1] %>. &ndash; 
                     <span class="text-muted"><%= review.created_at.strftime("%A, %b %d, %Y") %></span> &ndash;
                       <span>
                         <div class="rating rating-<%= review.rating %> size-15 margin-top-10 width-150"></div>
