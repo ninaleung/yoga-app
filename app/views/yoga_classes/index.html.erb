@@ -128,7 +128,8 @@
             <div class="col-md-4 col-sm-4 pull-right">
 
               <!-- SEARCH RESULTS -->
-              <div dir-paginate="yoga_class in yogaClasses | filter: {studio_name: studioFilter, start: dateFilter, name: nameFilter, level: classLevel, style: classStyle} | orderBy: 'start' | itemsPerPage: 5" ng-if="(toNumber(yoga_class.price) <= maxPrice) || (maxPrice == 'All')">
+              <div dir-paginate="yoga_class in yogaClasses | filter: {studio_name: studioFilter, start: dateFilter, name: nameFilter, level: classLevel, style: classStyle} | orderBy: 'start' | itemsPerPage: 5">
+              <div ng-if="(toNumber(yoga_class.price) <= maxPrice) || (maxPrice == 'All')">
                 <div class="clearfix search-result">
                 <h4 class="margin-bottom-0"><%= link_to "{{yoga_class.name}}", "/yoga_classes/{{yoga_class.id}}"%></h4>
                 <small class="text-muted"><%= link_to "{{yoga_class.studio_name}}", "/studios/{{yoga_class.studio_id}}" %></small>
@@ -137,6 +138,7 @@
                 <p>{{ yoga_class.parsed_time }}</p>
                 <p>{{ yoga_class.price | currency }}</p>
                 </div>
+              </div>
               </div>
 
 
