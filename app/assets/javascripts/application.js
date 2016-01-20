@@ -15,5 +15,6 @@
 //= require underscore
 //= require gmaps/google
 //= require angular
+//= require dirPagination
 //= require app
 //= require_tree .
