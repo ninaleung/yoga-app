@@ -43,7 +43,7 @@
               <div class="tp-dottedoverlay twoxtwo"><!-- dotted overlay --></div>
               <div class="overlay dark-3"><!-- dark overlay [1 to 9 opacity] --></div>
 
-              <div class="tp-caption customin ltl tp-resizeme large_bold_white"
+              <div class="tp-caption customin ltl tp-resizeme large_bold_white size-70"
                 data-x="center"
                 data-y="255"
                 data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
@@ -90,7 +90,7 @@
                 data-endeasing="Power4.easeIn" style="z-index: 10;">
                 <form class="navbar-form navbar-center" role="search">
                   <div class="form-group">
-                    <input ng-model="searchTerm" action="/yoga_classes" name="search" id="search" method="get" class="form-control input-lg" type="text" placeholder="Enter an address, zip, city, or landmark!"
+                    <input ng-model="searchTerm" action="/yoga_classes" name="search" id="search" method="get" class="form-control input-lg" type="text" placeholder="Enter a location"
                     <div class="input-group-btn">
                       <button type="submit" class="btn btn-default input-lg noborder-left">
                         <i class="fa fa-search fa-lg nopadding"></i>
@@ -143,7 +143,7 @@
             <!-- SLIDE -->
             <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide title 3" data-thumb="/assets/images/backgrounds/up.jpg">
 
-              <img src="/assets/images/1x1.png" data-lazyload="/assets/images/backgrounds/up.jpg" alt="video" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+              
 
               <div class="tp-caption tp-fade fadeout fullscreenvideo"
                 data-x="0"
@@ -165,10 +165,12 @@
 
                 <div class="tp-dottedoverlay twoxtwo"><!-- dotted overlay --></div>
 
-                <video class="" preload="none" width="100%" height="100%" poster="/assets/images/demo/video/neuron.jpg">
-                  <source src="/assets/images/demo/video/neuron.webm" type="video/webm" />
-                  <source src="/assets/images/demo/video/neuron.mp4" type="video/mp4" />
-                </video>
+                <div style="position: fixed; z-index: -99; width: 100%; height: 100%">
+                  <iframe frameborder="0" height="100%" width="100%" 
+                    src="https://youtube.com/embed/SZCxKjgReQ4?autoplay=1&controls=0&showinfo=0&autohide=1">
+                  </iframe>
+                </div>
+
 
               </div>
 
@@ -185,7 +187,7 @@
                 data-endelementdelay="0.1"
                 data-endspeed="1000"
                 data-endeasing="Power4.easeIn" style="z-index: 3;">
-                <span class="weight-300">DEVELOPMENT / MARKETING / DESIGN / PHOTO</span>
+                <span class="weight-300">Namaste</span>
               </div>
 
               <div class="tp-caption customin ltl tp-resizeme large_bold_white"
@@ -217,7 +219,7 @@
                 data-endelementdelay="0.1"
                 data-endspeed="1000"
                 data-endeasing="Power4.easeIn" style="z-index: 3; width: 100%; max-width: 750px; white-space: normal; text-align:center;">
-                Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel fastidii propriae philosophia cu mea.
+                Search for yoga classes:
               </div>
 
               <div class="tp-caption customin ltl tp-resizeme"
@@ -233,9 +235,15 @@
                 data-endelementdelay="0.1"
                 data-endspeed="1000"
                 data-endeasing="Power4.easeIn" style="z-index: 3;">
-                <a href="#purchase" class="btn btn-default btn-lg">
-                  <span>Purchase Smarty Now</span> 
-                </a>
+                <form class="navbar-form navbar-center" role="search">
+                  <div class="form-group">
+                    <input action="/yoga_classes" name="search" id="search" method="get" class="form-control input-lg" type="text" placeholder="Enter a location"
+                    <div class="input-group-btn">
+                      <button formaction="/yoga_classes" type="submit" class="btn btn-default input-lg noborder-left">
+                        <i class="fa fa-search fa-lg nopadding"></i>
+                      </button>
+                  </div>
+                </form>
               </div>
 
             </li>
