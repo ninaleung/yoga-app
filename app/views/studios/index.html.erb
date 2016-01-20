@@ -40,7 +40,7 @@
                   <% end %>
                 </div>
                 <div class="col-md-10"><!-- company detail -->
-                  <h4 class="margin-bottom-10"><%= link_to "#{studio.name}", "/studios/#{studio.id}"%></h4>
+                  <h4 class="margin-bottom-10"><%= link_to '<i class="fa fa-calendar"></i>'.html_safe, "/yoga_classes?studio=#{studio.id}" %> &nbsp;&nbsp; <%= link_to "#{studio.name}", "/studios/#{studio.id}"%></h4>
                   <ul class="list-inline">
                     <li><i class="fa fa-globe text-success"></i> <span class="text-success"><%= link_to studio.website, "http://#{studio.website}", target: '_blank', title: 'Visit website'%></span></li>
                     <li><i class="fa fa-car"></i> <span class="text-warning"><%= link_to studio.address, "http://maps.google.com/?saddr=Current+Location&daddr=#{studio.address}", target: '_blank', title: 'See map and get directions' %></span></li>
