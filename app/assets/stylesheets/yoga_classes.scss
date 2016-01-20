@@ -1,3 +1,7 @@
 // Place all the styles related to the YogaClasses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}

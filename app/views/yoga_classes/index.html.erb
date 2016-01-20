@@ -5,7 +5,7 @@
     current_user: current_user,
     is_angular: true
      } %>  
-   <div ng-app="app" ng-controller="yogaClassesCtrl" ng-init="setup()">
+   <div ng-app="app" ng-controller="yogaClassesCtrl" ng-init="setup()" ng-cloak>
 
 
     <!-- wrapper -->
@@ -128,7 +128,7 @@
             <div class="col-md-4 col-sm-4 pull-right">
 
               <!-- SEARCH RESULTS -->
-              <div ng-repeat="yoga_class in yogaClasses | filter: {studio_name: studioFilter, start: dateFilter, name: nameFilter, level: classLevel, style: classStyle} | orderBy: 'start'" ng-if="(toNumber(yoga_class.price) <= maxPrice) || (maxPrice == 'All')">
+              <div class="ng-Cloak" ng-repeat="yoga_class in yogaClasses | filter: {studio_name: studioFilter, start: dateFilter, name: nameFilter, level: classLevel, style: classStyle} | orderBy: 'start'" ng-if="(toNumber(yoga_class.price) <= maxPrice) || (maxPrice == 'All')">
                 <div class="clearfix search-result">
                 <h4 class="margin-bottom-0"><%= link_to "{{yoga_class.name}}", "/yoga_classes/{{yoga_class.id}}"%></h4>
                 <small class="text-muted"><%= link_to "{{yoga_class.studio_name}}", "/studios/{{yoga_class.studio_id}}" %></small>
