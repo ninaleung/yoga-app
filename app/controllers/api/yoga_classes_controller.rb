@@ -1,11 +1,7 @@
 class Api::YogaClassesController < ApplicationController
   def index
-    if params[:search].present? && params[:date].present?
-      @yoga_classes = YogaClass.joins(:studio).near(params[:search], 4).where("start  >= ?", params[:date])
-    elsif params[:search].present?
+    if params[:search].present?
       @yoga_classes = YogaClass.joins(:studio).near(params[:search], 4).where("start  >= ?", Time.current - 6.hours)
-    elsif params[:date].present?
-      @yoga_classes = YogaClass.where("start  >= ?", params[:date])
     elsif params[:studio]
       @yoga_classes = YogaClass.where(studio_id: params[:studio]).where("start  >= ?", Time.current - 6.hours)
     elsif user_signed_in? && current_user.role_id == 2
