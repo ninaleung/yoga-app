@@ -17,7 +17,7 @@ class YogaClassesController < ApplicationController
     #   @yoga_classes = YogaClass.all
     # end
     if params[:search].present?
-      @yoga_classes = YogaClass.joins(:studio).near(params[:search], 4).where("start  >= ?", Time.current - 6.hours)
+      @yoga_classes = YogaClass.joins(:studio).near(params[:search], 2).where("start  >= ?", Time.current - 6.hours)
     elsif params[:studio]
       @yoga_classes = YogaClass.where(studio_id: params[:studio]).where("start  >= ?", Time.current - 6.hours)
     elsif user_signed_in? && current_user.role_id == 2
