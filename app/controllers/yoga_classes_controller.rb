@@ -30,7 +30,7 @@ class YogaClassesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@yoga_classes) do |yoga_class, marker|
       marker.lat yoga_class.studio.latitude
       marker.lng yoga_class.studio.longitude
-      marker.infowindow yoga_class.studio.name
+      marker.infowindow (ActionController::Base.helpers.link_to(yoga_class.studio.name, "/yoga_classes?studio=#{yoga_class.studio.id}").html_safe)
       marker.picture({
         "url": "http://www.icon100.com/up/2891/48/yoga.png",
         "width":  48,
