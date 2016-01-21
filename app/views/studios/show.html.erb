@@ -12,17 +12,28 @@
     <div class="display-table">
       <div class="display-table-cell vertical-align-middle">
         <section>
-        <div class="container">
-          <div>
-            
-          </div>
-          
-          <div class="row">
-          
-            <!-- IMAGE -->
-            <div class="col-lg-4 col-sm-4">
-              
-              <div class="thumbnail relative margin-bottom-3">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-9 col-sm-9">
+                <h1 class="bold"><%= @studio.name %></h1>
+              </div>
+              <!-- buttons -->
+              <div class="col-lg-3 col-sm-3">
+                <% if user_signed_in? %>
+                <a class="btn btn-default add-wishlist pull-right" href="#" data-item-id="1" data-toggle="tooltip" title="Add To Favorite Studios"><i class="fa fa-heart nopadding"></i></a>
+                <% end %>
+              </div>
+              <!-- /buttons -->
+            </div>
+
+            <hr>
+
+            <div class="row">
+
+              <!-- IMAGE -->
+              <div class="col-lg-4 col-sm-4">
+
+                <div class="thumbnail relative margin-bottom-3">
 
                 <!-- 
                   IMAGE ZOOM 
@@ -38,13 +49,13 @@
                       .bottom-left
                       .top-right
                       .top-left
-                  -->
-                  <% if @studio.studio_images.any? %>
+                    -->
+                    <% if @studio.studio_images.any? %>
                     <a class="lightbox bottom-right" href="<%= @studio.studio_images.first.url %>" data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
 
                     <img class="img-responsive" src="<%= @studio.studio_images.first.url %>" width="1200" height="1500" alt="Studio picture" />
 
-                  <% else %>
+                    <% else %>
                     <a class="lightbox bottom-right" href="http://img.talkandroid.com/uploads/2014/10/YogaStudio.png" data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
 
                     <!-- 
@@ -53,171 +64,150 @@
                       Extra: add .image-bw class to force black and white!
                     -->
                     <img class="img-responsive" src="http://img.talkandroid.com/uploads/2014/10/YogaStudio.png" width="1200" height="1500" alt="Studio picture" />
+                    <% end %>
+                  </figure>
+
+                </div>
+
+                <!-- Thumbnails (required height:100px) -->
+                <div data-for="zoom-primary" class="zoom-more owl-carousel owl-padding-3 featured" data-plugin-options='{"singleItem": false, "autoPlay": false, "navigation": true, "pagination": false}'>
+                  <% if @studio.studio_images %>
+                  <% @studio.studio_images.each do |image| %>
+                  <a class="thumbnail active" href="<%= image.url %>">
+                    <img src="<%= image.url %>" height="100" alt="" />
+                  </a>
                   <% end %>
-                </figure>
-
-              </div>
-
-              <!-- Thumbnails (required height:100px) -->
-              <div data-for="zoom-primary" class="zoom-more owl-carousel owl-padding-3 featured" data-plugin-options='{"singleItem": false, "autoPlay": false, "navigation": true, "pagination": false}'>
-              <% if @studio.studio_images %>
-                <% @studio.studio_images.each do |image| %>
-                <a class="thumbnail active" href="<%= image.url %>">
-                  <img src="<%= image.url %>" height="100" alt="" />
-                </a>
-                <% end %>
-              <% end %>
+                  <% end %>
 
 
-                
-              </div>
-              <!-- /Thumbnails -->
-              <div class="divider divider-center"><!-- divider -->
-                <i class="fa fa-hand-peace-o"></i>
-              </div>
 
-              <!-- Share -->
-              <div class="center">
+                </div>
+                <!-- /Thumbnails -->
+                <div class="divider divider-center"><!-- divider -->
+                  <i class="fa fa-hand-peace-o"></i>
+                </div>
 
-                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-facebook pull-left" data-toggle="tooltip" data-placement="top" title="Facebook">
-                  <i class="icon-facebook"></i>
-                  <i class="icon-facebook"></i>
-                </a>
 
-                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-twitter pull-left" data-toggle="tooltip" data-placement="top" title="Twitter">
-                  <i class="icon-twitter"></i>
-                  <i class="icon-twitter"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-gplus pull-left" data-toggle="tooltip" data-placement="top" title="Google plus">
-                  <i class="icon-gplus"></i>
-                  <i class="icon-gplus"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-linkedin pull-left" data-toggle="tooltip" data-placement="top" title="Linkedin">
-                  <i class="icon-linkedin"></i>
-                  <i class="icon-linkedin"></i>
-                </a>
-
-              </div>
-              <!-- /Share -->
-
-              <% if user_signed_in? && current_user.role_id == 1 %>
-              <div class="divider divider-center"><!-- divider -->
-                <i class="fa fa-hand-peace-o"></i>
-              </div>
+                <% if user_signed_in? && current_user.role_id == 1 %>
                 <h4 class="size-18">
                   <i class="fa fa-wrench"></i>
                   ADMIN
                 </h4>
                 <h5>
-                <ul class="list-unstyled">
-                  <li><i class="fa fa-pencil"></i> <%= link_to "Edit this studio", "/studios/#{@studio.id}/edit" %></li>
-                  <li><i class="fa fa-minus-circle"></i> <%= link_to "Delete this studio", "/studios/#{@studio.id}/", method: :delete %></li>
-                  <% if user_signed_in? && current_user.role_id == 1 %>
+                  <ul class="list-unstyled">
+                    <li><i class="fa fa-pencil"></i> <%= link_to "Edit this studio", "/studios/#{@studio.id}/edit" %></li>
+                    <li><i class="fa fa-minus-circle"></i> <%= link_to "Delete this studio", "/studios/#{@studio.id}/", method: :delete %></li>
                     <li><i class="fa fa-user"></i> Owner: <span class="text-warning"><%= @studio.user.email %></span></li>
-                  <% end %> 
-                </ul>
+                  </ul>
                 </h5>
-              <div class="divider divider-center"><!-- divider -->
-                <i class="fa fa-hand-peace-o"></i>
-              </div>
-              <% end %>
-
-
-            </div>
-            <!-- /IMAGE -->
-
-            <!-- ITEM DESC -->
-            <div class="col-lg-5 col-sm-8">
-
-              <!-- buttons -->
-              <div class="pull-right">
-                <!-- replace data-item-id width the real item ID - used by js/view/demo.shop.js -->
-                <% if user_signed_in? %>
-                  <a class="btn btn-default add-wishlist" href="#" data-item-id="1" data-toggle="tooltip" title="Add To Favorite Studios"><i class="fa fa-heart nopadding"></i></a>
+                <div class="divider divider-center"><!-- divider -->
+                  <i class="fa fa-hand-peace-o"></i>
+                </div>
                 <% end %>
-              </div>
-              <!-- /buttons -->
 
-              <!-- price -->
-              <div class="shop-item-price">
-                <% if @studio.logo_url %>
+                <% if user_signed_in? && current_user.role_id == 2 %>
+                <h4 class="size-18">
+                  <i class="fa fa-wrench"></i>
+                  STUDIO OWNER ADMIN
+                </h4>
+                <h5>
+                  <ul class="list-unstyled">
+                    <li><i class="fa fa-pencil"></i> <%= link_to "Edit your studio details", "/studios/#{@studio.id}/edit" %></li>
+                    <li><i class="glyphicon glyphicon-camera"></i> <%= link_to "Update studio images", "/studios/#{@studio.id}/images" %></li>
+                  </ul>
+                </h5>
+                <div class="divider divider-center"><!-- divider -->
+                  <i class="fa fa-hand-peace-o"></i>
+                </div>
+                <% end %>
+
+
+              </div>
+              <!-- /IMAGE -->
+
+              <!-- ITEM DESC -->
+              <div class="col-lg-5 col-sm-8">
+
+
+
+                <!-- price -->
+                <div class="shop-item-price text-center">
+                  <% if @studio.logo_url %>
                   <img src="<%= @studio.logo_url %>" alt="company logo" class="studio-logo">
-                <% end %>
-              </div>
-              <!-- /price -->
+                  <% end %>
+                </div>
+                <!-- /price -->
 
-              <hr />
+                <hr />
 
-              <div class="clearfix margin-bottom-30">
-                <!-- <span class="pull-right text-success"><i class="fa fa-check"></i> In Stock</span> -->
+                <div class="clearfix margin-bottom-30">
+                  <!-- <span class="pull-right text-success"><i class="fa fa-check"></i> In Stock</span> -->
                 <!--
                 <span class="pull-right text-danger"><i class="glyphicon glyphicon-remove"></i> Out of Stock</span>
-                -->
+              -->
 
-              <h4>
-
-                <strong class="size-20"><%= @studio.name %></strong>
+              <h4 class="text-center">
                 <ul class="list-unstyled padding-20 size-16">
                   <li class="padding-10"><i class="fa fa-globe text-info"></i>&nbsp;<%= link_to @studio.website, "http://#{@studio.website}", target: '_blank', title: 'Visit website'%></li>
+                  <li>
+                    <% if @studio.class_schedule_link %>
+                    <li class="padding-10"><i class="fa fa-calendar text-info"></i><%= link_to "Studio's Class Schedule", "http://#{@studio.class_schedule_link}", target: '_blank', title: 'View studio schedule'%></li>
+                    <% end %>
+                  </li>
                   <li class="padding-10"><i class="fa fa-car"></i><%= link_to @studio.address, "http://maps.google.com/?saddr=Current+Location&daddr=#{@studio.address}", target: '_blank', title: 'See map and get directions' %></li>
-                  <li class="padding-10"><i class="fa fa-phone"></i><%= @studio.phone %></span></li>
-                  <li class="padding-10"><i class="fa fa-envelope"></i><span class="text-warning"><%= @studio.email %></span></li>
+                  <li class="padding-10"><i class="fa fa-envelope"></i><%= @studio.email %></li>
+                  <li class="padding-10"><i class="fa fa-phone"></i><%= @studio.phone %></li>
 
                   <div class="divider divider-center"><!-- divider -->
                     <i class="fa fa-hand-peace-o"></i>
                   </div>
                   
-                  <% if @studio.class_schedule_link %>
-                    <li class="padding-10"><i class="fa fa-calendar text-info"></i><span class="text-info"><%= link_to "Studio's Class Schedule", "http://#{@studio.class_schedule_link}", target: '_blank', title: 'View studio schedule'%></span></li>
-                  <% end %>
-              </h4>
-                 
-                </ul>
+                  
+                </h4>
 
-              </div>
-
-
+              </ul>
 
             </div>
-            <!-- /ITEM DESC -->
-
-            <!-- INFO -->
-            <div class="col-sm-4 col-md-3">
 
 
-              <!-- rating -->
+
+          </div>
+          <!-- /ITEM DESC -->
+
+          <!-- INFO -->
+          <div class="col-sm-4 col-md-3">
+
+
+            <!-- rating -->
+            <div class="text-center">
               <% if @reviews.any? %>
-                <h3>Average Rating: <%= @average_rating %>/5</h3>
-                <div class="divider divider-center"><!-- divider -->
-                  <i class="fa fa-hand-peace-o"></i>
-                </div>
+              <h3><span class="label label-danger padding-10 bold"><i class="fa fa-star"></i> Average Rating: <%= @average_rating %> / 5</span></h3>
+              <div class="divider divider-center"><!-- divider -->
+                <i class="fa fa-hand-peace-o"></i>
+              </div>
               <% end %>
+              
               <!-- /rating -->
-
-              <h4 class="size-18">
-                <i class="fa fa-paper-plane-o"></i> 
-                <%= link_to "Yoga Loca Class Listings", "/yoga_classes?studio=#{@studio.id}" %>
-              </h4>
+              <h3><span class="label label-success padding-10 bold">
+                <i class="glyphicon glyphicon-list"></i>
+                <%= link_to "Yoga Loca Class Listings", "/yoga_classes?studio=#{@studio.id}" %></span>
+              </h3>
 
               <div class="divider divider-center"><!-- divider -->
                 <i class="fa fa-hand-peace-o"></i>
               </div>
               <!-- countdown -->
               <% if @studio.yoga_classes.any? %>
-                <div class="text-center">
-                  <h5><i class="fa fa-clock-o"></i> <%= link_to "Next class starts in:", "/yoga_classes/#{@next_class.id}" %></h5>
-                  <div class="countdown" data-from="<%= @next_class.start + 6.hours %>" data-labels="years,months,weeks,days,hour,min,sec"><!-- Example Date From: December 31, 2018 15:03:26 --></div>
-                </div>
+              <h3><i class="fa fa-clock-o"></i> <%= link_to "Next class starts in:", "/yoga_classes/#{@next_class.id}" %>
+                <div class="countdown" data-from="<%= @next_class.start + 6.hours %>" data-labels="years,months,weeks,days,hour,min,sec"><!-- Example Date From: December 31, 2018 15:03:26 --></div></h3>
                 <div class="divider divider-center"><!-- divider -->
                   <i class="fa fa-hand-peace-o"></i>
                 </div>
-              <% end %>
-              <!-- /countdown -->
+                <% end %>
+                <!-- /countdown -->
 
 
-
+              </div>
             </div>
             <!-- /INFO -->
 
@@ -293,9 +283,9 @@
                   <h4 class="media-heading size-14">
                     <%= review.user.first_name %> <%= review.user.last_name[0, 1] %>. &ndash; 
                     <span class="text-muted"><%= review.created_at.strftime("%A, %b %d, %Y") %></span> &ndash;
-                      <span>
-                        <div class="rating rating-<%= review.rating %> size-15 margin-top-10 width-150"></div>
-                      </span>
+                    <span>
+                      <div class="rating rating-<%= review.rating %> size-15 margin-top-10 width-150"></div>
+                    </span>
                   </h4>
                   
                   <p>
@@ -303,21 +293,21 @@
                   </p>
 
                 </div>
-              <% if user_signed_in? && ((current_user.role_id == 1) || (current_user.id == review.user.id)) %>
+                <% if user_signed_in? && ((current_user.role_id == 1) || (current_user.id == review.user.id)) %>
                 <%= link_to "Delete this review", "/studios/#{@studio.id}/reviews/#{review.id}/", method: :delete %>
-              <% end %>
+                <% end %>
               </div>
               <% end %>
               <!-- /REVIEW ITEM -->
 
 
               <!-- REVIEW FORM -->
-            <% if user_signed_in? %>
+              <% if user_signed_in? %>
               <h4 class="page-header margin-bottom-40">ADD A REVIEW</h4>
               <form method="post" action="/studios/review" id="form">
-                
+
                 <div class="row margin-bottom-10">
-                  
+
                   <div class="col-md-6 margin-bottom-10">
                     <!-- Name -->
                     <p> <strong>Reviewer Name: </strong> <%= current_user.first_name %> <%= current_user.last_name[0,1] %>.</p>
@@ -327,8 +317,8 @@
                     <!-- Rating -->
                     <input type="number" name="rating" id="rating" class="form-control" placeholder="rating" min="0" max="5" required="">
                   </div>
-                    <input type="hidden" name="studio_id" id="studio_id" value="<%= @studio.id %>">
-                    <input type="hidden" name="user_id" id="user_id" value="<%= current_user.id %>">
+                  <input type="hidden" name="studio_id" id="studio_id" value="<%= @studio.id %>">
+                  <input type="hidden" name="user_id" id="user_id" value="<%= current_user.id %>">
                 </div>
                 
                 <!-- Comment -->
@@ -341,7 +331,7 @@
                 <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit Review</button>
                 
               </form>
-            <% end %>
+              <% end %>
               <!-- /REVIEW FORM -->
 
             </div>
@@ -351,28 +341,28 @@
           <hr class="margin-top-80 margin-bottom-80" />
 
 
-        
-            </div>
 
-          </div>
         </div>
-      </div>
 
-    </section>
-    <!-- /SLIDER -->
-    <!-- FOOTER -->
-    <footer id="footer">
-      
-
-      <div class="copyright">
-        <div class="container">
-          <ul class="pull-right nomargin list-inline mobile-block">
-            <li>“Practice and all is coming.” ~ Sri K. Pattabhi Jois</li>
-            <li>&bull;</li>
-            <li>Namaste</li>
-          </ul>
-          &copy; Yoga Loca
-        </div>
       </div>
-    </footer>
+    </div>
+  </div>
+
+</section>
+<!-- /SLIDER -->
+<!-- FOOTER -->
+<footer id="footer">
+
+
+  <div class="copyright">
+    <div class="container">
+      <ul class="pull-right nomargin list-inline mobile-block">
+        <li>“Practice and all is coming.” ~ Sri K. Pattabhi Jois</li>
+        <li>&bull;</li>
+        <li>Namaste</li>
+      </ul>
+      &copy; Yoga Loca
+    </div>
+  </div>
+</footer>
     <!-- /FOOTER -->
