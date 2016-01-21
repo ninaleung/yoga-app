@@ -5,3 +5,8 @@
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
+
+.z-top {
+  position: fixed;
+  z-index: 1;
+}
