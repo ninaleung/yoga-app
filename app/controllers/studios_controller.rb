@@ -87,6 +87,28 @@ class StudiosController < ApplicationController
     redirect_to "/studios/#{params[:id]}"
   end
 
+  def images
+    @studio = Studio.find(params[:id])
+    if @studio.studio_images.any?
+      @images = @studio.studio_images
+    end
+  end
+
+  def add_image
+    StudioImage.create(
+      studio_id: params[:studio_id],
+      url: params[:url],
+      )
+    redirect_to "/studios/#{params[:studio_id]}/images"
+  end
+
+  def delete_image
+    image = StudioImage.find(params[:img_id])
+    studio_id = image.studio_id
+    image.destroy
+    redirect_to "/studios/#{studio_id}/images"
+  end
+
 # private
 #   def authenticate_admin!
 #     unless user_signed_in? && current_user.role_id == 1

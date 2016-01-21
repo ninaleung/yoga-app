@@ -1,1 +1,24 @@
-images.html.erb
+Current Images
+
+<% if @images %>
+  <% @images.each do |image| %>
+    <img src="<%= image.url %>" alt="Studio Image"/>
+    <%= link_to '<i class="fa fa-remove"></i>'.html_safe, "/studios/#{@studio.id}/images/#{image.id}", method: :delete %>
+  <% end %>
+<% else %>
+  No images uploaded yet!
+<% end %>
+
+Add an image
+
+<%= form_tag "/studios/#{@studio.id}/images", method: :post do %>
+  <div>
+    <%= label_tag :image_url %>
+    <%= text_field_tag :url %>
+    <%= hidden_field_tag :studio_id, @studio.id %>
+  </div>
+  <div>
+    <%= submit_tag 'Add image' %>
+    <button type="button"><%= link_to "Cancel", "/studios/#{@studio.id}/images" %></button>
+  </div>
+<% end %>

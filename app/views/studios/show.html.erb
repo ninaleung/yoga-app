@@ -51,19 +51,19 @@
                       .top-left
                     -->
                     <% if @studio.studio_images.any? %>
-                    <a class="lightbox bottom-right" href="<%= @studio.studio_images.first.url %>" data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
+                      <a class="lightbox bottom-right" href="<%= @studio.studio_images.first.url %>" data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
 
-                    <img class="img-responsive" src="<%= @studio.studio_images.first.url %>" width="1200" height="1500" alt="Studio picture" />
+                      <img class="img-responsive" src="<%= @studio.studio_images.first.url %>" width="1200" height="1500" alt="Studio picture" />
 
                     <% else %>
-                    <a class="lightbox bottom-right" href="http://img.talkandroid.com/uploads/2014/10/YogaStudio.png" data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
+                      <a class="lightbox bottom-right" href="http://img.talkandroid.com/uploads/2014/10/YogaStudio.png" data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
 
                     <!-- 
                       image 
                       
                       Extra: add .image-bw class to force black and white!
                     -->
-                    <img class="img-responsive" src="http://img.talkandroid.com/uploads/2014/10/YogaStudio.png" width="1200" height="1500" alt="Studio picture" />
+                      <img class="img-responsive" src="http://img.talkandroid.com/uploads/2014/10/YogaStudio.png" width="1200" height="1500" alt="Studio picture" />
                     <% end %>
                   </figure>
 
@@ -72,15 +72,12 @@
                 <!-- Thumbnails (required height:100px) -->
                 <div data-for="zoom-primary" class="zoom-more owl-carousel owl-padding-3 featured" data-plugin-options='{"singleItem": false, "autoPlay": false, "navigation": true, "pagination": false}'>
                   <% if @studio.studio_images %>
-                  <% @studio.studio_images.each do |image| %>
-                  <a class="thumbnail active" href="<%= image.url %>">
-                    <img src="<%= image.url %>" height="100" alt="" />
-                  </a>
+                    <% @studio.studio_images.each do |image| %>
+                      <a class="thumbnail active" href="<%= image.url %>">
+                        <img src="<%= image.url %>" height="100" alt="" />
+                      </a>
+                    <% end %>
                   <% end %>
-                  <% end %>
-
-
-
                 </div>
                 <!-- /Thumbnails -->
                 <div class="divider divider-center"><!-- divider -->

@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get '/studios/:id/edit' => 'studios#edit'
   patch '/studios/:id' => 'studios#update'
   delete '/studios/:id' => 'studios#destroy'
+  get '/studios/:id/images' => 'studios#images'
+  post'/studios/:id/images' => 'studios#add_image'
+  delete '/studios/:id/images/:img_id' => 'studios#delete_image'
 
   post '/studios/review' => 'studios#new_review'
   delete '/studios/:id/reviews/:review_id' => 'studios#destroy_review'
