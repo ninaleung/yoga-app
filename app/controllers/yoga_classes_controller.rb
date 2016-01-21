@@ -37,6 +37,7 @@ class YogaClassesController < ApplicationController
         "height": 48
         })
     end
+    @number = @hash.length
   end
 
   def show

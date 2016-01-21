@@ -307,12 +307,13 @@
 
                   <div class="col-md-6 margin-bottom-10">
                     <!-- Name -->
-                    <p> <strong>Reviewer Name: </strong> <%= current_user.first_name %> <%= current_user.last_name[0,1] %>.</p>
+
+                    <h4> <strong>Reviewer Name: </strong> <%= current_user.first_name %> <%= current_user.last_name[0,1] %>.</h4>
                   </div>
                   
                   <div class="col-md-6">
                     <!-- Rating -->
-                    <input type="number" name="rating" id="rating" class="form-control stepper" placeholder="rating" min="0" max="5" required="">
+                    <input type="number" name="rating" id="rating" class="form-control stepper" placeholder="Your Rating" min="0" max="5" required="">
                   </div>
                   <input type="hidden" name="studio_id" id="studio_id" value="<%= @studio.id %>">
                   <input type="hidden" name="user_id" id="user_id" value="<%= current_user.id %>">

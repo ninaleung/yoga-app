@@ -109,51 +109,64 @@
         </div>
       </section>
       <!-- / -->
-
-<h1>Edit studio</h1>
-<%= form_tag "/studios/#{@studio.id}", method: :patch do %>
-  <div>
-    <%= label_tag :name %>
-    <%= text_field_tag :name, @studio.name %>
-  </div>
-  <div>
-    <%= label_tag :address %>
-    <%= text_field_tag :address, @studio.address %>
-  </div>
-  <div>
-    <%= label_tag :phone %>
-    <%= text_field_tag :phone, @studio.phone %>
-  </div>
-  <div>
-    <%= label_tag :email %>
-    <%= text_field_tag :email, @studio.email %>
-  </div>
-  <div>
-    <%= label_tag :website %>
-    <%= text_field_tag :website, @studio.website %>
-  </div>
-  <div>
-    <%= label_tag :logo_url %>
-    <%= text_field_tag :logo_url, @studio.logo_url %>
-  </div>
-  <div>
-    <%= label_tag :description %>
-    <%= text_area_tag :description, @studio.description %>
-  </div>
-  <div>
-    <%= label_tag :class_schedule_link %>
-    <%= text_field_tag :class_schedule_link, @studio.class_schedule_link %>
-  </div>
-  <div>
-    <%= label_tag :sign_up_link %>
-    <%= text_field_tag :sign_up_link, @studio.sign_up_link %>
-  </div>
-  <div>
-    <%= label_tag :Studio_Owner %>
-    <%= select_tag 'user_id', options_from_collection_for_select(@owners, 'id', 'email', @studio.user.id) %>
-  </div>
-  <div>
-    <%= submit_tag 'Save changes to yoga studio' %>
-    <button type="button"><%= link_to "Cancel", "/studios" %></button>
-  </div>
-<% end %>
+      <section>
+        <div class="container">
+         <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <form class="nomargin sky-form boxed">
+              <header>
+                <i class="fa fa-users"></i> Edit Yoga Studio
+              </header>
+              <fieldset class="nomargin"> 
+                <%= form_tag "/studios/#{@studio.id}", method: :patch do %>
+                <div>
+                  <%= label_tag :name %>
+                  <%= text_field_tag :name, @studio.name %>
+                </div>
+                <div>
+                  <%= label_tag :address %>
+                  <%= text_field_tag :address, @studio.address %>
+                </div>
+                <div>
+                  <%= label_tag :phone %>
+                  <%= text_field_tag :phone, @studio.phone %>
+                </div>
+                <div>
+                  <%= label_tag :email %>
+                  <%= text_field_tag :email, @studio.email %>
+                </div>
+                <div>
+                  <%= label_tag :website %>
+                  <%= text_field_tag :website, @studio.website %>
+                </div>
+                <div>
+                  <%= label_tag :logo_url %>
+                  <%= text_field_tag :logo_url, @studio.logo_url %>
+                </div>
+                <div>
+                  <%= label_tag :description %>
+                  <%= text_area_tag :description, @studio.description %>
+                </div>
+                <div>
+                  <%= label_tag :class_schedule_link %>
+                  <%= text_field_tag :class_schedule_link, @studio.class_schedule_link %>
+                </div>
+                <div>
+                  <%= label_tag :sign_up_link %>
+                  <%= text_field_tag :sign_up_link, @studio.sign_up_link %>
+                </div>
+                <div>
+                  <%= label_tag :Studio_Owner %>
+                  <%= select_tag 'user_id', options_from_collection_for_select(@owners, 'id', 'email', @studio.user.id) %>
+                </div>
+                <div>
+                  <%= submit_tag 'Save changes to yoga studio' %>
+                  <button type="button"><%= link_to "Cancel", "/studios" %></button>
+                </div>
+                <% end %>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
