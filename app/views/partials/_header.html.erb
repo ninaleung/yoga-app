@@ -124,15 +124,13 @@
                           <li><%= link_to "CorePower Yoga", "/studios/10" %></li>
                         </ul>
                       </li>
-                      <li><a tabindex="-1" href="#"><i class="fa fa-edit"></i> MY REVIEWS</a></li>
-                      <li><a tabindex="-1" href="#"><i class="fa fa-cog"></i> MY SETTINGS</a></li>
                       <li class="divider"></li>
                     </ul>
                     <% end %>
                   </li>
 
-                  <li><a href="/yoga_classes">Browse Classes</a></li>
-                  <li><a href="/studios">Browse Studios</a></li>
+                  <li><a href="/yoga_classes"><i class="fa fa-book"></i> ALL CLASSES</a></li>
+                  <li><a href="/studios"><i class="fa fa-building-o"></i>  ALL STUDIOS</a></li>
 
                   <li><% if current_user %>
                   <li><%= link_to "Sign Out", "/users/sign_out", method: :delete %></li>
