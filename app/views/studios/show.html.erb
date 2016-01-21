@@ -13,6 +13,9 @@
       <div class="display-table-cell vertical-align-middle">
         <section>
         <div class="container">
+          <div>
+            
+          </div>
           
           <div class="row">
           
@@ -36,14 +39,21 @@
                       .top-right
                       .top-left
                   -->
-                  <a class="lightbox bottom-right" href="http://img.talkandroid.com/uploads/2014/10/YogaStudio.png" data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
+                  <% if @studio.studio_images.any? %>
+                    <a class="lightbox bottom-right" href="<%= @studio.studio_images.first.url %>" data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
 
-                  <!-- 
-                    image 
-                    
-                    Extra: add .image-bw class to force black and white!
-                  -->
-                  <img class="img-responsive" src="http://img.talkandroid.com/uploads/2014/10/YogaStudio.png" width="1200" height="1500" alt="This is the product title" />
+                    <img class="img-responsive" src="<%= @studio.studio_images.first.url %>" width="1200" height="1500" alt="Studio picture" />
+
+                  <% else %>
+                    <a class="lightbox bottom-right" href="http://img.talkandroid.com/uploads/2014/10/YogaStudio.png" data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
+
+                    <!-- 
+                      image 
+                      
+                      Extra: add .image-bw class to force black and white!
+                    -->
+                    <img class="img-responsive" src="http://img.talkandroid.com/uploads/2014/10/YogaStudio.png" width="1200" height="1500" alt="Studio picture" />
+                  <% end %>
                 </figure>
 
               </div>
@@ -62,6 +72,58 @@
                 
               </div>
               <!-- /Thumbnails -->
+              <div class="divider divider-center"><!-- divider -->
+                <i class="fa fa-hand-peace-o"></i>
+              </div>
+
+              <!-- Share -->
+              <div class="center">
+
+                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-facebook pull-left" data-toggle="tooltip" data-placement="top" title="Facebook">
+                  <i class="icon-facebook"></i>
+                  <i class="icon-facebook"></i>
+                </a>
+
+                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-twitter pull-left" data-toggle="tooltip" data-placement="top" title="Twitter">
+                  <i class="icon-twitter"></i>
+                  <i class="icon-twitter"></i>
+                </a>
+
+                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-gplus pull-left" data-toggle="tooltip" data-placement="top" title="Google plus">
+                  <i class="icon-gplus"></i>
+                  <i class="icon-gplus"></i>
+                </a>
+
+                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-linkedin pull-left" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                  <i class="icon-linkedin"></i>
+                  <i class="icon-linkedin"></i>
+                </a>
+
+              </div>
+              <!-- /Share -->
+
+              <% if user_signed_in? && current_user.role_id == 1 %>
+              <div class="divider divider-center"><!-- divider -->
+                <i class="fa fa-hand-peace-o"></i>
+              </div>
+                <h4 class="size-18">
+                  <i class="fa fa-wrench"></i>
+                  ADMIN
+                </h4>
+                <h5>
+                <ul class="list-unstyled">
+                  <li><i class="fa fa-pencil"></i> <%= link_to "Edit this studio", "/studios/#{@studio.id}/edit" %></li>
+                  <li><i class="fa fa-minus-circle"></i> <%= link_to "Delete this studio", "/studios/#{@studio.id}/", method: :delete %></li>
+                  <% if user_signed_in? && current_user.role_id == 1 %>
+                    <li><i class="fa fa-user"></i> Owner: <span class="text-warning"><%= @studio.user.email %></span></li>
+                  <% end %> 
+                </ul>
+                </h5>
+              <div class="divider divider-center"><!-- divider -->
+                <i class="fa fa-hand-peace-o"></i>
+              </div>
+              <% end %>
+
 
             </div>
             <!-- /IMAGE -->
@@ -94,67 +156,29 @@
                 <span class="pull-right text-danger"><i class="glyphicon glyphicon-remove"></i> Out of Stock</span>
                 -->
 
+              <h4>
+
                 <strong class="size-20"><%= @studio.name %></strong>
-                <ul class="list-unstyled padding-10 size-16">
-                  <li><i class="fa fa-globe text-success"></i> <span class="text-success"><%= link_to @studio.website, "http://#{@studio.website}", target: '_blank', title: 'Visit website'%></span></li>
-                  <li><i class="fa fa-car"></i> <span class="text-warning"><%= link_to @studio.address, "http://maps.google.com/?saddr=Current+Location&daddr=#{@studio.address}", target: '_blank', title: 'See map and get directions' %></span></li>
-                  <li><i class="fa fa-phone"></i> <span class="text-warning"><%= @studio.phone %></span></li>
-                  <li><i class="fa fa-envelope"></i> <span class="text-warning"><%= @studio.email %></span></li>
+                <ul class="list-unstyled padding-20 size-16">
+                  <li class="padding-10"><i class="fa fa-globe text-info"></i>&nbsp;<%= link_to @studio.website, "http://#{@studio.website}", target: '_blank', title: 'Visit website'%></li>
+                  <li class="padding-10"><i class="fa fa-car"></i><%= link_to @studio.address, "http://maps.google.com/?saddr=Current+Location&daddr=#{@studio.address}", target: '_blank', title: 'See map and get directions' %></li>
+                  <li class="padding-10"><i class="fa fa-phone"></i><%= @studio.phone %></span></li>
+                  <li class="padding-10"><i class="fa fa-envelope"></i><span class="text-warning"><%= @studio.email %></span></li>
+
+                  <div class="divider divider-center"><!-- divider -->
+                    <i class="fa fa-hand-peace-o"></i>
+                  </div>
+                  
+                  <% if @studio.class_schedule_link %>
+                    <li class="padding-10"><i class="fa fa-calendar text-info"></i><span class="text-info"><%= link_to "Studio's Class Schedule", "http://#{@studio.class_schedule_link}", target: '_blank', title: 'View studio schedule'%></span></li>
+                  <% end %>
+              </h4>
                  
                 </ul>
-              </div>
-
-
-              <!-- short description -->
-              
-              <!-- /short description -->
-
-
-              <!-- countdown -->
-              <% if @studio.yoga_classes.any? %>
-                <div class="text-center">
-                  <h5><i class="fa fa-clock-o"></i> <%= link_to "Next class starts in:", "/yoga_classes/#{@next_class.id}" %></h5>
-                  <div class="countdown" data-from="<%= @next_class.start + 6.hours %>" data-labels="years,months,weeks,days,hour,min,sec"><!-- Example Date From: December 31, 2018 15:03:26 --></div>
-                </div>
-              <% end %>
-              <!-- /countdown -->
-
-
-              <hr />
-
-
-              <!-- Share -->
-              <div class="pull-right">
-
-                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-facebook pull-left" data-toggle="tooltip" data-placement="top" title="Facebook">
-                  <i class="icon-facebook"></i>
-                  <i class="icon-facebook"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-twitter pull-left" data-toggle="tooltip" data-placement="top" title="Twitter">
-                  <i class="icon-twitter"></i>
-                  <i class="icon-twitter"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-gplus pull-left" data-toggle="tooltip" data-placement="top" title="Google plus">
-                  <i class="icon-gplus"></i>
-                  <i class="icon-gplus"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-linkedin pull-left" data-toggle="tooltip" data-placement="top" title="Linkedin">
-                  <i class="icon-linkedin"></i>
-                  <i class="icon-linkedin"></i>
-                </a>
 
               </div>
-              <!-- /Share -->
 
 
-              <!-- rating -->
-              <% if @reviews.any? %>
-                <h3>Average rating: <%= @average_rating %>/5</h3>
-              <% end %>
-              <!-- /rating -->
 
             </div>
             <!-- /ITEM DESC -->
@@ -162,40 +186,38 @@
             <!-- INFO -->
             <div class="col-sm-4 col-md-3">
 
+
+              <!-- rating -->
+              <% if @reviews.any? %>
+                <h3>Average Rating: <%= @average_rating %>/5</h3>
+                <div class="divider divider-center"><!-- divider -->
+                  <i class="fa fa-hand-peace-o"></i>
+                </div>
+              <% end %>
+              <!-- /rating -->
+
               <h4 class="size-18">
                 <i class="fa fa-paper-plane-o"></i> 
                 <%= link_to "Yoga Loca Class Listings", "/yoga_classes?studio=#{@studio.id}" %>
               </h4>
 
-              <% if @studio.class_schedule_link %>
-              <h4 class="size-18">
-                <i class="fa fa-calendar text-success"></i> 
-                <%= link_to "Studio's Class Schedule", "http://#{@studio.class_schedule_link}", target: '_blank', title: 'View studio schedule'%>
+              <div class="divider divider-center"><!-- divider -->
+                <i class="fa fa-hand-peace-o"></i>
+              </div>
+              <!-- countdown -->
+              <% if @studio.yoga_classes.any? %>
+                <div class="text-center">
+                  <h5><i class="fa fa-clock-o"></i> <%= link_to "Next class starts in:", "/yoga_classes/#{@next_class.id}" %></h5>
+                  <div class="countdown" data-from="<%= @next_class.start + 6.hours %>" data-labels="years,months,weeks,days,hour,min,sec"><!-- Example Date From: December 31, 2018 15:03:26 --></div>
+                </div>
+                <div class="divider divider-center"><!-- divider -->
+                  <i class="fa fa-hand-peace-o"></i>
+                </div>
               <% end %>
-              </h4>
-              
-              <h4 class="size-18">
-                <i class="fa fa-arrow-circle-left"></i> 
-                <%= link_to "Back to All Studios", "/studios" %>
-              </h4>
+              <!-- /countdown -->
 
-              <hr>
-              <% if user_signed_in? && current_user.role_id == 1 %>
-                <h4 class="size-18">
-                  <i class="fa fa-wrench"></i>
-                  ADMIN
-                </h4>
-                <h5>
-                <ul class="list-unstyled">
-                  <li><i class="fa fa-pencil"></i> <%= link_to "Edit this studio", "/studios/#{@studio.id}/edit" %></li>
-                  <li><i class="fa fa-minus-circle"></i> <%= link_to "Delete this studio", "/studios/#{@studio.id}/", method: :delete %></li>
-                  <% if user_signed_in? && current_user.role_id == 1 %>
-                    <li><i class="fa fa-user"></i> Owner: <span class="text-warning"><%= @studio.user.email %></span></li>
-                  <% end %> 
-                </ul>
-                </h5>
-              <hr>
-              <% end %>
+
+
             </div>
             <!-- /INFO -->
 
