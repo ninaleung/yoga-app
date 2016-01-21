@@ -11,6 +11,8 @@ class StudiosController < ApplicationController
     end
 
     # @chicago_studios = ChicagoYogaStudios::Business.all
+    # @yoga_studios = Unirest.get("https://data.cityofchicago.org/resource/uupf-x98q.json?$q=yoga").body
+    # @current = Unirest.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22chicago%2C%20il%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys").body["query"]["results"]["channel"]["item"]
   end
 
   def show
@@ -76,13 +78,18 @@ class StudiosController < ApplicationController
   end
 
   def new_review
-    Review.create(
-      user_id: params[:user_id],
-      studio_id: params[:studio_id],
-      rating: params[:rating],
-      review: params[:review]
-      )
-    redirect_to "/studios/#{params[:studio_id]}"
+    if Review.where(user_id: params[:user_id]).where(studio_id: params[:studio_id]).any?
+      flash[:alert] = "Sorry, you've already left a review for this studio!"
+      redirect_to "/studios/#{params[:studio_id]}"
+    else
+      Review.create(
+        user_id: params[:user_id],
+        studio_id: params[:studio_id],
+        rating: params[:rating],
+        review: params[:review]
+        )
+      redirect_to "/studios/#{params[:studio_id]}"
+    end
   end
 
   def destroy_review

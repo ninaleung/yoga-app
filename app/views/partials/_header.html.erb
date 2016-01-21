@@ -114,10 +114,16 @@
 
                   <li><% if user_signed_in? && current_user.role_id == 4 %>
                     <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-user hidden-xs"></i> MY ACCOUNT</a>
+
                     <ul class="dropdown-menu">
                       <li><a tabindex="-1" href="/saved_classes/calendar"><i class="fa fa-history"></i> SAVED CLASSES</a></li>
                       <li class="divider"></li>
-                      <li><a tabindex="-1" href="#"><i class="fa fa-bookmark"></i> SAVED STUDIOS</a></li>
+                      <li class="dropdown"><a tabindex="-1" href="#" class="dropdown-toggle"><i class="fa fa-bookmark"></i> SAVED STUDIOS</a>
+                        <ul class="dropdown-menu">
+                          <li><%= link_to "Yoga Now", "/studios/11" %></li>
+                          <li><%= link_to "CorePower Yoga", "/studios/10" %></li>
+                        </ul>
+                      </li>
                       <li><a tabindex="-1" href="#"><i class="fa fa-edit"></i> MY REVIEWS</a></li>
                       <li><a tabindex="-1" href="#"><i class="fa fa-cog"></i> MY SETTINGS</a></li>
                       <li class="divider"></li>
@@ -134,12 +140,6 @@
                   <li><%= link_to "Sign In", "/users/sign_in" %></li>
                   <li><%= link_to "Sign Up", "/users/sign_up" %></li>
                   <% end %></li>
-
-
-
-                
-
-
                 </ul>
 
               </nav>

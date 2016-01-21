@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require "unirest"
+
 yoga_studios = Unirest.get("https://data.cityofchicago.org/resource/uupf-x98q.json?$q=yoga").body
 
 yoga_studios.drop(1)
