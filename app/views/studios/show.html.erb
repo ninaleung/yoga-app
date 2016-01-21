@@ -103,7 +103,7 @@
                 </div>
                 <% end %>
 
-                <% if user_signed_in? && current_user.role_id == 2 %>
+                <% if user_signed_in? && current_user.role_id == 2 && (@studio.id == current_user.studio.first.id) %>
                 <h4 class="size-18">
                   <i class="fa fa-wrench"></i>
                   STUDIO OWNER ADMIN
