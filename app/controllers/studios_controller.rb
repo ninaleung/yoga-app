@@ -42,7 +42,7 @@ class StudiosController < ApplicationController
       logo_url: params[:logo_url],
       description: params[:description],
       class_schedule_link: params[:class_schedule_link],
-      sign_up_link: params[:sign_up_link],
+      sign_up_link: params[:sign_up_link]
       )
     redirect_to "/studios/#{studio.id}"
   end
@@ -61,6 +61,10 @@ class StudiosController < ApplicationController
       email: params[:email],
       website: params[:website],
       user_id: params[:user_id],
+      logo_url: params[:logo_url],
+      description: params[:description],
+      class_schedule_link: params[:class_schedule_link],
+      sign_up_link: params[:sign_up_link]
       )
     redirect_to "/studios/#{studio.id}"
   end

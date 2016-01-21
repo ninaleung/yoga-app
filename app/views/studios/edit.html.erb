@@ -1,3 +1,115 @@
+      <!-- -->
+      <section>
+        <div class="container">
+          
+          <div class="row">
+
+            <!-- LOGIN -->
+            <div class="col-md-6 col-sm-6">
+
+              <!-- ALERT -->
+              <!--
+              <div class="alert alert-mini alert-danger margin-bottom-30">
+                <strong>Oh snap!</strong> Login Incorrect!
+              </div>
+              -->
+              <!-- /ALERT -->
+
+              <!-- register form -->
+              <form class="nomargin sky-form boxed" action="/studios/<%= @studio.id %>" method="patch">
+                <header>
+                  <i class="fa fa-users"></i> Edit Yoga Studio
+                  </header>
+
+                <fieldset class="nomargin">         
+                  <label class="input margin-bottom-10">
+                    <i class="ico-append fa fa-star"></i>
+                    <input type="text" placeholder="Name" name="name" value="<%= @studio.name %>">
+                  </label>
+
+                  <label class="input margin-bottom-10">
+                    <i class="ico-append fa fa-building"></i>
+                    <input type="text" placeholder="Address" name="address" value="<%= @studio.address %>">
+                  </label>
+
+                  <label class="input margin-bottom-10">
+                    <i class="ico-append fa fa-phone-square"></i>
+                    <div class="fancy-form"><!-- input -->
+
+                      <!-- replace here any input from below if you want fancy style (icon + tooltip) -->
+                      <input type="text" class="form-control masked" data-format="(999) 999-9999" data-placeholder="X" placeholder="Enter telephone" name="phone" value="<%= @studio.phone %>">
+
+                      <span class="fancy-tooltip top-left"> <!-- positions: .top-left | .top-right -->
+                        <em>Type Your Phone Number</em>
+                      </span>
+                    </div>
+                  </label>
+
+                  <label class="input margin-bottom-10">
+                    <i class="ico-append fa fa-envelope"></i>
+                    <input type="text" placeholder="Email address" name="email" value="<%= @studio.email %>">
+                  </label>
+                  
+                  <label class="input margin-bottom-10">
+                      <i class="ico-append fa fa-info"></i>
+                      <input type="text" placeholder="Website URL, starting with www." name="website" value="<%= @studio.website %>">
+                  </label>
+                  
+                  <label class="input margin-bottom-10">
+                      <i class="ico-append fa fa-info"></i>
+                      <input type="text" placeholder="Logo Url, starting with http://" name="logo_url" value="<%= @studio.logo_url %>">
+                  </label>
+
+                  <div class="row">
+                        <div class="form-group">
+                          <div class="col-md-12 col-sm-12">
+                            <label>Description *</label>
+                            <textarea name="description" rows="4" class="form-control required"><%= @studio.description %></textarea>
+                          </div>
+                        </div>
+                      </div>
+
+                  <label class="input margin-bottom-10">
+                      <i class="ico-append fa fa-info"></i>
+                      <input type="text" placeholder="Class Schedule Link" name="class_schedule_link" value="<%= @studio.class_schedule_link %>">
+                  </label>
+                  
+                  <label class="input margin-bottom-10">
+                      <i class="ico-append fa fa-info"></i>
+                      <input type="text" placeholder="Class Sign Up Link" name="sign_up_link" value="<%= @studio.sign_up_link %>">
+                  </label>
+                  
+                  <label class="select margin-bottom-10 margin-top-20">
+                    <select>
+                      <option value="<%= @studio.user.id %>"><%= @studio.user.email %></option>
+                    </select>
+                    <i></i>
+                  </label>
+                
+                </fieldset>
+
+                <div class="row margin-bottom-20">
+                  <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Save Changes to Studio</button>
+                    <button type="button"><%= link_to "Cancel", "/studios" %></button>
+                  </div>
+                </div>
+
+              </form>
+              <!-- /register form -->
+
+            </div>
+            <!-- /LOGIN -->
+
+          
+
+          </div>
+
+          
+        </div>
+      </section>
+      <!-- / -->
+
 <h1>Edit studio</h1>
 <%= form_tag "/studios/#{@studio.id}", method: :patch do %>
   <div>
