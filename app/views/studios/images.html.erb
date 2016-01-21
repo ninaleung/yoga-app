@@ -1,17 +1,50 @@
-Current Images
+      <!-- -->
+      <section>
+        <div class="container">
+          
+          <div class="row">
 
-<% if @images %>
-  <% @images.each do |image| %>
-    <img src="<%= image.url %>" alt="Studio Image"/>
-    <%= link_to '<i class="fa fa-remove"></i>'.html_safe, "/studios/#{@studio.id}/images/#{image.id}", method: :delete %>
+            <!-- LOGIN -->
+            <div class="col-md-12 col-sm-12">
+
+              <div class="nomargin sky-form boxed">
+                <header>
+                  <i class="fa fa-users"></i> Current Images
+                  </header>
+                  <fieldset class="nomargin"> 
+<div class="row">
+  <% if @images %>
+    <% @images.each do |image| %>
+    <div class="col-md-3">
+      <div class="well">
+      <img class="img-responsive" src="<%= image.url %>" alt="Studio Image"/>
+      <%= link_to '<i class="fa fa-remove"></i>'.html_safe, "/studios/#{@studio.id}/images/#{image.id}", method: :delete %>
+      </div>
+    </div>
+    <% end %>
+  <% else %>
+    No images uploaded yet!
   <% end %>
-<% else %>
-  No images uploaded yet!
-<% end %>
+</div>
+</fieldset>
+</div></div></div></div></section>
 
-Add an image
 
-<%= form_tag "/studios/#{@studio.id}/images", method: :post do %>
+      <section>
+        <div class="container">
+          
+          <div class="row">
+
+            <!-- LOGIN -->
+            <div class="col-md-6 col-sm-6">
+
+              <div class="nomargin sky-form boxed" action="/studios/" method="post">
+                <header>
+                  <i class="fa fa-camera"></i> Add an Image
+                  </header>
+
+                <fieldset class="nomargin">   
+                <%= form_tag "/studios/#{@studio.id}/images", method: :post do %>
   <div>
     <%= label_tag :image_url %>
     <%= text_field_tag :url %>
@@ -22,3 +55,12 @@ Add an image
     <button type="button"><%= link_to "Cancel", "/studios/#{@studio.id}/images" %></button>
   </div>
 <% end %>
+
+</fieldset>
+</div>
+<br>
+<%= link_to "Back to studio page", "/studios/#{@studio.id}" %>
+</div>
+</div>
+</div>
+</section>

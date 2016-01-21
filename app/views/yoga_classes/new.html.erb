@@ -1,4 +1,12 @@
-<h1>Add a yoga class</h1>
+      <section>
+        <div class="container">
+         <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="nomargin sky-form boxed">
+              <header>
+                <i class="fa fa-plus"></i> Add a Yoga Class
+              </header>
+              <fieldset class="nomargin">
 <%= form_tag "/yoga_classes/", method: :post do %>
   <div>
     <%= label_tag :name %>
@@ -19,7 +27,6 @@
   <div>
     <%= label_tag :start_time %>
     <%= time_field_tag :time %>
-  </div>
   </div>
   <div>
     <%= label_tag :duration %>
@@ -46,3 +53,9 @@
     <button type="button"><%= link_to "Cancel", "/yoga_classes" %></button>
   </div>
 <% end %>
+</fieldset>
+</div>
+</div>
+</div>
+</div>
+</section>
