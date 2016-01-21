@@ -69,7 +69,7 @@
                         </div>
                       </div>
 
-                  <label class="input margin-bottom-10">
+                  <label class="g">
                       <i class="ico-append fa fa-info"></i>
                       <input type="text" placeholder="Class Schedule Link" name="class_schedule_link" value="<%= @studio.class_schedule_link %>">
                   </label>
@@ -113,14 +113,14 @@
         <div class="container">
          <div class="row">
           <div class="col-md-6 col-sm-6">
-            <form class="nomargin sky-form boxed">
+            <div class="nomargin sky-form boxed">
               <header>
                 <i class="fa fa-users"></i> Edit Yoga Studio
               </header>
               <fieldset class="nomargin"> 
                 <%= form_tag "/studios/#{@studio.id}", method: :patch do %>
                 <div>
-                  <%= label_tag :name %>
+                  <%= label_tag :name  %>
                   <%= text_field_tag :name, @studio.name %>
                 </div>
                 <div>
@@ -165,7 +165,7 @@
                 </div>
                 <% end %>
               </fieldset>
-            </form>
+            </div>
           </div>
         </div>
       </div>
