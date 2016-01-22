@@ -95,7 +95,9 @@
                     <li><i class="fa fa-pencil"></i> <%= link_to "Edit this studio", "/studios/#{@studio.id}/edit" %></li>
                     <li><i class="fa fa-minus-circle"></i> <%= link_to "Delete this studio", "/studios/#{@studio.id}/", method: :delete %></li>
                     <li><i class="glyphicon glyphicon-camera"></i> <%= link_to "Update studio images", "/studios/#{@studio.id}/images" %></li>
-                    <li><i class="fa fa-user"></i> Owner: <span class="text-warning"><%= @studio.user.email %></span></li>
+                    <% if @studio.user %>
+                      <li><i class="fa fa-user"></i> Owner: <span class="text-warning"><%= @studio.user.email %></span></li>
+                    <% end %>
                   </ul>
                 </h5>
                 <div class="divider divider-center"><!-- divider -->

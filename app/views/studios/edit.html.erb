@@ -50,7 +50,13 @@
                 </div>
                 <div>
                   <%= label_tag :Studio_Owner %>
-                  <%= select_tag 'user_id', options_from_collection_for_select(@owners, 'id', 'email', @studio.user.id), class: "wide-field" %>
+                  <%= select_tag 'user_id', options_from_collection_for_select(@owners, 'id', 'email', 
+                    if @studio.user
+                      @studio.user.id
+                    else
+                      nil
+                    end
+                  ), class: "wide-field" %>
                 </div>
                 <div>
                   <%= submit_tag 'Save changes to yoga studio', class: "button" %>
