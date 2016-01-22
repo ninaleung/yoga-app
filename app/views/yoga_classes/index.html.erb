@@ -53,79 +53,63 @@
         <div class="container">
           <div class="row">
 
-          <!-- MAP COLUMNS -->
-          <div class="col-md-5 col-sm-5" style="position: fixed">             
-            <div id="map"></div>
+
+          <!-- RIGHT COLUMNS -->
+          <div class="col-md-3 col-sm-3 ">
+            <h4>FILTERS</h4>
+
+            <form action="#" method="get">
+              <input type="text" value="" class="form-control" placeholder="Search for class names" ng-model="nameFilter" />
+
+              <input type="text" value="" class="form-control" placeholder="Search for studio names" ng-model="studioFilter" />
+
+              <input type="text" class="form-control datepicker" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="  Find classes by date" name="date" ng-model="dateFilter">
+              <!-- value="<%= Time.now.strftime("%A, %b %d, %Y") %>" -->
+
+              <label class="size-12 margin-top-10">Style</label>
+              <select class="form-control" ng-model="classStyle">
+                <option value="">All</option>
+                <option value="Ashtanga">Ashtanga</option>
+                <option value="Bikram">Bikram</option>
+                <option value="Hatha">Hatha</option>
+                <option value="Restorative">Restorative</option>
+                <option value="Vinyasa">Vinyasa</option>
+                <option value="Other">Other</option>
+              </select>
+
+              <label class="size-12 margin-top-10">Level</label>
+              <select class="form-control" ng-model="classLevel">
+                <option value="">All</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+                <option value="Open">Open</option>
+              </select>
+
+              <label class="size-12 margin-top-10">Max Price</label>
+              <select class="form-control" ng-model="maxPrice">
+                <option selected="selected" value="All" autocomplete="off">All</option>
+                <option value="0.001">Free</option>
+                <option value="5">$5</option>
+                <option value="10">$10</option>
+                <option value="15">$15</option>
+                <option value="20">$20</option>
+                <option value="25">$25</option>
+                <option value="30">$30</option>
+              </select>
+
+            </form>
+            <hr />
+
+
           </div>
-          <!-- /MAP COLUMNS -->
+          <!-- /RIGHT COLUMNS -->
 
+          <div class="col-md-1 col-sm-1"></div>
 
-
-
-
-            <!-- RIGHT COLUMNS -->
-            <div class="col-md-3 col-sm-3 pull-right">
-              <h4>FILTERS</h4>
-
-              <form action="#" method="get">
-                <input type="text" value="" class="form-control" placeholder="Search for class names" ng-model="nameFilter" />
-
-                <input type="text" value="" class="form-control" placeholder="Search for studio names" ng-model="studioFilter" />
-
-                <input type="text" class="form-control datepicker" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="  Find classes by date" name="date" ng-model="dateFilter">
-                <!-- value="<%= Time.now.strftime("%A, %b %d, %Y") %>" -->
-
-                <label class="size-12 margin-top-10">Style</label>
-                <select class="form-control" ng-model="classStyle">
-                  <option value="">All</option>
-                  <option value="Ashtanga">Ashtanga</option>
-                  <option value="Bikram">Bikram</option>
-                  <option value="Hatha">Hatha</option>
-                  <option value="Restorative">Restorative</option>
-                  <option value="Vinyasa">Vinyasa</option>
-                  <option value="Other">Other</option>
-                </select>
-
-                <label class="size-12 margin-top-10">Level</label>
-                <select class="form-control" ng-model="classLevel">
-                  <option value="">All</option>
-                  <option value="Beginner">Beginner</option>
-                  <option value="Intermediate">Intermediate</option>
-                  <option value="Advanced">Advanced</option>
-                  <option value="Open">Open</option>
-                </select>
-
-                <label class="size-12 margin-top-10">Max Price</label>
-                <select class="form-control" ng-model="maxPrice">
-                  <option selected="selected" value="All" autocomplete="off">All</option>
-                  <option value="0.001">Free</option>
-                  <option value="5">$5</option>
-                  <option value="10">$10</option>
-                  <option value="15">$15</option>
-                  <option value="20">$20</option>
-                  <option value="25">$25</option>
-                  <option value="30">$30</option>
-                </select>
-
-                <div class="margin-bottom-40">
-                  <div class="margin-bottom-10">
-                    <label for="amount">Maximum price:</label>
-                    <input type="hidden" name="amount" id="amount" class="form-control"> <!-- hidden input -->
-                  </div>           
-                  <div class="slider-wrapper success-slider">
-                    <div id="slider2"></div>
-                  </div>
-                </div>
-
-              </form>
-              <hr />
-
-
-            </div>
-            <!-- /RIGHT COLUMNS -->
 
             <!-- LEFT COLUMNS -->
-            <div class="col-md-4 col-sm-4 pull-right">
+            <div class="col-md-4 col-sm-4">
 
               <!-- SEARCH RESULTS -->
               <div dir-paginate="yoga_class in yogaClasses | filter: {studio_name: studioFilter, start: dateFilter, name: nameFilter, level: classLevel, style: classStyle} | orderBy: 'start' | itemsPerPage: 5">
@@ -145,12 +129,25 @@
               <!-- /SEARCH RESULTS -->
 
               <!-- PAGINATION -->
-
-              <dir-pagination-controls></dir-pagination-controls>
+              
+                <dir-pagination-controls></dir-pagination-controls>
 
               <!-- /PAGINATION -->
             </div>
             <!-- /LEFT COLUMNS -->
+
+
+          <!-- MAP COLUMNS -->
+          <div class="col-md-4 col-sm-4">             
+            <div id="map"></div>
+          </div>
+          <!-- /MAP COLUMNS -->
+
+
+
+
+
+
         </div>
       </section>
       </div>
