@@ -73,12 +73,13 @@
                   </li>
 
                   <li><% if user_signed_in? && current_user.role_id == 2 %>
-                    <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-building-o"></i> MY STUDIO</a>
+                    <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-wrench"></i> MY STUDIO</a>
                     <ul class="dropdown-menu">
                       <li><a tabindex="-1" href="/yoga_classes/new"><i class="fa fa-plus"></i> ADD A NEW CLASS</a></li>
                       <li><a tabindex="-1" href="/yoga_classes"><i class="fa fa-calendar"></i> STUDIO'S CLASS SCHEDULE</a></li>
                       <li class="divider"></li>
                       <li><a tabindex="-1" href="/studios/<%= current_user.studio.first.id %>/"><i class="fa fa-edit"></i> MY STUDIO PAGE</a></li>
+                      <li><a tabindex="-1" href="/studios/<%= current_user.studio.first.id %>/images"><i class="fa fa-camera"></i> UPDATE STUDIO IMAGES</a></li>
                       <li class="divider"></li>
                     </ul>
                     <% end %>
