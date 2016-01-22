@@ -146,15 +146,26 @@
 
               <h4 class="text-center">
                 <ul class="list-unstyled padding-20 size-16">
-                  <li class="padding-10"><i class="fa fa-globe text-info"></i>&nbsp;<%= link_to @studio.website, "http://#{@studio.website}", target: '_blank', title: 'Visit website'%></li>
-                  <li>
-                    <% if @studio.class_schedule_link %>
+                  
+                  <% if @studio.website %>
+                    <li class="padding-10"><i class="fa fa-globe text-info"></i>&nbsp;<%= link_to @studio.website, "http://#{@studio.website}", target: '_blank', title: 'Visit website'%></li>
+                  <% end %>
+                  
+                  <% if @studio.class_schedule_link %>
                     <li class="padding-10"><i class="fa fa-calendar text-info"></i><%= link_to "Studio's Class Schedule", "http://#{@studio.class_schedule_link}", target: '_blank', title: 'View studio schedule'%></li>
-                    <% end %>
-                  </li>
-                  <li class="padding-10"><i class="fa fa-car"></i><%= link_to @studio.address, "http://maps.google.com/?saddr=Current+Location&daddr=#{@studio.address}", target: '_blank', title: 'See map and get directions' %></li>
-                  <li class="padding-10"><i class="fa fa-envelope"></i><%= @studio.email %></li>
-                  <li class="padding-10"><i class="fa fa-phone"></i><%= @studio.phone %></li>
+                  <% end %>
+              
+                  <% if @studio.address %>
+                    <li class="padding-10"><i class="fa fa-car"></i><%= link_to @studio.address, "http://maps.google.com/?saddr=Current+Location&daddr=#{@studio.address}", target: '_blank', title: 'See map and get directions' %></li>
+                  <% end %>
+
+                  <% if @studio.email %>
+                    <li class="padding-10"><i class="fa fa-envelope"></i><%= @studio.email %></li>
+                  <% end %>
+
+                  <% if @studio.phone %>
+                    <li class="padding-10"><i class="fa fa-phone"></i><%= @studio.phone %></li>
+                  <% end %>
 
                   <div class="divider divider-center"><!-- divider -->
                     <i class="fa fa-hand-peace-o"></i>
