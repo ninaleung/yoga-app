@@ -69,7 +69,7 @@ class YogaClassesController < ApplicationController
       price: params[:price],
       level: params[:level],
       style: params[:style],
-      user_id: params[:user_id]
+      teacher_name: params[:teacher_name]
       )
     redirect_to "/yoga_classes/#{yoga_class.id}"
   end
@@ -100,7 +100,7 @@ class YogaClassesController < ApplicationController
       price: params[:price],
       level: params[:level],
       style: params[:style],
-      user_id: params[:user_id]
+      teacher_name: params[:teacher_name]
       )
     redirect_to "/yoga_classes/#{yoga_class.id}"
   end

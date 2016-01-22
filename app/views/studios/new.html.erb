@@ -1,111 +1,7 @@
 <%= render partial: "partials/header", locals: {
   current_user: current_user,
   is_angular: false
-} %>      <!-- -->
-      <section>
-        <div class="container">
-          
-          <div class="row">
-
-            <!-- LOGIN -->
-            <div class="col-md-6 col-sm-6">
-
-              <div class="nomargin sky-form boxed">
-                <header>
-                  <i class="fa fa-users"></i> Add a Yoga Studio
-                  </header>
-
-                <fieldset class="nomargin">         
-                  <label class="input margin-bottom-10">
-                    <i class="ico-append fa fa-star"></i>
-                    <input type="text" placeholder="Name" name="name">
-                  </label>
-
-                  <label class="input margin-bottom-10">
-                    <i class="ico-append fa fa-building"></i>
-                    <input type="text" placeholder="Address" name="address">
-                  </label>
-
-                  <label class="input margin-bottom-10">
-                    <i class="ico-append fa fa-phone-square"></i>
-                    <div class="fancy-form"><!-- input -->
-
-                      <!-- replace here any input from below if you want fancy style (icon + tooltip) -->
-                      <input type="text" class="form-control masked" data-format="(999) 999-9999" data-placeholder="X" placeholder="Enter telephone" name="phone">
-
-                      <span class="fancy-tooltip top-left"> <!-- positions: .top-left | .top-right -->
-                        <em>Type Your Phone Number</em>
-                      </span>
-                    </div>
-                  </label>
-
-                  <label class="input margin-bottom-10">
-                    <i class="ico-append fa fa-envelope"></i>
-                    <input type="text" placeholder="Email address" name="email">
-                  </label>
-                  
-                  <label class="input margin-bottom-10">
-                      <i class="ico-append fa fa-info"></i>
-                      <input type="text" placeholder="Website URL, starting with www." name="website">
-                  </label>
-                  
-                  <label class="input margin-bottom-10">
-                      <i class="ico-append fa fa-info"></i>
-                      <input type="text" placeholder="Logo Url, starting with http://" name="logo_url">
-                  </label>
-
-                  <div class="row">
-                        <div class="form-group">
-                          <div class="col-md-12 col-sm-12">
-                            <label>Description *</label>
-                            <textarea name="description" rows="4" class="form-control required"></textarea>
-                          </div>
-                        </div>
-                      </div>
-
-                  <label class="input margin-bottom-10">
-                      <i class="ico-append fa fa-info"></i>
-                      <input type="text" placeholder="Class Schedule Link" name="class_schedule_link">
-                  </label>
-                  
-                  <label class="input margin-bottom-10">
-                      <i class="ico-append fa fa-info"></i>
-                      <input type="text" placeholder="Class Sign Up Link" name="sign_up_link">
-                  </label>
-                  
-                  <label class="select margin-bottom-10 margin-top-20">
-                    <select>
-                      <option value="0" selected disabled>Owner</option>
-                      <% @owners.each do |owner| %>
-                        <option value="<%= owner.id %>"><%= owner.email %></option>
-                      <% end %>
-                    </select>
-                    <i></i>
-                  </label>
-                
-                </fieldset>
-
-                <div class="row margin-bottom-20">
-                  <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Add Studio</button>
-                    <button type="button"><%= link_to "Cancel", "/studios" %></button>
-                  </div>
-                </div>
-
-              </form>
-              <!-- /register form -->
-
-            </div>
-            <!-- /LOGIN -->
-
-          
-
-          </div>
-
-          
-        </div>
-      </section>
-      <!-- / -->
+} %> 
       <section>
         <div class="container">
          <div class="row">
@@ -118,47 +14,47 @@
                 <%= form_tag "/studios/", method: :post do %>
                 <div>
                   <%= label_tag :name %>
-                  <%= text_field_tag :name %>
+                  <%= text_field_tag :name, nil, class: "wide-field" %>
                 </div>
                 <div>
                   <%= label_tag :address %>
-                  <%= text_field_tag :address %>
+                  <%= text_field_tag :address, nil, class: "wide-field" %>
                 </div>
                 <div>
                   <%= label_tag :phone %>
-                  <%= text_field_tag :phone %>
+                  <%= text_field_tag :phone, nil, class: "wide-field" %>
                 </div>
                 <div>
                   <%= label_tag :email %>
-                  <%= text_field_tag :email %>
+                  <%= text_field_tag :email, nil, class: "wide-field" %>
                 </div>
                 <div>
                   <%= label_tag :website %>
-                  <%= text_field_tag :website %>
+                  <%= text_field_tag :website, nil, class: "wide-field" %>
                 </div>
                 <div>
                   <%= label_tag :logo_url %>
-                  <%= text_field_tag :logo_url %>
+                  <%= text_field_tag :logo_url, nil, class: "wide-field" %>
                 </div>
                 <div>
                   <%= label_tag :description %>
-                  <%= text_area_tag :description %>
+                  <%= text_area_tag :description, nil, class: "wide-field" %>
                 </div>
                 <div>
                   <%= label_tag :class_schedule_link %>
-                  <%= text_field_tag :class_schedule_link %>
+                  <%= text_field_tag :class_schedule_link, nil, class: "wide-field" %>
                 </div>
                 <div>
                   <%= label_tag :sign_up_link %>
-                  <%= text_field_tag :sign_up_link %>
+                  <%= text_field_tag :sign_up_link, nil, class: "wide-field" %>
                 </div>
                 <div>
                   <%= label_tag :Studio_Owner %>
-                  <%= select_tag 'user_id', options_from_collection_for_select(@owners, 'id', 'email') %>
+                  <%= select_tag 'user_id', options_from_collection_for_select(@owners, 'id', 'email'), class: "wide-field" %>
                 </div>
+                <br>
                 <div>
-                  <%= submit_tag 'Add a yoga studio' %>
-                  <button type="button"><%= link_to "Cancel", "/studios" %></button>
+                  <%= submit_tag 'Add a yoga studio', class: "button" %>
                 </div>
                 <% end %>
               </fieldset>
@@ -166,4 +62,4 @@
           </div>
         </div>
       </div>
-      </section>
+    </section>

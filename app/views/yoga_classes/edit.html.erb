@@ -2,64 +2,60 @@
   current_user: current_user,
   is_angular: false
 } %>      <section>
-        <div class="container">
-         <div class="row">
-          <div class="col-md-6 col-sm-6">
-            <div class="nomargin sky-form boxed">
-              <header>
-                <i class="fa fa-pencil"></i> Edit Yoga Class
-              </header>
-              <fieldset class="nomargin">
-<%= form_tag "/yoga_classes/#{@yoga_class.id}", method: :patch do %>
-  <div>
-    <%= label_tag :name %>
-    <%= text_field_tag :name, @yoga_class.name %>
-  </div>
-  <% if user_signed_in? && current_user.role_id == 1 %>
-    <div>
-      <%= label_tag :studio_id %>
-      <%= select_tag 'studio_id', options_from_collection_for_select(@studios, 'id', 'name', @yoga_class.studio.id) %>
+<div class="container">
+ <div class="row">
+  <div class="col-md-6 col-sm-6">
+    <div class="nomargin sky-form boxed">
+      <header>
+        <i class="fa fa-pencil"></i> Edit Yoga Class
+      </header>
+      <fieldset class="nomargin">
+        <%= form_tag "/yoga_classes/#{@yoga_class.id}", method: :patch do %>
+        <div>
+          <%= label_tag :name %>
+          <%= text_field_tag :name, @yoga_class.name, class: "wide-field" %>
+        </div>
+        <% if user_signed_in? && current_user.role_id == 1 %>
+        <div>
+          <%= label_tag :studio_id %>
+          <%= select_tag 'studio_id', options_from_collection_for_select(@studios, 'id', 'name', @yoga_class.studio.id), class: "wide-field" %>
+        </div>
+        <% end %>
+        <div>
+          <%= label_tag :start_date %>
+          <%= date_field_tag :date, @yoga_class.start.to_date, class: "wide-field" %>
+        </div>
+        <div>
+          <%= label_tag :start_time %>
+          <%= time_field_tag :time, @yoga_class.start.to_s(:time), class: "wide-field" %>
+        </div>
+        <div>
+          <%= label_tag :duration %>
+          <%= text_field_tag :duration, @yoga_class.duration, class: "wide-field" %>
+        </div>
+        <div>
+          <%= label_tag :price, "Price $" %>
+          <%= text_field_tag :price, @yoga_class.price, class: "wide-field" %>
+        </div>
+        <div>
+          <%= label_tag :level %>
+          <%= select_tag :level, options_for_select([ "Open", "Beginner", "Intermediate", "Advanced" ], @yoga_class.level), class: "wide-field" %>
+        </div>
+        <div>
+          <%= label_tag :style %>
+          <%= select_tag :style, options_for_select([ "Ashtanga", "Bikram", "Hatha", "Restorative", "Vinyasa", "Other"], @yoga_class.style), class: "wide-field" %>
+        </div>
+        <div>
+          <%= label_tag :teacher_name %>
+          <%= text_field_tag :teacher_name, @yoga_class.teacher_name, class: "wide-field" %>  
+        </div>
+        <div>
+          <%= submit_tag 'Edit this yoga class', class: "button" %>
+        </div>
+        <% end %>
+      </fieldset>
     </div>
-  <% end %>
-  <div>
-    <%= label_tag :start_date %>
-    <%= date_field_tag :date, @yoga_class.start.to_date %>
   </div>
-  <div>
-    <%= label_tag :start_time %>
-    <%= time_field_tag :time, @yoga_class.start.to_s(:time) %>
-  </div>
-  <div>
-    <%= time_zone_select( "user", 'time_zone', ActiveSupport::TimeZone.us_zones, default: "Central Time (US & Canada)") %>
-  </div>
-  <div>
-    <%= label_tag :duration %>
-    <%= text_field_tag :duration, @yoga_class.duration %>
-  </div>
-  <div>
-    <%= label_tag :price, "Price $" %>
-    <%= text_field_tag :price, @yoga_class.price %>
-  </div>
-  <div>
-    <%= label_tag :level %>
-    <%= select_tag :level, options_for_select([ "Open", "Beginner", "Intermediate", "Advanced" ], @yoga_class.level) %>
-  </div>
-  <div>
-    <%= label_tag :style %>
-    <%= select_tag :style, options_for_select([ "Ashtanga", "Bikram", "Hatha", "Restorative", "Vinyasa", "Other"], @yoga_class.style) %>
-  </div>
-  <div>
-    <%= label_tag :teacher_id %>
-    <%= select_tag 'user_id', options_from_collection_for_select(@all_teachers, 'id', 'email', @yoga_class.user_id) %>
-  </div>
-  <div>
-    <%= submit_tag 'Edit this yoga class' %>
-    <button type="button"><%= link_to "Cancel", "/yoga_classes/#{@yoga_class.id}" %></button>
-  </div>
-<% end %>
-</fieldset>
-</div>
-</div>
 </div>
 </div>
 </section>
